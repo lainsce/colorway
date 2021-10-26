@@ -87,20 +87,20 @@ namespace Colorway {
             var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Colorway/menu.ui");
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
-            color = "#FF0000";
+            color = "#c4a5f4";
             
             // Icon intentionally null so it becomes a badge instead.
             icon.halign = Gtk.Align.START;
             icon.valign = Gtk.Align.CENTER;
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
-            color_rule_dropdown.append_text("Analogous");
-            color_rule_dropdown.append_text("Complementary");
-            color_rule_dropdown.append_text("Triadic");
-            color_rule_dropdown.append_text("Tetradic");
-            color_rule_dropdown.append_text("Monochrome");
+            color_rule_dropdown.append_text(_("Analogous"));
+            color_rule_dropdown.append_text(_("Complementary"));
+            color_rule_dropdown.append_text(_("Triadic"));
+            color_rule_dropdown.append_text(_("Tetradic"));
+            color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(0);
-            color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 12;
+            color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 18;
             props_box.append (color_rule_dropdown);
           
             var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);

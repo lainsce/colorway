@@ -8,12 +8,13 @@
     <property name="resizable">0</property>
     <property name="title">Colorway</property>
     <child>
-      <object class="GtkBox" id="main_box">
-        <property name="orientation">vertical</property>
-        <property name="margin-bottom">6</property>
-        <child>
+      <object class="GtkOverlay" id="main_box">
+        <child type="overlay">
           <object class="AdwHeaderBar" id="headerbar">
             <property name="valign">start</property>
+            <child type="title">
+              <object class="GtkBox" />
+            </child>
             <child type="start">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>
@@ -37,6 +38,7 @@
                 <child>
                   <object class="GtkBox" id="color_box">
                     <property name="valign">center</property>
+                    <property name="margin-top">26</property>
                     <property name="orientation">vertical</property>
                   </object>
                 </child>
@@ -57,7 +59,7 @@
                           <child>
                             <object class="GtkBox" id="icon">
                               <property name="valign">center</property>
-                              <property name="margin-start">12</property>
+                              <property name="margin-start">18</property>
                               <property name="margin-end">12</property>
                               <property name="width-request">32</property>
                               <property name="height-request">32</property>
@@ -69,8 +71,6 @@
                           <child>
                             <object class="GtkEntry" id="color_label">
                               <property name="valign">center</property>
-                              <property name="margin-start">12</property>
-                              <property name="margin-end">12</property>
                               <property name="hexpand">1</property>
                               <style>
                                 <class name="clr-title"/>
@@ -83,7 +83,7 @@
                               <property name="icon-name">color-picker-symbolic</property>
                               <property name="valign">center</property>
                               <property name="margin-start">12</property>
-                              <property name="margin-end">12</property>
+                              <property name="margin-end">18</property>
                               <property name="tooltip-text" translatable="yes">Pick Color</property>
                               <style>
                                 <class name="circular"/>
