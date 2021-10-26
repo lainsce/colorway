@@ -170,6 +170,13 @@ namespace Colorway {
                                                 (float)Utils.make_srgb(color_portal.green), 
                                                 (float)Utils.make_srgb(color_portal.blue));
 
+                        float h,s,v,sr,sg,sb;
+                        Gtk.rgb_to_hsv(color_portal.red, color_portal.green, color_portal.blue, out h, out s, out v);
+                        Gtk.hsv_to_rgb (h, 1, 1, out sr, out sg, out sb);
+                        da.update_surface_color (sr, sg, sb);
+                        da.sv_to_pos (s, v);
+                        da.queue_draw();
+
                         color_label.set_label (pc.up());
                         color = pc.up();
                         active_color = color_portal;

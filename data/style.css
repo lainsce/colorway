@@ -5,7 +5,8 @@
 
 .clr-title {
   font-size: 2.2rem;
-  font-weight: 300;
+  font-weight: 500;
+  font-family: monospace;
 }
 
 .clr-hue trough {
@@ -18,5 +19,10 @@
         rgba(255,0,255,1) 83.33%,
         rgba(240,0,0,1) 100%
     );
-    padding: 10px;
+}
+
+.clr-da {
+  border: 3px solid @borders;
+  border-radius: 2px;
+  transform: rotate(45deg) scale(0.8);
 }

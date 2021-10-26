@@ -45,6 +45,8 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         g = active_color.green;
         b = active_color.blue;
         this.active_color = active_color;
+        this.margin_top = 24;
+        this.get_style_context ().add_class ("clr-da");
         
         this.set_halign (Gtk.Align.CENTER);
 
@@ -104,8 +106,13 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         xy_to_sv (xpos, ypos, out s, out v);
     }
     
-    public void sv_to_pos (out double x, out double y) {
+    public void sv_to_pos (float s, float v) {
         sv_to_xy (s, v, out xpos, out ypos);
+        
+        double new_s, new_v;
+        xy_to_sv (xpos, ypos, out new_s, out new_v);
+        instance.on_sv_move (new_s, new_v);
+        instance.queue_draw ();
     }
 
     private static void xy_to_sv (double x, double y, out double s, out double v) {
@@ -137,7 +144,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     }
 
     private static void gesture_press_release (double offset_x, double offset_y) {
-        double _xpos, _ypos, sr, sg, sb, h, s, v;
+        double _xpos, _ypos;
         gesture.get_point (null, out _xpos, out _ypos);
 
         xpos = _xpos;
