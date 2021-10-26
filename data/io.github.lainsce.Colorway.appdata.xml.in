@@ -35,7 +35,7 @@
       <display_length compare="ge">360</display_length>
     </requires>
     <custom>
-      <value key="GnomeSoftware::key-colors">[(51, 51, 51)]</value>
+      <value key="GnomeSoftware::key-colors">[(196, 165, 244)]</value>
     </custom>
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
