@@ -86,7 +86,7 @@ namespace Colorway {
             var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Colorway/menu.ui");
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
-            color = "#c4a5f4";
+            color = "#ff0000";
             contrast = "#000000";
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
@@ -152,7 +152,14 @@ namespace Colorway {
                 
                 color_label.set_text (pc.up());
                 color = pc.up();
-                setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
+
+                if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                    contrast = "#000000";
+                } else {
+                    contrast = "#FFFFFF";
+                }
+
+                setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
             
             hue_slider.on_value_changed.connect ((hue) => {
@@ -174,13 +181,19 @@ namespace Colorway {
                 color_label.set_text (pc.up());
                 color = pc.up();
 
-                setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
+                if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                    contrast = "#000000";
+                } else {
+                    contrast = "#FFFFFF";
+                }
+
+                setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
 
             double hue = hue_slider.get_value () / 360;
             double s, v;
             da.pos_to_sv (out s, out v);
-            setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
+            setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
 
             color_rule_dropdown.changed.connect(() => {
                 Gdk.RGBA clr = {};
@@ -196,7 +209,13 @@ namespace Colorway {
                 color = pc.up();
                 color_label.set_text (pc.up());
 
-                setup_color_rules.begin (color, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+                if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                    contrast = "#000000";
+                } else {
+                    contrast = "#FFFFFF";
+                }
+
+                setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
             });
 
             color_label.activate.connect(() => {
@@ -221,7 +240,13 @@ namespace Colorway {
                 color = pc.up();
                 color_label.set_text (pc.up());
 
-                setup_color_rules.begin (color, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+                if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                    contrast = "#000000";
+                } else {
+                    contrast = "#FFFFFF";
+                }
+
+                setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
             });
 
             this.set_size_request (360, 360);
@@ -230,7 +255,7 @@ namespace Colorway {
 			this.show ();
 		}
 
-		public async void setup_color_rules (string color, double hue, double s, double v, Gtk.ComboBoxText? crd, Gtk.Box? sbox, Gtk.Box? tbox) {
+		public async void setup_color_rules (string color, string contrast, double hue, double s, double v, Gtk.ComboBoxText? crd, Gtk.Box? sbox, Gtk.Box? tbox) {
 		    switch (crd.get_active ()) {
                 case 0:
                     da.pos_to_sv (out s, out v);
@@ -239,31 +264,25 @@ namespace Colorway {
                         var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
                                                 (float)Utils.make_srgb(active_color.green),
                                                 (float)Utils.make_srgb(active_color.blue));
-                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                        update_theme(color.up(), contrast.up(), pc.up(), pc.up(), pc.up());
                     } else if (hue > 0.5) {
                         Gtk.hsv_to_rgb ((float)hue-(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
                         var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
                                                 (float)Utils.make_srgb(active_color.green),
                                                 (float)Utils.make_srgb(active_color.blue));
-                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                        update_theme(color.up(), contrast.up(), pc.up(), pc.up(), pc.up());
                     } else if (hue == 0.0) {
                         Gtk.hsv_to_rgb ((float)hue+(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
                         var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
                                                 (float)Utils.make_srgb(active_color.green),
                                                 (float)Utils.make_srgb(active_color.blue));
-                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                        update_theme(color.up(), contrast.up(), pc.up(), pc.up(), pc.up());
                     } else if (hue == 1.0) {
                         Gtk.hsv_to_rgb ((float)hue-(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
                         var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
                                                 (float)Utils.make_srgb(active_color.green),
                                                 (float)Utils.make_srgb(active_color.blue));
-                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
-                    }
-
-                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                        contrast = "#000000";
-                    } else {
-                        contrast = "#FFFFFF";
+                        update_theme(color.up(), contrast.up(), pc.up(), pc.up(), pc.up());
                     }
 
                     sbox.set_visible (false);
@@ -278,15 +297,9 @@ namespace Colorway {
                                             (float)Utils.make_srgb(active_color.green),
                                             (float)Utils.make_srgb(active_color.blue));
 
-                    update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                    update_theme(color.up(), contrast.up(), pc.up(), pc.up(), pc.up());
                     sbox.set_visible (false);
                     tbox.set_visible (false);
-
-                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                        contrast = "#000000";
-                    } else {
-                        contrast = "#FFFFFF";
-                    }
 
                     break;
                 case 2:
@@ -308,13 +321,7 @@ namespace Colorway {
 
                     sbox.set_visible (true);
                     tbox.set_visible (false);
-                    update_theme(color.up(), c2.up(), c1.up(), c1.up());
-
-                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                        contrast = "#000000";
-                    } else {
-                        contrast = "#FFFFFF";
-                    }
+                    update_theme(color.up(), contrast.up(), c2.up(), c1.up(), c1.up());
 
                     break;
                 case 3:
@@ -344,13 +351,7 @@ namespace Colorway {
 
                     sbox.set_visible (true);
                     tbox.set_visible (true);
-                    update_theme(color.up(), c2.up(), c3.up(), c1.up());
-
-                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                        contrast = "#000000";
-                    } else {
-                        contrast = "#FFFFFF";
-                    }
+                    update_theme(color.up(), contrast.up(), c2.up(), c3.up(), c1.up());
 
                     break;
                 case 4:
@@ -364,13 +365,7 @@ namespace Colorway {
 
                     sbox.set_visible (true);
                     tbox.set_visible (true);
-                    update_theme(color.up(), c2.up(), c3.up(), c1.up());
-
-                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                        contrast = "#000000";
-                    } else {
-                        contrast = "#FFFFFF";
-                    }
+                    update_theme(color.up(), contrast.up(), c2.up(), c3.up(), c1.up());
 
                     break;
             }
@@ -425,7 +420,13 @@ namespace Colorway {
 
                         hue_slider.set_value(h*360);
 
-                        setup_color_rules.begin (color, h, s, v, this.color_rule_dropdown, this.sbox, this.tbox);
+                        if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                            contrast = "#000000";
+                        } else {
+                            contrast = "#FFFFFF";
+                        }
+
+                        setup_color_rules.begin (color, contrast, h, s, v, this.color_rule_dropdown, this.sbox, this.tbox);
 
                         pick_color.callback();
                     } else {
@@ -440,7 +441,7 @@ namespace Colorway {
             }
         }
         
-        public void update_theme(string? color, string? rule_color1, string? rule_color2, string? rule_color) {
+        public void update_theme(string? color, string? contrast, string? rule_color1, string? rule_color2, string? rule_color) {
             var css_provider = new Gtk.CssProvider();
             string style = null;
             style = """
@@ -479,7 +480,7 @@ namespace Colorway {
 	            outline: 1px solid @borders;
             }
             """.printf(color,
-                       this.contrast,
+                       contrast,
                        color,
                        rule_color1,
                        rule_color2,
