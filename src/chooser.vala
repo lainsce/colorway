@@ -75,7 +75,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     public void draw_func (Gtk.DrawingArea da, Cairo.Context context, int width, int height) {
         double xc = 7;
         double yc = 7;
-        double stroke_width = 3;
+        double stroke_width = 5;
         double radius = xc - stroke_width / 2;
         double angle1 = 0;
         double angle2 = 2 * GLib.Math.PI;
@@ -87,8 +87,8 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         context.set_line_width (stroke_width);
         context.set_source_rgb (1, 1, 1);
         context.stroke_preserve ();
-        context.set_line_width (1);
-        context.set_source_rgba (0, 0, 0, 0.6);
+        context.set_line_width (2);
+        context.set_source_rgb (0, 0, 0);
         context.stroke ();
         
         da.queue_draw ();

@@ -19,6 +19,18 @@
         rgba(255,0,255,1) 83.33%,
         rgba(240,0,0,1) 100%
     );
+    min-height: 20px;
+    padding: 0 6px;
+    box-shadow: inset 0 0 0 1px @borders;
+}
+
+.clr-hue slider {
+	box-shadow: inset 0 0 0 3px #fff, 0 1px 3px -0.4px @borders;
+	border: none;
+	min-width: 20px;
+	min-height: 20px;
+	background: none;
+  border-radius: 999px;
 }
 
 .clr-da {
