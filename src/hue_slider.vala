@@ -32,9 +32,9 @@ public class Colorway.HueSlider : Gtk.Scale {
         //  Initialize parent's properties
         this.orientation = Gtk.Orientation.HORIZONTAL;
         this.margin_end = this.margin_start = 18;
-        this.width_request = 180;
+        this.width_request = 193;
         this.draw_value = false;
-        this.digits = 4;
+        this.digits = 0;
         this.has_origin = false;
 
         this.get_style_context ().add_class ("clr-hue");

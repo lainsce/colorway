@@ -32,11 +32,17 @@ namespace Colorway {
 	    public Chooser da;
 	    public HueSlider hue_slider;
 
+	    public Gtk.ComboBoxText color_rule_dropdown;
+	    public Gtk.Box tbox;
+	    public Gtk.Box sbox;
+
 	    public signal void clicked ();
 	    public signal void toggled ();
 	    
 	    public string color;
 	    public string rule_color;
+	    public string rule_color1;
+	    public string rule_color2;
 	    public Gdk.RGBA active_color;
 	    
 	    public SimpleActionGroup actions { get; construct; }
@@ -85,11 +91,13 @@ namespace Colorway {
             icon.halign = Gtk.Align.START;
             icon.valign = Gtk.Align.CENTER;
             
-            var color_rule_dropdown = new Gtk.DropDown.from_strings ({"Analogous",
-                                                                  "Complementary",
-                                                                  "Triadic",
-                                                                  "Quadratic",
-                                                                  "Monochrome"});
+            color_rule_dropdown = new Gtk.ComboBoxText ();
+            color_rule_dropdown.append_text("Analogous");
+            color_rule_dropdown.append_text("Complementary");
+            color_rule_dropdown.append_text("Triadic");
+            color_rule_dropdown.append_text("Tetradic");
+            color_rule_dropdown.append_text("Monochrome");
+            color_rule_dropdown.set_active(0);
             color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 12;
             color_rule_dropdown.margin_top = 30;
             color_box.append (color_rule_dropdown);
@@ -98,15 +106,27 @@ namespace Colorway {
             box.set_size_request(64, 32);
             box.set_halign(Gtk.Align.CENTER);
             box.get_style_context ().add_class ("clr-preview-rule-left");
-            var sbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            sbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             sbox.set_size_request(64, 32);
             sbox.set_halign(Gtk.Align.CENTER);
-            sbox.get_style_context ().add_class ("clr-preview-rule-right");
+            sbox.set_visible(false);
+            sbox.get_style_context ().add_class ("clr-preview-rule-middle1");
+            tbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            tbox.set_size_request(64, 32);
+            tbox.set_halign(Gtk.Align.CENTER);
+            tbox.set_visible(false);
+            tbox.get_style_context ().add_class ("clr-preview-rule-middle2");
+            var ubox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            ubox.set_size_request(64, 32);
+            ubox.set_halign(Gtk.Align.CENTER);
+            ubox.get_style_context ().add_class ("clr-preview-rule-right");
             
             var mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             mbox.set_halign(Gtk.Align.CENTER);
             mbox.append (box);
             mbox.append (sbox);
+            mbox.append (tbox);
+            mbox.append (ubox);
             
             color_box.append (mbox);
             color_label.set_label (color.up());
@@ -122,33 +142,11 @@ namespace Colorway {
             da = new Chooser(gdkrgba);
             hue_slider = new HueSlider (360);
             
-            double hue = hue_slider.get_value () / 360;
-            double s,v = 0.0;
-            da.pos_to_sv (out s, out v);
-            if (hue <= 0.5) {
-                Gtk.hsv_to_rgb ((float)hue+(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                (float)Utils.make_srgb(active_color.green), 
-                (float)Utils.make_srgb(active_color.blue));
-                rule_color = pc;
-            } else if (hue >= 0.5) {
-                Gtk.hsv_to_rgb ((float)hue-(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                (float)Utils.make_srgb(active_color.green), 
-                (float)Utils.make_srgb(active_color.blue));
-                rule_color = pc;
-            } else {
-                Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                (float)Utils.make_srgb(active_color.green), 
-                (float)Utils.make_srgb(active_color.blue));
-                rule_color = pc;
-            }
-            
             color_box.prepend(hue_slider);
             color_box.prepend(da);
             
             da.on_sv_move.connect ((s, v) => {
+                double hue = hue_slider.get_value () / 360;
                 Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
                 
                 var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
@@ -157,11 +155,11 @@ namespace Colorway {
                 
                 color_label.set_label (pc.up());
                 color = pc.up();
-                update_theme(pc.up(), rule_color.up());
+                setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
             
             hue_slider.on_value_changed.connect ((hue) => {
-                double x, y;
+                double x, y, s, v;
                 double sr, sg, sb;
                 double r, g, b;
                 da.pos_to_sv (out s, out v);
@@ -178,187 +176,17 @@ namespace Colorway {
                 
                 color_label.set_label (pc.up());
                 color = pc.up();
-                update_theme(pc.up(), rule_color.up());
+
+                setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
-            
-            switch (color_rule_dropdown.get_selected ()) {
-                case 0:
-                    da.pos_to_sv (out s, out v);
-                    if (hue <= 0.5) {
-                        Gtk.hsv_to_rgb ((float)hue+(float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    } else if (hue >= 0.5) {
-                        Gtk.hsv_to_rgb ((float)hue-(float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    } else {
-                        Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    }
-                    break;
-                case 1:
-                    if (hue <= 0.5) {
-                        Gtk.hsv_to_rgb ((float)hue+(float)0.5, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    } else if (hue >= 0.5) {
-                        Gtk.hsv_to_rgb ((float)hue-(float)0.5, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    } else {
-                        Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    }
-                    break;
-                case 2:
-                    rule_color = "#00FF00";
-                    update_theme(color.up(), rule_color.up());
-                    break;
-                case 3:
-                    rule_color = "#FF00FF";
-                    update_theme(color.up(), rule_color.up());
-                    break;
-                case 4:
-                    rule_color = "#888888";
-                    update_theme(color.up(), rule_color.up());
-                    break;
-                default:
-                    da.pos_to_sv (out s, out v);
-                    if (hue <= 0.5) {
-                        Gtk.hsv_to_rgb ((float)hue+(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    } else if (hue >= 0.5) {
-                        Gtk.hsv_to_rgb ((float)hue-(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    } else {
-                        Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                        (float)Utils.make_srgb(active_color.green), 
-                        (float)Utils.make_srgb(active_color.blue));
-                        rule_color = pc;
-                        update_theme(color.up(), rule_color.up());
-                    }
-                    break;
-            }
-            
-            color_rule_dropdown.notify["selected"].connect(() => {
-                switch (color_rule_dropdown.get_selected ()) {
-                    case 0:
-                        da.pos_to_sv (out s, out v);
-                        if (hue <= 0.5) {
-                            Gtk.hsv_to_rgb ((float)hue+(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        } else if (hue >= 0.5) {
-                            Gtk.hsv_to_rgb ((float)hue-(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        } else {
-                            Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        }
-                        break;
-                    case 1:
-                        if (hue <= 0.5) {
-                            Gtk.hsv_to_rgb ((float)hue+(float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        } else if (hue >= 0.5) {
-                            Gtk.hsv_to_rgb ((float)hue-(float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        } else {
-                            Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        }
-                        break;
-                    case 2:
-                        rule_color = "#00FF00";
-                        update_theme(color.up(), rule_color.up());
-                        break;
-                    case 3:
-                        rule_color = "#FF00FF";
-                        update_theme(color.up(), rule_color.up());
-                        break;
-                    case 4:
-                        rule_color = "#888888";
-                        update_theme(color.up(), rule_color.up());
-                        break;
-                    default:
-                        da.pos_to_sv (out s, out v);
-                        if (hue <= 0.5) {
-                            Gtk.hsv_to_rgb ((float)hue+(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        } else if (hue >= 0.5) {
-                            Gtk.hsv_to_rgb ((float)hue-(float)0.05, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        } else {
-                            Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
-                            var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
-                            (float)Utils.make_srgb(active_color.green), 
-                            (float)Utils.make_srgb(active_color.blue));
-                            rule_color = pc;
-                            update_theme(color.up(), rule_color.up());
-                        }
-                        break;
-                }
+
+            double hue = hue_slider.get_value () / 360;
+            double s, v;
+            da.pos_to_sv (out s, out v);
+            setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
+
+            color_rule_dropdown.changed.connect(() => {
+                setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
 
             this.set_size_request (360, 360);
@@ -366,6 +194,152 @@ namespace Colorway {
             adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
 			this.show ();
 		}
+
+		public async void setup_color_rules (string color, double hue, double s, double v, Gtk.ComboBoxText? crd, Gtk.Box? sbox, Gtk.Box? tbox) {
+		    switch (crd.get_active ()) {
+                case 0:
+                    da.pos_to_sv (out s, out v);
+                    if (hue <= 0.5) {
+                        Gtk.hsv_to_rgb ((float)hue+(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
+                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                                (float)Utils.make_srgb(active_color.green),
+                                                (float)Utils.make_srgb(active_color.blue));
+                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                    } else if (hue > 0.5) {
+                        Gtk.hsv_to_rgb ((float)hue-(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
+                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                                (float)Utils.make_srgb(active_color.green),
+                                                (float)Utils.make_srgb(active_color.blue));
+                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                    } else if (hue == 0.0) {
+                        Gtk.hsv_to_rgb ((float)hue+(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
+                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                                (float)Utils.make_srgb(active_color.green),
+                                                (float)Utils.make_srgb(active_color.blue));
+                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                    } else if (hue == 1.0) {
+                        Gtk.hsv_to_rgb ((float)hue-(float)0.1, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
+                        var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                                (float)Utils.make_srgb(active_color.green),
+                                                (float)Utils.make_srgb(active_color.blue));
+                        update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                    }
+                    sbox.set_visible (false);
+                    tbox.set_visible (false);
+                    break;
+                case 1:
+                    var h = (hue_shift (hue_slider.get_value (), 180.0)) / 360;
+                    double cs, cv;
+                    da.pos_to_sv (out cs, out cv);
+                    Gtk.hsv_to_rgb ((float)h, (float)cs, (float)cv, out active_color.red, out active_color.green, out active_color.blue);
+                    var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                            (float)Utils.make_srgb(active_color.green),
+                                            (float)Utils.make_srgb(active_color.blue));
+
+                    update_theme(color.up(), pc.up(), pc.up(), pc.up());
+                    sbox.set_visible (false);
+                    tbox.set_visible (false);
+                    break;
+                case 2:
+                    double cs, cv, r, g, b;
+                    string c1 = "";
+                    string c2 = "";
+                    da.pos_to_sv (out cs, out cv);
+                    Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
+
+                    if (r <= 0.5) {
+                        c1 = color_mixer(r, r+0.5, g, 0.5, b, 0.0);
+                    } else if (r > 0.5) {
+                        c1 = color_mixer(r, r-0.5, g, 0.5, b, 0.0);
+                    } else if (r == 0.0) {
+                        c1 = color_mixer(r, r+0.5, g, 0.5, b, 0.0);
+                    } else if (r == 1.0) {
+                        c1 = color_mixer(r, r-0.5, g, 0.5, b, 0.0);
+                    }
+
+                    if (g <= 0.5) {
+                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.5);
+                    } else if (g > 0.5) {
+                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.5);
+                    } else if (g == 0.0) {
+                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.5);
+                    } else if (g == 1.0) {
+                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.5);
+                    }
+
+                    sbox.set_visible (true);
+                    tbox.set_visible (false);
+                    update_theme(color.up(), c2.up(), c1.up(), c1.up());
+                    break;
+                case 3:
+                    double cs, cv, r, g, b;
+                    string c1 = "";
+                    string c2 = "";
+                    string c3 = "";
+                    da.pos_to_sv (out cs, out cv);
+                    Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
+
+                    if (r <= 0.5) {
+                        c1 = color_mixer(r, r+0.5, g, 0.0, b, 0.0);
+                    } else if (r > 0.5) {
+                        c1 = color_mixer(r, r-0.5, g, 0.0, b, 0.0);
+                    } else if (r == 0.0) {
+                        c1 = color_mixer(r, r+0.5, g, 0.0, b, 0.0);
+                    } else if (r == 1.0) {
+                        c1 = color_mixer(r, r-0.5, g, 0.0, b, 0.0);
+                    }
+
+                    if (g <= 0.5) {
+                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.0);
+                    } else if (g > 0.5) {
+                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.0);
+                    } else if (g == 0.0) {
+                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.0);
+                    } else if (g == 1.0) {
+                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.0);
+                    }
+
+                    if (b <= 0.5) {
+                        c3 = color_mixer(r, 0.0, g, 0.0, b, b+0.5);
+                    } else if (b > 0.5) {
+                        c3 = color_mixer(r, 0.0, g, 0.0, b, b-0.5);
+                    } else if (b == 0.0) {
+                        c3 = color_mixer(r, 0.0, g, 0.0, b, b+0.5);
+                    } else if (b == 1.0) {
+                        c3 = color_mixer(r, 0.0, g, 0.0, b, b-0.5);
+                    }
+
+                    sbox.set_visible (true);
+                    tbox.set_visible (true);
+                    update_theme(color.up(), c2.up(), c3.up(), c1.up());
+                    break;
+                case 4:
+                    double cs, cv, r, g, b;
+                    da.pos_to_sv (out cs, out cv);
+                    Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
+
+                    var c1 = color_mixer(r, 1.0, g, 1.0, b, 1.0);
+                    var c2 = color_mixer(r, 0.5, g, 0.5, b, 0.5);
+                    var c3 = color_mixer(r, 0.0, g, 0.0, b, 0.0);
+
+                    sbox.set_visible (true);
+                    tbox.set_visible (true);
+                    update_theme(color.up(), c2.up(), c3.up(), c1.up());
+                    break;
+            }
+		}
+
+		public double hue_shift (double h, double s) {
+            h += s; while (h >= 360.0) h -= 360.0; while (h < 0.0) h += 360.0; return h;
+        }
+
+        public string color_mixer(double red, double red2, double green, double green2, double blue, double blue2) {
+            string r_hex = "%02x".printf ((uint) (((red + red2)/2) * 255));
+            string g_hex = "%02x".printf ((uint) (((green + green2)/2) * 255));
+            string b_hex = "%02x".printf ((uint) (((blue + blue2)/2) * 255));
+
+            return @"#$r_hex$g_hex$b_hex".up ();
+        }
 		
 		public async void pick_color () {
             try {
@@ -401,7 +375,10 @@ namespace Colorway {
                         color = pc.up();
                         active_color = color_portal;
                         da.active_color = color_portal;
-                        update_theme(pc.up(), rule_color.up());
+
+                        hue_slider.set_value(h*360);
+
+                        setup_color_rules.begin (color, h, s, v, this.color_rule_dropdown, this.sbox, this.tbox);
 
                         pick_color.callback();
                     } else {
@@ -416,7 +393,7 @@ namespace Colorway {
             }
         }
         
-        public void update_theme(string? color, string? rule_color) {
+        public void update_theme(string? color, string? rule_color1, string? rule_color2, string? rule_color) {
             var css_provider = new Gtk.CssProvider();
             string style = null;
             style = """
@@ -427,13 +404,37 @@ namespace Colorway {
             }
             .clr-preview-rule-left {
                 background: %s;
-                border-radius: 9999px 0 0 9999px;
+                border-radius: 8px 0 0 8px;
+                min-height: 32px;
+	            min-width: 32px;
+	            outline: 1px solid @borders;
+            }
+            .clr-preview-rule-middle1 {
+                background: %s;
+                border-radius: 0;
+                min-height: 32px;
+	            min-width: 32px;
+	            outline: 1px solid @borders;
+            }
+            .clr-preview-rule-middle2 {
+                background: %s;
+                border-radius: 0;
+                min-height: 32px;
+	            min-width: 32px;
+	            outline: 1px solid @borders;
             }
             .clr-preview-rule-right {
-                background: mix(%s, %s, 0.5);
-                border-radius: 0 9999px 9999px 0;
+                background: %s;
+                border-radius: 0 8px 8px 0;
+                min-height: 32px;
+	            min-width: 32px;
+	            outline: 1px solid @borders;
             }
-            """.printf(color, color, color, rule_color);
+            """.printf(color,
+                       color,
+                       rule_color1,
+                       rule_color2,
+                       rule_color);
 
             css_provider.load_from_data(style.data);
 
