@@ -280,73 +280,50 @@ namespace Colorway {
                     tbox.set_visible (false);
                     break;
                 case 2:
-                    double cs, cv, r, g, b;
-                    string c1 = "";
-                    string c2 = "";
-                    da.pos_to_sv (out cs, out cv);
-                    Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
+                    var ch1 = (hue_shift (hue_slider.get_value (), 120.0)) / 360;
+                    double cs1, cv1;
+                    da.pos_to_sv (out cs1, out cv1);
+                    Gtk.hsv_to_rgb ((float)ch1, (float)cs1, (float)cv1, out active_color.red, out active_color.green, out active_color.blue);
+                    var c1 = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                            (float)Utils.make_srgb(active_color.green),
+                                            (float)Utils.make_srgb(active_color.blue));
 
-                    if (r <= 0.5) {
-                        c1 = color_mixer(r, r+0.5, g, 0.5, b, b);
-                    } else if (r > 0.5) {
-                        c1 = color_mixer(r, r-0.5, g, 0.5, b, b);
-                    } else if (r == 0.0) {
-                        c1 = color_mixer(r, r+0.5, g, 0.5, b, b);
-                    } else if (r == 1.0) {
-                        c1 = color_mixer(r, r-0.5, g, 0.5, b, b);
-                    }
-
-                    if (g <= 0.5) {
-                        c2 = color_mixer(r, r, g, g+0.5, b, 0.5);
-                    } else if (g > 0.5) {
-                        c2 = color_mixer(r, r, g, g-0.5, b, 0.5);
-                    } else if (g == 0.0) {
-                        c2 = color_mixer(r, r, g, g+0.5, b, 0.5);
-                    } else if (g == 1.0) {
-                        c2 = color_mixer(r, r, g, g-0.5, b, 0.5);
-                    }
+                    var ch2 = (hue_shift (hue_slider.get_value (), 240.0)) / 360;
+                    double cs2, cv2;
+                    da.pos_to_sv (out cs2, out cv2);
+                    Gtk.hsv_to_rgb ((float)ch2, (float)cs2, (float)cv2, out active_color.red, out active_color.green, out active_color.blue);
+                    var c2 = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                            (float)Utils.make_srgb(active_color.green),
+                                            (float)Utils.make_srgb(active_color.blue));
 
                     sbox.set_visible (true);
                     tbox.set_visible (false);
                     update_theme(color.up(), c2.up(), c1.up(), c1.up());
                     break;
                 case 3:
-                    double cs, cv, r, g, b;
-                    string c1 = "";
-                    string c2 = "";
-                    string c3 = "";
-                    da.pos_to_sv (out cs, out cv);
-                    Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
+                    var ch1 = (hue_shift (hue_slider.get_value (), 90.0)) / 360;
+                    double cs1, cv1;
+                    da.pos_to_sv (out cs1, out cv1);
+                    Gtk.hsv_to_rgb ((float)ch1, (float)cs1, (float)cv1, out active_color.red, out active_color.green, out active_color.blue);
+                    var c1 = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                            (float)Utils.make_srgb(active_color.green),
+                                            (float)Utils.make_srgb(active_color.blue));
 
-                    if (r <= 0.5) {
-                        c1 = color_mixer(r, r+0.5, g, g, b, b);
-                    } else if (r > 0.5) {
-                        c1 = color_mixer(r, r-0.5, g, g, b, b);
-                    } else if (r == 0.0) {
-                        c1 = color_mixer(r, r+0.5, g, g, b, b);
-                    } else if (r == 1.0) {
-                        c1 = color_mixer(r, r-0.5, g, g, b, b);
-                    }
+                    var ch2 = (hue_shift (hue_slider.get_value (), 180.0)) / 360;
+                    double cs2, cv2;
+                    da.pos_to_sv (out cs2, out cv2);
+                    Gtk.hsv_to_rgb ((float)ch2, (float)cs2, (float)cv2, out active_color.red, out active_color.green, out active_color.blue);
+                    var c2 = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                            (float)Utils.make_srgb(active_color.green),
+                                            (float)Utils.make_srgb(active_color.blue));
 
-                    if (g <= 0.5) {
-                        c2 = color_mixer(r, r, g, g+0.5, b, b);
-                    } else if (g > 0.5) {
-                        c2 = color_mixer(r, r, g, g-0.5, b, b);
-                    } else if (g == 0.0) {
-                        c2 = color_mixer(r, r, g, g+0.5, b, b);
-                    } else if (g == 1.0) {
-                        c2 = color_mixer(r, r, g, g-0.5, b, b);
-                    }
-
-                    if (b <= 0.5) {
-                        c3 = color_mixer(r, r, g, g, b, b+0.5);
-                    } else if (b > 0.5) {
-                        c3 = color_mixer(r, r, g, g, b, b-0.5);
-                    } else if (b == 0.0) {
-                        c3 = color_mixer(r, r, g, g, b, b+0.5);
-                    } else if (b == 1.0) {
-                        c3 = color_mixer(r, r, g, g, b, b-0.5);
-                    }
+                    var ch3 = (hue_shift (hue_slider.get_value (), 270.0)) / 360;
+                    double cs3, cv3;
+                    da.pos_to_sv (out cs3, out cv3);
+                    Gtk.hsv_to_rgb ((float)ch3, (float)cs3, (float)cv3, out active_color.red, out active_color.green, out active_color.blue);
+                    var c3 = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                                            (float)Utils.make_srgb(active_color.green),
+                                            (float)Utils.make_srgb(active_color.blue));
 
                     sbox.set_visible (true);
                     tbox.set_visible (true);
