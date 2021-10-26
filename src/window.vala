@@ -87,6 +87,7 @@ namespace Colorway {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
             color = "#c4a5f4";
+            contrast = "#000000";
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
             color_rule_dropdown.append_text(_("Analogous"));
