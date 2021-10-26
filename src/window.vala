@@ -25,8 +25,6 @@ namespace Colorway {
 	    [GtkChild]
 	    unowned Gtk.Box props_box;
 	    [GtkChild]
-	    unowned Gtk.Box icon;
-	    [GtkChild]
 	    unowned Gtk.Button color_picker_button;
 	    [GtkChild]
 	    unowned Gtk.Entry color_label;
@@ -42,6 +40,7 @@ namespace Colorway {
 	    public signal void toggled ();
 	    
 	    public string color;
+	    public string contrast;
 	    public string rule_color;
 	    public string rule_color1;
 	    public string rule_color2;
@@ -88,10 +87,6 @@ namespace Colorway {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
             color = "#c4a5f4";
-            
-            // Icon intentionally null so it becomes a badge instead.
-            icon.halign = Gtk.Align.START;
-            icon.valign = Gtk.Align.CENTER;
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
             color_rule_dropdown.append_text(_("Analogous"));
@@ -263,6 +258,13 @@ namespace Colorway {
                                                 (float)Utils.make_srgb(active_color.blue));
                         update_theme(color.up(), pc.up(), pc.up(), pc.up());
                     }
+
+                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                        contrast = "#000000";
+                    } else {
+                        contrast = "#FFFFFF";
+                    }
+
                     sbox.set_visible (false);
                     tbox.set_visible (false);
                     break;
@@ -278,6 +280,13 @@ namespace Colorway {
                     update_theme(color.up(), pc.up(), pc.up(), pc.up());
                     sbox.set_visible (false);
                     tbox.set_visible (false);
+
+                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                        contrast = "#000000";
+                    } else {
+                        contrast = "#FFFFFF";
+                    }
+
                     break;
                 case 2:
                     var ch1 = (hue_shift (hue_slider.get_value (), 120.0)) / 360;
@@ -299,6 +308,13 @@ namespace Colorway {
                     sbox.set_visible (true);
                     tbox.set_visible (false);
                     update_theme(color.up(), c2.up(), c1.up(), c1.up());
+
+                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                        contrast = "#000000";
+                    } else {
+                        contrast = "#FFFFFF";
+                    }
+
                     break;
                 case 3:
                     var ch1 = (hue_shift (hue_slider.get_value (), 90.0)) / 360;
@@ -328,6 +344,13 @@ namespace Colorway {
                     sbox.set_visible (true);
                     tbox.set_visible (true);
                     update_theme(color.up(), c2.up(), c3.up(), c1.up());
+
+                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                        contrast = "#000000";
+                    } else {
+                        contrast = "#FFFFFF";
+                    }
+
                     break;
                 case 4:
                     double cs, cv, r, g, b;
@@ -341,6 +364,13 @@ namespace Colorway {
                     sbox.set_visible (true);
                     tbox.set_visible (true);
                     update_theme(color.up(), c2.up(), c3.up(), c1.up());
+
+                    if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                        contrast = "#000000";
+                    } else {
+                        contrast = "#FFFFFF";
+                    }
+
                     break;
             }
 		}
@@ -415,6 +445,7 @@ namespace Colorway {
             style = """
             .clr-preview {
                 background: %s;
+                color: %s;
                 border: 1px solid @borders;
                 border-radius: 9999px;
             }
@@ -447,6 +478,7 @@ namespace Colorway {
 	            outline: 1px solid @borders;
             }
             """.printf(color,
+                       this.contrast,
                        color,
                        rule_color1,
                        rule_color2,
