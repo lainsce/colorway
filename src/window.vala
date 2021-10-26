@@ -35,6 +35,8 @@ namespace Colorway {
 	    public Gtk.ComboBoxText color_rule_dropdown;
 	    public Gtk.Box tbox;
 	    public Gtk.Box sbox;
+	    public Gtk.Box mbox;
+	    public Gtk.Label color_exported_label;
 
 	    public signal void clicked ();
 	    public signal void toggled ();
@@ -50,10 +52,12 @@ namespace Colorway {
         public const string ACTION_PREFIX = "win.";
         public const string ACTION_ABOUT = "action_about";
         public const string ACTION_KEYS = "action_keys";
+        public const string ACTION_EXPORT = "action_export";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
               {ACTION_ABOUT, action_about},
               {ACTION_KEYS, action_keys},
+              {ACTION_EXPORT, action_export},
         };
 
         public Adw.Application app { get; construct; }
@@ -79,6 +83,8 @@ namespace Colorway {
                 app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
+            app.set_accels_for_action("win.action_keys", {"<Ctrl>question"});
+            app.set_accels_for_action("win.action_export", {"<Ctrl>e"});
 
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             default_theme.add_resource_path ("/io/github/lainsce/Colorway");
@@ -114,7 +120,7 @@ namespace Colorway {
             ubox.set_size_request(64, 32);
             ubox.get_style_context ().add_class ("clr-preview-rule-right");
             
-            var mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             mbox.set_halign(Gtk.Align.CENTER);
             mbox.set_homogeneous(true);
             mbox.width_request = 260;
@@ -126,6 +132,13 @@ namespace Colorway {
             mbox.append (ubox);
             
             props_box.append (mbox);
+
+            color_exported_label = new Gtk.Label ("");
+            color_exported_label.get_style_context ().add_class ("dim-label");
+            color_exported_label.get_style_context ().add_class ("clr-props-message");
+
+            props_box.append (color_exported_label);
+
             color_label.set_text (color.up());
             
             color_picker_button.clicked.connect (() => {
@@ -493,6 +506,32 @@ namespace Colorway {
                 css_provider,
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
+        }
+
+        public void action_export () {
+            var snap = new Gtk.Snapshot ();
+            mbox.snapshot (snap);
+
+            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 260, 32); // 260×32 is the color result box size;
+            var cr = new Cairo.Context (sf);
+            var node = snap.to_node ();
+            node.draw(cr);
+
+            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 260, 32);
+            var mt = Gdk.Texture.for_pixbuf (pb);
+
+            var display = Gdk.Display.get_default ();
+            unowned var clipboard = display.get_clipboard ();
+            clipboard.set_texture (mt);
+
+            color_exported_label.set_sensitive(true);
+            color_exported_label.set_text(_("Colors exported to clipboard."));
+
+            Timeout.add(800, () => {
+                color_exported_label.set_text("");
+                color_exported_label.set_sensitive(false);
+                return false;
+            });
         }
 
         public void action_keys () {

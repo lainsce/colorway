@@ -41,3 +41,8 @@
 .clr-props {
   background: shade(@view_bg_color, 0.95);
 }
+
+.clr-props-message:disabled {
+    color: rgba(255,255,255,0);
+    transition: 500ms color;
+}

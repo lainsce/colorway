@@ -4,7 +4,7 @@
   <menu id="menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">Export to Palette Image…</attribute>
+        <attribute name="label" translatable="yes">Export Colors as Image…</attribute>
         <attribute name="action">win.action_export</attribute>
       </item>
     </section>
