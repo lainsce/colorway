@@ -1,0 +1,22 @@
+/* app */
+@define-color accent_color #c4a5f4;
+@define-color accent_bg_color #c4a5f4;
+@define-color accent_fg_color @view_fg_color;
+
+.clr-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+
+.clr-hue trough {
+    background: linear-gradient(90deg,
+        rgba(255,0,0,1) 0%,
+        rgba(255,255,0,1) 16.66%,
+        rgba(0,255,0,1) 33.33%,
+        rgba(0,255,255,1) 50%,
+        rgba(0,0,255,1) 66.66%,
+        rgba(255,0,255,1) 83.33%,
+        rgba(240,0,0,1) 100%
+    );
+    padding: 10px;
+}

@@ -1,0 +1,56 @@
+{
+    "app-id" : "io.github.lainsce.ColorwayDevel",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "io.github.lainsce.Colorway",
+    "rename-icon" : "io.github.lainsce.ColorwayDevel",
+    "finish-args" : [
+        "--filesystem=xdg-run/gvfsd",
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--socket=session-bus",
+        "--share=ipc",
+        "--device=dri"
+    ],
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "/share/vala",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name": "libportal",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+              "-Dgtk_doc=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/libportal"
+                }
+            ]
+        },
+        {
+            "name" : "colorway",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "../../",
+		    "branch": "main"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Colorway
+Exec=io.github.lainsce.Colorway
+Icon=@icon@
+Keywords=color;palette;library;hue;swatch;
+Keywords[de]=Farbe;Palette;Farbton;Muster;
+Keywords[hr]=boja;paleta;biblioteka;nijansa;uzorak;
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Utility;

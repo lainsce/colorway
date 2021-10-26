@@ -1,0 +1,11 @@
+data/io.github.lainsce.Colorway.desktop.in
+data/io.github.lainsce.Colorway.appdata.xml.in
+data/io.github.lainsce.Colorway.gschema.xml
+
+data/ui/keys.ui
+data/ui/menu.ui
+data/ui/window.ui
+
+src/main.vala
+src/pid.vala
+src/window.vala
