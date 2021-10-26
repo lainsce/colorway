@@ -21,12 +21,12 @@
 
 public class Colorway.Chooser : Gtk.DrawingArea {
     //  Properties
-    private const uint16 WIDTH = 200;
-    private const uint16 HEIGHT = 200;
+    private const uint16 WIDTH = 222;
+    private const uint16 HEIGHT = 222;
     private static double r;
     private static double g;
     private static double b;
-    public static double xpos = 200;
+    public static double xpos = 0;
     public static double ypos = 0;
     public static unowned Chooser instance;
     private static Cairo.Surface surface;
@@ -45,7 +45,6 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         g = active_color.green;
         b = active_color.blue;
         this.active_color = active_color;
-        this.margin_top = 24;
         this.get_style_context ().add_class ("clr-da");
         
         this.set_halign (Gtk.Align.CENTER);

@@ -4,7 +4,7 @@
 @define-color accent_fg_color @view_fg_color;
 
 .clr-title {
-  font-size: 2.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   font-family: monospace;
 }
@@ -36,5 +36,4 @@
 .clr-da {
   border: 3px solid @borders;
   border-radius: 2px;
-  transform: rotate(45deg) scale(0.8);
 }

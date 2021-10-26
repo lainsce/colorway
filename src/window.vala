@@ -23,11 +23,13 @@ namespace Colorway {
 	    [GtkChild]
 	    unowned Gtk.Box color_box;
 	    [GtkChild]
+	    unowned Gtk.Box props_box;
+	    [GtkChild]
 	    unowned Gtk.Box icon;
 	    [GtkChild]
 	    unowned Gtk.Button color_picker_button;
 	    [GtkChild]
-	    unowned Gtk.Label color_label;
+	    unowned Gtk.Entry color_label;
 	    
 	    public Chooser da;
 	    public HueSlider hue_slider;
@@ -99,37 +101,36 @@ namespace Colorway {
             color_rule_dropdown.append_text("Monochrome");
             color_rule_dropdown.set_active(0);
             color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 12;
-            color_rule_dropdown.margin_top = 30;
-            color_box.append (color_rule_dropdown);
+            props_box.append (color_rule_dropdown);
           
             var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             box.set_size_request(64, 32);
-            box.set_halign(Gtk.Align.CENTER);
             box.get_style_context ().add_class ("clr-preview-rule-left");
             sbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             sbox.set_size_request(64, 32);
-            sbox.set_halign(Gtk.Align.CENTER);
             sbox.set_visible(false);
             sbox.get_style_context ().add_class ("clr-preview-rule-middle1");
             tbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             tbox.set_size_request(64, 32);
-            tbox.set_halign(Gtk.Align.CENTER);
             tbox.set_visible(false);
             tbox.get_style_context ().add_class ("clr-preview-rule-middle2");
             var ubox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             ubox.set_size_request(64, 32);
-            ubox.set_halign(Gtk.Align.CENTER);
             ubox.get_style_context ().add_class ("clr-preview-rule-right");
             
             var mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             mbox.set_halign(Gtk.Align.CENTER);
+            mbox.set_homogeneous(true);
+            mbox.width_request = 260;
+            mbox.set_margin_end (18);
+            mbox.set_margin_start (18);
             mbox.append (box);
             mbox.append (sbox);
             mbox.append (tbox);
             mbox.append (ubox);
             
-            color_box.append (mbox);
-            color_label.set_label (color.up());
+            props_box.append (mbox);
+            color_label.set_text (color.up());
             
             color_picker_button.clicked.connect (() => {
                 pick_color.begin ();
@@ -153,7 +154,7 @@ namespace Colorway {
                                         (float)Utils.make_srgb(active_color.green), 
                                         (float)Utils.make_srgb(active_color.blue));
                 
-                color_label.set_label (pc.up());
+                color_label.set_text (pc.up());
                 color = pc.up();
                 setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
@@ -174,7 +175,7 @@ namespace Colorway {
                                         (float)Utils.make_srgb(g), 
                                         (float)Utils.make_srgb(b));
                 
-                color_label.set_label (pc.up());
+                color_label.set_text (pc.up());
                 color = pc.up();
 
                 setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -186,7 +187,45 @@ namespace Colorway {
             setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
 
             color_rule_dropdown.changed.connect(() => {
-                setup_color_rules.begin (color, hue, s, v, color_rule_dropdown, sbox, tbox);
+                Gdk.RGBA clr = {};
+                clr.parse(color_label.get_text());
+
+                float ch,cs,cv,h,r,g,b;
+                Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
+                Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
+                var pc = Utils.make_hex((float)Utils.make_srgb(r),
+                                        (float)Utils.make_srgb(g),
+                                        (float)Utils.make_srgb(b));
+
+                color = pc.up();
+                color_label.set_text (pc.up());
+
+                setup_color_rules.begin (color, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+            });
+
+            color_label.activate.connect(() => {
+                Gdk.RGBA clr = {};
+                clr.parse(color_label.get_text());
+
+                float ch,cs,cv,h,r,g,b;
+                Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
+                Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
+                var pc = Utils.make_hex((float)Utils.make_srgb(r),
+                                        (float)Utils.make_srgb(g),
+                                        (float)Utils.make_srgb(b));
+
+                active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
+                da.active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
+                da.update_surface_color (clr.red, clr.green, clr.blue);
+                da.sv_to_pos (cs, cv);
+                da.queue_draw();
+
+                hue_slider.set_value(ch*360);
+
+                color = pc.up();
+                color_label.set_text (pc.up());
+
+                setup_color_rules.begin (color, ch, cs, cv, color_rule_dropdown, sbox, tbox);
             });
 
             this.set_size_request (360, 360);
@@ -248,23 +287,23 @@ namespace Colorway {
                     Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
 
                     if (r <= 0.5) {
-                        c1 = color_mixer(r, r+0.5, g, 0.5, b, 0.0);
+                        c1 = color_mixer(r, r+0.5, g, 0.5, b, b);
                     } else if (r > 0.5) {
-                        c1 = color_mixer(r, r-0.5, g, 0.5, b, 0.0);
+                        c1 = color_mixer(r, r-0.5, g, 0.5, b, b);
                     } else if (r == 0.0) {
-                        c1 = color_mixer(r, r+0.5, g, 0.5, b, 0.0);
+                        c1 = color_mixer(r, r+0.5, g, 0.5, b, b);
                     } else if (r == 1.0) {
-                        c1 = color_mixer(r, r-0.5, g, 0.5, b, 0.0);
+                        c1 = color_mixer(r, r-0.5, g, 0.5, b, b);
                     }
 
                     if (g <= 0.5) {
-                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.5);
+                        c2 = color_mixer(r, r, g, g+0.5, b, 0.5);
                     } else if (g > 0.5) {
-                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.5);
+                        c2 = color_mixer(r, r, g, g-0.5, b, 0.5);
                     } else if (g == 0.0) {
-                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.5);
+                        c2 = color_mixer(r, r, g, g+0.5, b, 0.5);
                     } else if (g == 1.0) {
-                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.5);
+                        c2 = color_mixer(r, r, g, g-0.5, b, 0.5);
                     }
 
                     sbox.set_visible (true);
@@ -280,33 +319,33 @@ namespace Colorway {
                     Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
 
                     if (r <= 0.5) {
-                        c1 = color_mixer(r, r+0.5, g, 0.0, b, 0.0);
+                        c1 = color_mixer(r, r+0.5, g, g, b, b);
                     } else if (r > 0.5) {
-                        c1 = color_mixer(r, r-0.5, g, 0.0, b, 0.0);
+                        c1 = color_mixer(r, r-0.5, g, g, b, b);
                     } else if (r == 0.0) {
-                        c1 = color_mixer(r, r+0.5, g, 0.0, b, 0.0);
+                        c1 = color_mixer(r, r+0.5, g, g, b, b);
                     } else if (r == 1.0) {
-                        c1 = color_mixer(r, r-0.5, g, 0.0, b, 0.0);
+                        c1 = color_mixer(r, r-0.5, g, g, b, b);
                     }
 
                     if (g <= 0.5) {
-                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.0);
+                        c2 = color_mixer(r, r, g, g+0.5, b, b);
                     } else if (g > 0.5) {
-                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.0);
+                        c2 = color_mixer(r, r, g, g-0.5, b, b);
                     } else if (g == 0.0) {
-                        c2 = color_mixer(r, 0.0, g, g+0.5, b, 0.0);
+                        c2 = color_mixer(r, r, g, g+0.5, b, b);
                     } else if (g == 1.0) {
-                        c2 = color_mixer(r, 0.0, g, g-0.5, b, 0.0);
+                        c2 = color_mixer(r, r, g, g-0.5, b, b);
                     }
 
                     if (b <= 0.5) {
-                        c3 = color_mixer(r, 0.0, g, 0.0, b, b+0.5);
+                        c3 = color_mixer(r, r, g, g, b, b+0.5);
                     } else if (b > 0.5) {
-                        c3 = color_mixer(r, 0.0, g, 0.0, b, b-0.5);
+                        c3 = color_mixer(r, r, g, g, b, b-0.5);
                     } else if (b == 0.0) {
-                        c3 = color_mixer(r, 0.0, g, 0.0, b, b+0.5);
+                        c3 = color_mixer(r, r, g, g, b, b+0.5);
                     } else if (b == 1.0) {
-                        c3 = color_mixer(r, 0.0, g, 0.0, b, b-0.5);
+                        c3 = color_mixer(r, r, g, g, b, b-0.5);
                     }
 
                     sbox.set_visible (true);
@@ -371,7 +410,7 @@ namespace Colorway {
                                                 (float)Utils.make_srgb(g), 
                                                 (float)Utils.make_srgb(b));
 
-                        color_label.set_label (pc.up());
+                        color_label.set_text (pc.up());
                         color = pc.up();
                         active_color = color_portal;
                         da.active_color = color_portal;
@@ -404,7 +443,7 @@ namespace Colorway {
             }
             .clr-preview-rule-left {
                 background: %s;
-                border-radius: 8px 0 0 8px;
+                border-radius: 4px 0 0 4px;
                 min-height: 32px;
 	            min-width: 32px;
 	            outline: 1px solid @borders;
@@ -425,7 +464,7 @@ namespace Colorway {
             }
             .clr-preview-rule-right {
                 background: %s;
-                border-radius: 0 8px 8px 0;
+                border-radius: 0 4px 4px 0;
                 min-height: 32px;
 	            min-width: 32px;
 	            outline: 1px solid @borders;
