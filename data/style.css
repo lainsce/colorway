@@ -1,6 +1,6 @@
 /* app */
-@define-color accent_color #c4a5f4;
-@define-color accent_bg_color #c4a5f4;
+@define-color accent_color #8465b4;
+@define-color accent_bg_color #8465b4;
 @define-color accent_fg_color @view_fg_color;
 
 .clr-title {
