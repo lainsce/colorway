@@ -1,4 +1,4 @@
-project('io.github.lainsce.Colorway', ['vala', 'c'], version: '1.0.1')
+project('io.github.lainsce.Colorway', ['vala', 'c'], version: '1.0.2')
 gnome = import('gnome')
 i18n = import('i18n')
 

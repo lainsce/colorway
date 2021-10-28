@@ -39,6 +39,13 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
+        <release version="1.0.2" date="2021-10-28">
+            <description>
+                <p>Release: Color Choosing with a Drag</p>
+                <p>Added: The color chooser box's pointer can now be dragged to choose the color as well, no more clicking random spots.</p>
+                <p>Changed: Most icons now above color content are aware of contrast and will update accordingly as white or black colored to ensure contrast.</p>
+            </description>
+        </release>
         <release version="1.0.1" date="2021-10-27">
             <description>
                 <p>Release: Copiable Colors</p>
