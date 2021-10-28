@@ -1,4 +1,4 @@
-project('io.github.lainsce.Colorway', ['vala', 'c'], version: '1.0.0')
+project('io.github.lainsce.Colorway', ['vala', 'c'], version: '1.0.1')
 gnome = import('gnome')
 i18n = import('i18n')
 
@@ -52,6 +52,7 @@ sources = files(
    'src/portal.vala',
    'src/chooser.vala',
    'src/hue_slider.vala',
+   'src/colorbutton.vala',
 )
 
 dependencies = [

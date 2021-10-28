@@ -39,6 +39,12 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
+        <release version="1.0.1" date="2021-11-06">
+            <description>
+                <p>Release: Copiable Colors</p>
+                <p>Added: Now the color boxes are now buttons which you can copy the individual color.</p>
+            </description>
+        </release>
         <release version="1.0.0" date="2021-10-26">
             <description>
                 <p>Release: First Release</p>

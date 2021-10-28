@@ -33,8 +33,10 @@ namespace Colorway {
 	    public HueSlider hue_slider;
 
 	    public Gtk.ComboBoxText color_rule_dropdown;
-	    public Gtk.Box tbox;
-	    public Gtk.Box sbox;
+	    public PaletteButton box;
+	    public PaletteButton tbox;
+	    public PaletteButton sbox;
+	    public PaletteButton ubox;
 	    public Gtk.Box mbox;
 	    public Gtk.Label color_exported_label;
 
@@ -105,20 +107,20 @@ namespace Colorway {
             color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 18;
             props_box.append (color_rule_dropdown);
           
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            box = new PaletteButton ("#000", false);
             box.set_size_request(64, 32);
-            box.get_style_context ().add_class ("clr-preview-rule-left");
-            sbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            box.get_style_context ().add_class ("clr-first");
+            sbox = new PaletteButton ("#000", false);
             sbox.set_size_request(64, 32);
             sbox.set_visible(false);
-            sbox.get_style_context ().add_class ("clr-preview-rule-middle1");
-            tbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            sbox.get_style_context ().add_class ("clr-second");
+            tbox = new PaletteButton ("#000", false);
             tbox.set_size_request(64, 32);
             tbox.set_visible(false);
-            tbox.get_style_context ().add_class ("clr-preview-rule-middle2");
-            var ubox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            tbox.get_style_context ().add_class ("clr-third");
+            ubox = new PaletteButton ("#000", false);
             ubox.set_size_request(64, 32);
-            ubox.get_style_context ().add_class ("clr-preview-rule-right");
+            ubox.get_style_context ().add_class ("clr-fourth");
             
             mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             mbox.set_halign(Gtk.Align.CENTER);
@@ -126,6 +128,7 @@ namespace Colorway {
             mbox.width_request = 260;
             mbox.set_margin_end (18);
             mbox.set_margin_start (18);
+            mbox.get_style_context ().add_class ("clr-palette");
             mbox.append (box);
             mbox.append (sbox);
             mbox.append (tbox);
@@ -268,7 +271,7 @@ namespace Colorway {
 			this.show ();
 		}
 
-		public async void setup_color_rules (string color, string contrast, double hue, double s, double v, Gtk.ComboBoxText? crd, Gtk.Box? sbox, Gtk.Box? tbox) {
+		public async void setup_color_rules (string color, string contrast, double hue, double s, double v, Gtk.ComboBoxText? crd, PaletteButton? sbox, PaletteButton? tbox) {
 		    switch (crd.get_active ()) {
                 case 0:
                     da.pos_to_sv (out s, out v);
@@ -455,57 +458,28 @@ namespace Colorway {
         }
         
         public void update_theme(string? color, string? contrast, string? rule_color1, string? rule_color2, string? rule_color) {
-            var css_provider = new Gtk.CssProvider();
-            string style = null;
-            style = """
-            .clr-preview {
-                background: %s;
-                color: %s;
-                border: 1px solid @borders;
-                border-radius: 9999px;
-            }
-            .clr-preview-rule-left {
-                background: %s;
-                border-radius: 4px 0 0 4px;
-                min-height: 32px;
-	            min-width: 32px;
-	            outline: 1px solid @borders;
-            }
-            .clr-preview-rule-middle1 {
-                background: %s;
-                border-radius: 0;
-                min-height: 32px;
-	            min-width: 32px;
-	            outline: 1px solid @borders;
-            }
-            .clr-preview-rule-middle2 {
-                background: %s;
-                border-radius: 0;
-                min-height: 32px;
-	            min-width: 32px;
-	            outline: 1px solid @borders;
-            }
-            .clr-preview-rule-right {
-                background: %s;
-                border-radius: 0 4px 4px 0;
-                min-height: 32px;
-	            min-width: 32px;
-	            outline: 1px solid @borders;
-            }
-            """.printf(color,
-                       contrast,
-                       color,
-                       rule_color1,
-                       rule_color2,
-                       rule_color);
+            this.color = color;
+            this.contrast = contrast;
+            this.rule_color = rule_color;
+            this.rule_color1 = rule_color1;
+            this.rule_color2 = rule_color2;
 
-            css_provider.load_from_data(style.data);
+            box.hex = color;
+            sbox.hex = rule_color1;
+            tbox.hex = rule_color2;
+            ubox.hex = rule_color;
 
-            Gtk.StyleContext.add_provider_for_display (
-                Gdk.Display.get_default (),
-                css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
+            if (contrast == "#FFFFFF") {
+                box.light = false;
+                sbox.light = false;
+                tbox.light = false;
+                ubox.light = false;
+            } else {
+                box.light = true;
+                sbox.light = true;
+                tbox.light = true;
+                ubox.light = true;
+            }
         }
 
         public void action_export () {

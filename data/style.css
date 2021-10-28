@@ -46,3 +46,23 @@
     color: rgba(255,255,255,0);
     transition: 500ms color;
 }
+
+.clr-first {
+  border-radius: 8px 0 0 8px;
+  box-shadow: 0 0 0 1px @borders;
+}
+.clr-second,
+.clr-third {
+  border-radius: 0;
+  box-shadow: 0 0 0 1px @borders;
+}
+.clr-fourth {
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 0 0 1px @borders;
+}
+.clr-palette button image {
+	color: #fff;
+}
+.clr-palette button.light image {
+	color: #333;
+}
