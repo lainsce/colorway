@@ -70,6 +70,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         drag = new Gtk.GestureDrag ();
         GLib.Signal.connect (drag, "drag-begin", (GLib.Callback) gesture_drag_begin, null);
         GLib.Signal.connect (drag, "drag-update", (GLib.Callback) gesture_drag_update, null);
+        GLib.Signal.connect (drag, "drag-end", (GLib.Callback) gesture_drag_end, null);
         this.add_controller (drag);
 
         surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, WIDTH, HEIGHT);
@@ -165,6 +166,8 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         xpos = start_x;
         ypos = start_y;
 
+        drag.set_state (Gtk.EventSequenceState.CLAIMED);
+
         double new_s, new_v;
         xy_to_sv (xpos, ypos, out new_s, out new_v);
         instance.on_sv_move (new_s, new_v);
@@ -195,5 +198,9 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         xy_to_sv (xpos, ypos, out new_s, out new_v);
         instance.on_sv_move (new_s, new_v);
         instance.queue_draw ();
+    }
+
+    private static void gesture_drag_end (double offset_x, double offset_y) {
+        drag.set_state (Gtk.EventSequenceState.DENIED);
     }
 }
