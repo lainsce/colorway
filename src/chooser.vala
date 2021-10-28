@@ -31,6 +31,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     public static unowned Chooser instance;
     private static Cairo.Surface surface;
     private static Gtk.GestureClick gesture;
+    private static Gtk.GestureDrag drag;
     public Gdk.RGBA active_color;
     public double h;
     public double s;
@@ -65,6 +66,11 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         gesture = new Gtk.GestureClick ();
         this.add_controller (gesture);
         GLib.Signal.connect (gesture, "released", (GLib.Callback) gesture_press_release, null);
+
+        drag = new Gtk.GestureDrag ();
+        GLib.Signal.connect (drag, "drag-begin", (GLib.Callback) gesture_drag_begin, null);
+        GLib.Signal.connect (drag, "drag-update", (GLib.Callback) gesture_drag_update, null);
+        this.add_controller (drag);
 
         surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, WIDTH, HEIGHT);
         
@@ -155,4 +161,39 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         instance.queue_draw ();
     }
 
+    private static void gesture_drag_begin (double start_x, double start_y) {
+        xpos = start_x;
+        ypos = start_y;
+
+        double new_s, new_v;
+        xy_to_sv (xpos, ypos, out new_s, out new_v);
+        instance.on_sv_move (new_s, new_v);
+        instance.queue_draw ();
+    }
+
+    private static void gesture_drag_update (double offset_x, double offset_y) {
+        double _xpos, _ypos;
+        drag.get_start_point (out _xpos, out _ypos);
+
+        if (_xpos + offset_x > WIDTH) {
+            xpos = WIDTH;
+        } else if (_xpos + offset_x < 0) {
+            xpos = 0;
+        } else {
+            xpos = _xpos + offset_x;
+        }
+
+        if (_ypos + offset_y > HEIGHT) {
+            ypos = HEIGHT;
+        } else if (_ypos + offset_y < 0) {
+            ypos = 0;
+        } else {
+            ypos = _ypos + offset_y;
+        }
+
+        double new_s, new_v;
+        xy_to_sv (xpos, ypos, out new_s, out new_v);
+        instance.on_sv_move (new_s, new_v);
+        instance.queue_draw ();
+    }
 }

@@ -469,17 +469,58 @@ namespace Colorway {
             tbox.hex = rule_color2;
             ubox.hex = rule_color;
 
-            if (contrast == "#FFFFFF") {
-                box.light = false;
-                sbox.light = false;
-                tbox.light = false;
-                ubox.light = false;
-            } else {
+            Gdk.RGBA gcolor = {};
+            gcolor.parse(color);
+            Gdk.RGBA grcolor = {};
+            grcolor.parse(rule_color);
+            Gdk.RGBA grcolor1 = {};
+            grcolor1.parse(rule_color1);
+            Gdk.RGBA grcolor2 = {};
+            grcolor2.parse(rule_color2);
+
+            if (Utils.contrast_ratio(gcolor, {0,0,0,1}) > Utils.contrast_ratio(gcolor, {1,1,1,1}) + 3) {
                 box.light = true;
-                sbox.light = true;
-                tbox.light = true;
-                ubox.light = true;
+            } else {
+                box.light = false;
             }
+
+            if (Utils.contrast_ratio(grcolor1, {0,0,0,1}) > Utils.contrast_ratio(grcolor1, {1,1,1,1}) + 3) {
+                sbox.light = true;
+            } else {
+                sbox.light = false;
+            }
+
+            if (Utils.contrast_ratio(grcolor2, {0,0,0,1}) > Utils.contrast_ratio(grcolor2, {1,1,1,1}) + 3) {
+                tbox.light = true;
+            } else {
+                tbox.light = false;
+            }
+
+            if (Utils.contrast_ratio(grcolor, {0,0,0,1}) > Utils.contrast_ratio(grcolor, {1,1,1,1}) + 3) {
+                ubox.light = true;
+            } else {
+                ubox.light = false;
+            }
+
+            var css_provider = new Gtk.CssProvider();
+            string style = null;
+            style = """
+            .clr-preview {
+                background: %s;
+                color: %s;
+                border: 1px solid @borders;
+                border-radius: 9999px;
+            }
+            """.printf(color,
+                       contrast);
+
+            css_provider.load_from_data(style.data);
+
+            Gtk.StyleContext.add_provider_for_display (
+                Gdk.Display.get_default (),
+                css_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            );
         }
 
         public void action_export () {
