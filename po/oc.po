@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Colorway package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Colorway\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-11 21:12+0200\n"
+"PO-Revision-Date: 2021-10-31 21:21+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Quentin PAGÈS\n"
+"Language: oc\n"
+
+#: data/io.github.lainsce.Colorway.desktop.in:3
+#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:497
+msgid "Colorway"
+msgstr "Colorway"
+
+#: data/io.github.lainsce.Colorway.desktop.in:6
+msgid "color;palette;library;hue;swatch;"
+msgstr "color;paleta;bibliotèca;hue;swatch;"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:7
+msgid "Stock up on colors"
+msgstr ""
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:9
+msgid "Store your palettes in an easy way, and edit them if needed."
+msgstr ""
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:18
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Colorway.gschema.xml:6
+msgid "First Boot"
+msgstr ""
+
+#: data/io.github.lainsce.Colorway.gschema.xml:7
+msgid "Whether to add the default palettes on first boot or not."
+msgstr ""
+
+#: data/ui/cep.ui:32
+msgid "Name∶"
+msgstr "Nom :"
+
+#: data/ui/cep.ui:62
+msgid "RGB"
+msgstr "RVB"
+
+#: data/ui/cep.ui:81
+msgid "Red∶"
+msgstr "Roge :"
+
+#: data/ui/cep.ui:100
+msgid "Green∶"
+msgstr "Verd :"
+
+#: data/ui/cep.ui:119
+msgid "Blue∶"
+msgstr "Blau :"
+
+#: data/ui/cep.ui:136
+msgid "Hex"
+msgstr "Exa"
+
+#: data/ui/cep.ui:156
+msgid "Color Hexcode∶"
+msgstr ""
+
+#: data/ui/keys.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/ui/keys.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitar"
+
+#: data/ui/menu.ui:7
+msgid "Keyboard Shortcuts"
+msgstr "Acorchis de clavièr"
+
+#: data/ui/menu.ui:11
+msgid "About Colorway"
+msgstr "A prepaus de Colorway"
+
+#: data/ui/pid.ui:7
+#, fuzzy
+msgid " "
+msgstr " "
+
+#: data/ui/pid.ui:27
+msgid "Cancel"
+msgstr "Anullar"
+
+#: data/ui/pid.ui:36
+msgid "Import Palette"
+msgstr "Impòrta una paleta"
+
+#: data/ui/pid.ui:58
+msgid "Choose Image"
+msgstr "Causir un imatge"
+
+#: data/ui/pid.ui:84
+msgid "Select an image to retrieve colors"
+msgstr ""
+
+#: data/ui/window.ui:38
+msgid "Add Palette"
+msgstr "Apondre una paleta"
+
+#: data/ui/window.ui:47
+msgid "Import Palette…"
+msgstr "Importar una paleta…"
+
+#: data/ui/window.ui:89
+msgid "Go Back to Palettes View"
+msgstr ""
+
+#: data/ui/window.ui:98
+msgid "Add Color to This Palette"
+msgstr ""
+
+#: data/ui/window.ui:132
+msgid "Palettes"
+msgstr "Paletas"
+
+#: data/ui/window.ui:140
+msgid "Search for palettes"
+msgstr "Recercar de paletas"
+
+#: data/ui/window.ui:168
+msgid "No Palettes"
+msgstr "Cap de paleta"
+
+#: data/ui/window.ui:169
+msgid "Add a palette with the + button."
+msgstr ""
+
+#: data/ui/window.ui:210
+msgid "Copy Palette to Clipboard"
+msgstr ""
+
+#: data/ui/window.ui:214
+msgid "Copy Palette Image to Clipboard"
+msgstr ""
+
+#: data/ui/window.ui:220
+msgid "Remove Palette"
+msgstr "Suprimir paleta"
+
+#: data/ui/window.ui:318
+msgid "Pick Color"
+msgstr "Seleccionar una color"
+
+#: data/ui/window.ui:349
+msgid "Copy Hexcode to Clipboard"
+msgstr ""
+
+#: data/ui/window.ui:353
+msgid "Copy RGB to Clipboard"
+msgstr ""
+
+#: data/ui/window.ui:359
+msgid "Remove Color from Palette"
+msgstr ""
+
+#: src/pid.vala:95
+msgid "Import"
+msgstr "Importar"
+
+#: src/pid.vala:98
+msgid "Picture"
+msgstr "Imatge"
+
+#: src/window.vala:172
+msgid "Set New Palette Name"
+msgstr ""
+
+#: src/window.vala:502
+msgid "Stock up on colors."
+msgstr ""
+
+#: src/window.vala:508
+msgid "translator-credits"
+msgstr "Quentin PAGÈS"
