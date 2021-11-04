@@ -122,8 +122,17 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     }
 
     private static void xy_to_sv (double x, double y, out double s, out double v) {
-        s = x / WIDTH;
-        v = 1 - (y / HEIGHT);
+        if ((x / WIDTH) < 0.0 || (x / WIDTH) > 1.0) {
+            s = xpos / WIDTH;
+        } else {
+            s = x / WIDTH;
+        }
+
+        if ((1 - (y / HEIGHT)) < 0.0 || (1 - (y / HEIGHT)) > 1.0) {
+            v = 1 - (ypos / HEIGHT);
+        } else {
+            v = 1 - (y / HEIGHT);
+        }
     }
 
     public void sv_to_xy (double s, double v, out double x, out double y) {
@@ -132,21 +141,42 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     }
 
     private static void create_surface () {
+        double x             = 0,
+               y             = 0,
+               width         = WIDTH,
+               height        = HEIGHT,
+               aspect        = 1.0,
+               corner_radius = 8.0;
+        double radius        = corner_radius / aspect;
+        double degrees       = Math.PI / 180.0;
+
         Cairo.Context context = new Cairo.Context (surface);
+        context.arc (x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
+        context.arc (x + width - radius, y + height - radius, radius, 0 * degrees, 90 * degrees);
+        context.arc (x + radius, y + height - radius, radius, 90 * degrees, 180 * degrees);
+        context.arc (x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
         context.set_source_rgb (r, g, b);
-        context.paint ();
+        context.fill_preserve ();
 
         Cairo.Pattern p1 = new Cairo.Pattern.linear (0, 0, WIDTH, 0);
         p1.add_color_stop_rgba (0, 1, 1, 1, 1);
         p1.add_color_stop_rgba (1, 1, 1, 1, 0);
+        context.arc (x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
+        context.arc (x + width - radius, y + height - radius, radius, 0 * degrees, 90 * degrees);
+        context.arc (x + radius, y + height - radius, radius, 90 * degrees, 180 * degrees);
+        context.arc (x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
         context.set_source (p1);
-        context.paint ();
+        context.fill_preserve ();
 
         Cairo.Pattern p2 = new Cairo.Pattern.linear (0, 0, 0, HEIGHT);
         p2.add_color_stop_rgba (0, 0, 0, 0, 0);
         p2.add_color_stop_rgba (1, 0, 0, 0, 1);
+        context.arc (x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
+        context.arc (x + width - radius, y + height - radius, radius, 0 * degrees, 90 * degrees);
+        context.arc (x + radius, y + height - radius, radius, 90 * degrees, 180 * degrees);
+        context.arc (x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
         context.set_source (p2);
-        context.paint ();
+        context.fill_preserve ();
     }
 
     private static void gesture_press_release (double offset_x, double offset_y) {

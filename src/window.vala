@@ -105,7 +105,6 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(0);
             color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 18;
-            props_box.append (color_rule_dropdown);
           
             box = new PaletteButton ("#000", false);
             box.set_size_request(64, 32);
@@ -135,6 +134,7 @@ namespace Colorway {
             mbox.append (ubox);
             
             props_box.append (mbox);
+            props_box.append (color_rule_dropdown);
 
             color_exported_label = new Gtk.Label ("");
             color_exported_label.get_style_context ().add_class ("dim-label");
@@ -508,8 +508,6 @@ namespace Colorway {
             .clr-preview {
                 background: %s;
                 color: %s;
-                border: 1px solid @borders;
-                border-radius: 9999px;
             }
             """.printf(color,
                        contrast);
