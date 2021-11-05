@@ -7,5 +7,7 @@ data/ui/menu.ui
 data/ui/window.ui
 
 src/main.vala
-src/pid.vala
 src/window.vala
+src/colorbutton.vala
+src/chooser.vala
+src/hue_slider.vala

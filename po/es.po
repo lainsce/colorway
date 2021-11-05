@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-11 21:12+0200\n"
+"POT-Creation-Date: 2021-11-05 19:44-0300\n"
 "PO-Revision-Date: 2021-09-11 21:13+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
-#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:497
+#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
 msgid "Colorway"
 msgstr "Colorway"
 
@@ -28,52 +28,59 @@ msgid "color;palette;library;hue;swatch;"
 msgstr "color;palette;library;hue;swatch;paleta;biblioteca;tono;muestra;"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:7
-msgid "Stock up on colors"
-msgstr "Abastézcase de colores"
+msgid "Generate color pairings"
+msgstr ""
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:9
-msgid "Store your palettes in an easy way, and edit them if needed."
-msgstr "Almacene sus paletas de forma sencilla y edítelas si es necesario."
+msgid ""
+"Generate color pairings from selected color that follow certain color rules."
+msgstr ""
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:18
 msgid "Lains"
 msgstr "Lains"
 
-#: data/io.github.lainsce.Colorway.gschema.xml:6
-msgid "First Boot"
-msgstr "Primer inicio"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:44
+msgid "Release: Recoloring With Accent"
+msgstr ""
 
-#: data/io.github.lainsce.Colorway.gschema.xml:7
-msgid "Whether to add the default palettes on first boot or not."
-msgstr "Si se añaden las paletas por defecto en el primer arranque o no."
+#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+msgid "Changed: The UI now uses libadwaita recoloring."
+msgstr ""
 
-#: data/ui/cep.ui:32
-msgid "Name∶"
-msgstr "Nombre∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+msgid "Changed: New UI layout."
+msgstr ""
 
-#: data/ui/cep.ui:62
-msgid "RGB"
-msgstr "RVA"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+msgid "Release: Color Choosing with a Drag"
+msgstr ""
 
-#: data/ui/cep.ui:81
-msgid "Red∶"
-msgstr "Rojo∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+msgid ""
+"Added: The color chooser box's pointer can now be dragged to choose the "
+"color as well, no more clicking random spots."
+msgstr ""
 
-#: data/ui/cep.ui:100
-msgid "Green∶"
-msgstr "Verde∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+msgid ""
+"Changed: Most icons now above color content are aware of contrast and will "
+"update accordingly as white or black colored to ensure contrast."
+msgstr ""
 
-#: data/ui/cep.ui:119
-msgid "Blue∶"
-msgstr "Azul∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+msgid "Release: Copiable Colors"
+msgstr ""
 
-#: data/ui/cep.ui:136
-msgid "Hex"
-msgstr "Hex"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+msgid ""
+"Added: Now the color boxes are now buttons which you can copy the individual "
+"color."
+msgstr ""
 
-#: data/ui/cep.ui:156
-msgid "Color Hexcode∶"
-msgstr "Código hexadecimal del color∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+msgid "Release: First Release"
+msgstr ""
 
 #: data/ui/keys.ui:12
 msgctxt "shortcut window"
@@ -86,109 +93,149 @@ msgid "Quit"
 msgstr "Salir"
 
 #: data/ui/menu.ui:7
+msgid "Export Colors as Image…"
+msgstr ""
+
+#: data/ui/menu.ui:13
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
-#: data/ui/menu.ui:11
+#: data/ui/menu.ui:17
 msgid "About Colorway"
 msgstr "Acerca de Colorway"
 
-#: data/ui/pid.ui:7
-msgid " "
-msgstr " "
-
-#: data/ui/pid.ui:27
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: data/ui/pid.ui:36
-msgid "Import Palette"
-msgstr "Importar paleta"
-
-#: data/ui/pid.ui:58
-msgid "Choose Image"
-msgstr "Elegir imagen"
-
-#: data/ui/pid.ui:84
-msgid "Select an image to retrieve colors"
-msgstr "Seleccionar imagen para extraer los colores"
-
-#: data/ui/window.ui:38
-msgid "Add Palette"
-msgstr "Añadir paleta"
-
-#: data/ui/window.ui:47
-msgid "Import Palette…"
-msgstr "Importar paleta…"
-
-#: data/ui/window.ui:89
-msgid "Go Back to Palettes View"
-msgstr "Volver a la vista de paletas"
-
-#: data/ui/window.ui:98
-msgid "Add Color to This Palette"
-msgstr "Añadir color a esta paleta"
-
-#: data/ui/window.ui:132
-msgid "Palettes"
-msgstr "Paletas"
-
-#: data/ui/window.ui:140
-msgid "Search for palettes"
-msgstr "Buscar paletas"
-
-#: data/ui/window.ui:168
-msgid "No Palettes"
-msgstr "No hay paletas"
-
-#: data/ui/window.ui:169
-msgid "Add a palette with the + button."
-msgstr "Añadir una paleta con el botón +."
-
-#: data/ui/window.ui:210
-msgid "Copy Palette to Clipboard"
-msgstr "Copiar paleta al portapapeles"
-
-#: data/ui/window.ui:214
-msgid "Copy Palette Image to Clipboard"
-msgstr "Copiar imagen de la paleta al portapapeles"
-
-#: data/ui/window.ui:220
-msgid "Remove Palette"
-msgstr "Eliminar paleta"
-
-#: data/ui/window.ui:318
+#: data/ui/window.ui:99
 msgid "Pick Color"
 msgstr "Escoger color"
 
-#: data/ui/window.ui:349
-msgid "Copy Hexcode to Clipboard"
+#: src/window.vala:101
+msgid "Analogous"
+msgstr ""
+
+#: src/window.vala:102
+msgid "Complementary"
+msgstr ""
+
+#: src/window.vala:103
+msgid "Triadic"
+msgstr ""
+
+#: src/window.vala:104
+msgid "Tetradic"
+msgstr ""
+
+#: src/window.vala:105
+msgid "Monochromatic"
+msgstr ""
+
+#: src/window.vala:541
+#, fuzzy
+msgid "Colors exported to clipboard."
 msgstr "Copiar código hexadecimal al portapapeles"
 
-#: data/ui/window.ui:353
-msgid "Copy RGB to Clipboard"
-msgstr "Copiar RVA al portapapeles"
+#: src/window.vala:575
+msgid "Generate color pairings."
+msgstr ""
 
-#: data/ui/window.ui:359
-msgid "Remove Color from Palette"
-msgstr "Eliminar color de la paleta"
-
-#: src/pid.vala:95
-msgid "Import"
-msgstr "Importar"
-
-#: src/pid.vala:98
-msgid "Picture"
-msgstr "Imagen"
-
-#: src/window.vala:172
-msgid "Set New Palette Name"
-msgstr "Cambiar nombre a la paleta"
-
-#: src/window.vala:502
-msgid "Stock up on colors."
-msgstr "Abastézcase de colores."
-
-#: src/window.vala:508
+#: src/window.vala:581
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
+
+#~ msgid "Stock up on colors"
+#~ msgstr "Abastézcase de colores"
+
+#~ msgid "Store your palettes in an easy way, and edit them if needed."
+#~ msgstr "Almacene sus paletas de forma sencilla y edítelas si es necesario."
+
+#~ msgid "First Boot"
+#~ msgstr "Primer inicio"
+
+#~ msgid "Whether to add the default palettes on first boot or not."
+#~ msgstr "Si se añaden las paletas por defecto en el primer arranque o no."
+
+#~ msgid "Name∶"
+#~ msgstr "Nombre∶"
+
+#~ msgid "RGB"
+#~ msgstr "RVA"
+
+#~ msgid "Red∶"
+#~ msgstr "Rojo∶"
+
+#~ msgid "Green∶"
+#~ msgstr "Verde∶"
+
+#~ msgid "Blue∶"
+#~ msgstr "Azul∶"
+
+#~ msgid "Hex"
+#~ msgstr "Hex"
+
+#~ msgid "Color Hexcode∶"
+#~ msgstr "Código hexadecimal del color∶"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid "Import Palette"
+#~ msgstr "Importar paleta"
+
+#~ msgid "Choose Image"
+#~ msgstr "Elegir imagen"
+
+#~ msgid "Select an image to retrieve colors"
+#~ msgstr "Seleccionar imagen para extraer los colores"
+
+#~ msgid "Add Palette"
+#~ msgstr "Añadir paleta"
+
+#~ msgid "Import Palette…"
+#~ msgstr "Importar paleta…"
+
+#~ msgid "Go Back to Palettes View"
+#~ msgstr "Volver a la vista de paletas"
+
+#~ msgid "Add Color to This Palette"
+#~ msgstr "Añadir color a esta paleta"
+
+#~ msgid "Palettes"
+#~ msgstr "Paletas"
+
+#~ msgid "Search for palettes"
+#~ msgstr "Buscar paletas"
+
+#~ msgid "No Palettes"
+#~ msgstr "No hay paletas"
+
+#~ msgid "Add a palette with the + button."
+#~ msgstr "Añadir una paleta con el botón +."
+
+#~ msgid "Copy Palette to Clipboard"
+#~ msgstr "Copiar paleta al portapapeles"
+
+#~ msgid "Copy Palette Image to Clipboard"
+#~ msgstr "Copiar imagen de la paleta al portapapeles"
+
+#~ msgid "Remove Palette"
+#~ msgstr "Eliminar paleta"
+
+#~ msgid "Copy RGB to Clipboard"
+#~ msgstr "Copiar RVA al portapapeles"
+
+#~ msgid "Remove Color from Palette"
+#~ msgstr "Eliminar color de la paleta"
+
+#~ msgid "Import"
+#~ msgstr "Importar"
+
+#~ msgid "Picture"
+#~ msgstr "Imagen"
+
+#~ msgid "Set New Palette Name"
+#~ msgstr "Cambiar nombre a la paleta"
+
+#~ msgid "Stock up on colors."
+#~ msgstr "Abastézcase de colores."

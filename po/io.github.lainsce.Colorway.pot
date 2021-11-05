@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-11 21:12+0200\n"
+"POT-Creation-Date: 2021-11-05 19:44-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
-#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:497
+#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
 msgid "Colorway"
 msgstr ""
 
@@ -27,51 +27,58 @@ msgid "color;palette;library;hue;swatch;"
 msgstr ""
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:7
-msgid "Stock up on colors"
+msgid "Generate color pairings"
 msgstr ""
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:9
-msgid "Store your palettes in an easy way, and edit them if needed."
+msgid ""
+"Generate color pairings from selected color that follow certain color rules."
 msgstr ""
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:18
 msgid "Lains"
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.gschema.xml:6
-msgid "First Boot"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:44
+msgid "Release: Recoloring With Accent"
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.gschema.xml:7
-msgid "Whether to add the default palettes on first boot or not."
+#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+msgid "Changed: The UI now uses libadwaita recoloring."
 msgstr ""
 
-#: data/ui/cep.ui:32
-msgid "Name∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+msgid "Changed: New UI layout."
 msgstr ""
 
-#: data/ui/cep.ui:62
-msgid "RGB"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+msgid "Release: Color Choosing with a Drag"
 msgstr ""
 
-#: data/ui/cep.ui:81
-msgid "Red∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+msgid ""
+"Added: The color chooser box's pointer can now be dragged to choose the "
+"color as well, no more clicking random spots."
 msgstr ""
 
-#: data/ui/cep.ui:100
-msgid "Green∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+msgid ""
+"Changed: Most icons now above color content are aware of contrast and will "
+"update accordingly as white or black colored to ensure contrast."
 msgstr ""
 
-#: data/ui/cep.ui:119
-msgid "Blue∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+msgid "Release: Copiable Colors"
 msgstr ""
 
-#: data/ui/cep.ui:136
-msgid "Hex"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+msgid ""
+"Added: Now the color boxes are now buttons which you can copy the individual "
+"color."
 msgstr ""
 
-#: data/ui/cep.ui:156
-msgid "Color Hexcode∶"
+#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+msgid "Release: First Release"
 msgstr ""
 
 #: data/ui/keys.ui:12
@@ -85,109 +92,49 @@ msgid "Quit"
 msgstr ""
 
 #: data/ui/menu.ui:7
+msgid "Export Colors as Image…"
+msgstr ""
+
+#: data/ui/menu.ui:13
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: data/ui/menu.ui:11
+#: data/ui/menu.ui:17
 msgid "About Colorway"
 msgstr ""
 
-#: data/ui/pid.ui:7
-msgid " "
-msgstr ""
-
-#: data/ui/pid.ui:27
-msgid "Cancel"
-msgstr ""
-
-#: data/ui/pid.ui:36
-msgid "Import Palette"
-msgstr ""
-
-#: data/ui/pid.ui:58
-msgid "Choose Image"
-msgstr ""
-
-#: data/ui/pid.ui:84
-msgid "Select an image to retrieve colors"
-msgstr ""
-
-#: data/ui/window.ui:38
-msgid "Add Palette"
-msgstr ""
-
-#: data/ui/window.ui:47
-msgid "Import Palette…"
-msgstr ""
-
-#: data/ui/window.ui:89
-msgid "Go Back to Palettes View"
-msgstr ""
-
-#: data/ui/window.ui:98
-msgid "Add Color to This Palette"
-msgstr ""
-
-#: data/ui/window.ui:132
-msgid "Palettes"
-msgstr ""
-
-#: data/ui/window.ui:140
-msgid "Search for palettes"
-msgstr ""
-
-#: data/ui/window.ui:168
-msgid "No Palettes"
-msgstr ""
-
-#: data/ui/window.ui:169
-msgid "Add a palette with the + button."
-msgstr ""
-
-#: data/ui/window.ui:210
-msgid "Copy Palette to Clipboard"
-msgstr ""
-
-#: data/ui/window.ui:214
-msgid "Copy Palette Image to Clipboard"
-msgstr ""
-
-#: data/ui/window.ui:220
-msgid "Remove Palette"
-msgstr ""
-
-#: data/ui/window.ui:318
+#: data/ui/window.ui:99
 msgid "Pick Color"
 msgstr ""
 
-#: data/ui/window.ui:349
-msgid "Copy Hexcode to Clipboard"
+#: src/window.vala:101
+msgid "Analogous"
 msgstr ""
 
-#: data/ui/window.ui:353
-msgid "Copy RGB to Clipboard"
+#: src/window.vala:102
+msgid "Complementary"
 msgstr ""
 
-#: data/ui/window.ui:359
-msgid "Remove Color from Palette"
+#: src/window.vala:103
+msgid "Triadic"
 msgstr ""
 
-#: src/pid.vala:95
-msgid "Import"
+#: src/window.vala:104
+msgid "Tetradic"
 msgstr ""
 
-#: src/pid.vala:98
-msgid "Picture"
+#: src/window.vala:105
+msgid "Monochromatic"
 msgstr ""
 
-#: src/window.vala:172
-msgid "Set New Palette Name"
+#: src/window.vala:541
+msgid "Colors exported to clipboard."
 msgstr ""
 
-#: src/window.vala:502
-msgid "Stock up on colors."
+#: src/window.vala:575
+msgid "Generate color pairings."
 msgstr ""
 
-#: src/window.vala:508
+#: src/window.vala:581
 msgid "translator-credits"
 msgstr ""
