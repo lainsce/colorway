@@ -43,7 +43,6 @@
 
 .clr-props {
   background: @view_bg_color;
-  border-radius: 12px;
 }
 
 .clr-props-message:disabled {
