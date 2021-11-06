@@ -8,8 +8,9 @@
     <property name="resizable">0</property>
     <property name="title">Colorway</property>
     <child>
-      <object class="GtkOverlay" id="main_box">
-        <child type="overlay">
+      <object class="GtkBox" id="main_box">
+        <property name="orientation">vertical</property>
+        <child>
           <object class="AdwHeaderBar" id="headerbar">
             <property name="valign">start</property>
             <child type="title">
@@ -35,10 +36,10 @@
             <child>
               <object class="GtkBox">
                 <property name="orientation">horizontal</property>
+                <property name="valign">start</property>
                 <child>
                   <object class="GtkBox" id="color_box">
                     <property name="valign">center</property>
-                    <property name="margin-top">26</property>
                     <property name="orientation">vertical</property>
                   </object>
                 </child>

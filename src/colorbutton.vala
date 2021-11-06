@@ -66,6 +66,7 @@ public class Colorway.PaletteButton : Gtk.Button {
 		image_stack.add_named (new Gtk.Image.from_icon_name ("emblem-ok-symbolic"), "ok");
 		image_stack.add_named (new Gtk.Image.from_icon_name ("edit-copy-symbolic"), "copy");
 		image_stack.visible_child_name = "empty";
+		image_stack.set_opacity (0.88);
 		set_child (image_stack);
 
 		var motion = new Gtk.EventControllerMotion ();

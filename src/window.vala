@@ -265,7 +265,7 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
             });
 
-            this.set_size_request (360, 360);
+            this.set_size_request (360, 100);
             var adwsm = Adw.StyleManager.get_default ();
             adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
 			this.show ();

@@ -31,7 +31,6 @@ public class Colorway.HueSlider : Gtk.Scale {
     construct {
         //  Initialize parent's properties
         this.orientation = Gtk.Orientation.HORIZONTAL;
-        this.margin_end = this.margin_start = 18;
         this.set_halign (Gtk.Align.CENTER);
         this.width_request = 250;
         this.draw_value = false;

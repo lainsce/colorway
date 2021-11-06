@@ -44,6 +44,7 @@
 .clr-props {
   background: @view_bg_color;
   margin: 6px;
+  margin-top: 0px;
   border-radius: 6px;
 }
 
