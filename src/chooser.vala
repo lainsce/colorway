@@ -26,7 +26,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     private static double r;
     private static double g;
     private static double b;
-    public static double xpos = 0;
+    public static double xpos = 222;
     public static double ypos = 0;
     public static unowned Chooser instance;
     private static Cairo.Surface surface;
@@ -209,7 +209,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         drag.get_start_point (out _xpos, out _ypos);
 
         if (_xpos + offset_x > WIDTH) {
-            xpos = WIDTH;
+            xpos = WIDTH - offset_x;
         } else if (_xpos + offset_x < 0) {
             xpos = 0;
         } else {
@@ -217,7 +217,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         }
 
         if (_ypos + offset_y > HEIGHT) {
-            ypos = HEIGHT;
+            ypos = HEIGHT - offset_y;
         } else if (_ypos + offset_y < 0) {
             ypos = 0;
         } else {
