@@ -15,6 +15,10 @@
   font-size: 1.66rem;
   font-weight: 500;
   font-family: monospace;
+  background: none;
+  border: 2px solid @borders;
+  padding: 8px 10px;
+  border-radius: 8px;
 }
 
 .clr-hue trough {

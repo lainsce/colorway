@@ -143,6 +143,9 @@ namespace Colorway {
             props_box.append (color_exported_label);
 
             color_label.set_text (color.up());
+            color_label.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY,"document-edit-symbolic");
+            color_label.set_icon_activatable (Gtk.EntryIconPosition.SECONDARY, true);
+            color_label.set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, _("Set Color"));
             
             color_picker_button.clicked.connect (() => {
                 pick_color.begin ();
@@ -246,7 +249,35 @@ namespace Colorway {
                                         (float)Utils.make_srgb(b));
 
                 active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
-                da.active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
+                da.update_surface_color (clr.red, clr.green, clr.blue);
+                da.sv_to_pos (cs, cv);
+                da.queue_draw();
+
+                hue_slider.set_value(ch*360);
+
+                color = pc.up();
+                color_label.set_text (pc.up());
+
+                if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
+                    contrast = "#000000";
+                } else {
+                    contrast = "#FFFFFF";
+                }
+
+                setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+            });
+            color_label.icon_press.connect(() => {
+                Gdk.RGBA clr = {};
+                clr.parse(color_label.get_text());
+
+                float ch,cs,cv,h,r,g,b;
+                Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
+                Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
+                var pc = Utils.make_hex((float)Utils.make_srgb(r),
+                                        (float)Utils.make_srgb(g),
+                                        (float)Utils.make_srgb(b));
+
+                active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
                 da.update_surface_color (clr.red, clr.green, clr.blue);
                 da.sv_to_pos (cs, cv);
                 da.queue_draw();
