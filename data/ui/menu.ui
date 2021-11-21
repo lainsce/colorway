@@ -4,8 +4,12 @@
   <menu id="menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">Export Colors as Image…</attribute>
-        <attribute name="action">win.action_export</attribute>
+        <attribute name="label" translatable="yes">Copy Colors to Clipboard</attribute>
+        <attribute name="action">win.action_export_txt</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Copy Colors Image to Clipboard</attribute>
+        <attribute name="action">win.action_export_png</attribute>
       </item>
     </section>
     <section>

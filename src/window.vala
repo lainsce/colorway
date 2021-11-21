@@ -54,12 +54,14 @@ namespace Colorway {
         public const string ACTION_PREFIX = "win.";
         public const string ACTION_ABOUT = "action_about";
         public const string ACTION_KEYS = "action_keys";
-        public const string ACTION_EXPORT = "action_export";
+        public const string ACTION_EXPORT_TXT = "action_export_txt";
+        public const string ACTION_EXPORT_PNG = "action_export_png";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
               {ACTION_ABOUT, action_about},
               {ACTION_KEYS, action_keys},
-              {ACTION_EXPORT, action_export},
+              {ACTION_EXPORT_TXT, action_export_txt},
+              {ACTION_EXPORT_PNG, action_export_png},
         };
 
         public Adw.Application app { get; construct; }
@@ -86,7 +88,8 @@ namespace Colorway {
             }
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
             app.set_accels_for_action("win.action_keys", {"<Ctrl>question"});
-            app.set_accels_for_action("win.action_export", {"<Ctrl>e"});
+            app.set_accels_for_action("win.action_export_txt", {"<Ctrl>e"});
+            app.set_accels_for_action("win.action_export_png", {"<Shift><Ctrl>e"});
 
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             default_theme.add_resource_path ("/io/github/lainsce/Colorway");
@@ -552,7 +555,39 @@ namespace Colorway {
             );
         }
 
-        public void action_export () {
+        public void action_export_txt () {
+            string export_txt = "";
+
+            export_txt += box.hex + "\n";
+
+            switch (color_rule_dropdown.get_active ()) {
+                case 2:
+                    export_txt += sbox.hex + "\n";
+                    break;
+                case 3:
+                case 4:
+                    export_txt += tbox.hex + "\n";
+                    break;
+            }
+
+            export_txt += ubox.hex + "\n";
+
+            // Put this ext_txt in clipboard
+            var display = Gdk.Display.get_default ();
+            unowned var clipboard = display.get_clipboard ();
+            clipboard.set_text (export_txt);
+
+            color_exported_label.set_sensitive(true);
+            color_exported_label.set_text(_("Colors copied to clipboard"));
+
+            Timeout.add(1000, () => {
+                color_exported_label.set_text("");
+                color_exported_label.set_sensitive(false);
+                return false;
+            });
+        }
+
+        public void action_export_png () {
             var snap = new Gtk.Snapshot ();
             mbox.snapshot (snap);
 
@@ -569,9 +604,9 @@ namespace Colorway {
             clipboard.set_texture (mt);
 
             color_exported_label.set_sensitive(true);
-            color_exported_label.set_text(_("Colors exported to clipboard."));
+            color_exported_label.set_text(_("Image copied to clipboard"));
 
-            Timeout.add(800, () => {
+            Timeout.add(1000, () => {
                 color_exported_label.set_text("");
                 color_exported_label.set_sensitive(false);
                 return false;

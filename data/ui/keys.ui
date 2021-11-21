@@ -18,6 +18,23 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkShortcutsGroup" id="copy">
+            <property name="title" translatable="yes" context="shortcut window">Copy</property>
+            <child>
+              <object class="GtkShortcutsShortcut" id="copy_text">
+                <property name="accelerator">&lt;ctrl&gt;e</property>
+                <property name="title" translatable="yes" context="shortcut window">Copy colors to clipboard</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut" id="copy_image">
+                <property name="accelerator">&lt;shift&gt;&lt;ctrl&gt;e</property>
+                <property name="title" translatable="yes" context="shortcut window">Copy colors image to clipboard</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </object>
