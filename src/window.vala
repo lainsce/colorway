@@ -125,7 +125,8 @@ namespace Colorway {
             ubox.get_style_context ().add_class ("clr-fourth");
             
             mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            mbox.set_halign(Gtk.Align.CENTER);
+            mbox.set_halign (Gtk.Align.CENTER);
+            mbox.overflow = HIDDEN;
             mbox.set_homogeneous(true);
             mbox.width_request = 260;
             mbox.set_margin_end (18);

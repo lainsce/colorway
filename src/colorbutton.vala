@@ -52,7 +52,7 @@ public class Colorway.PaletteButton : Gtk.Button {
 	construct {
 		visible = true;
 
-		width_request = 32;
+		width_request = 64;
 		height_request = 32;
 
 		hexpand = true;
