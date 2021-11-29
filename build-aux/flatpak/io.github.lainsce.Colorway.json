@@ -48,8 +48,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "../../",
-		    "branch": "main"
+                    "url" : "https://github.com/lainsce/colorway.git",
+                    "branch": "main"
                 }
             ]
         }
