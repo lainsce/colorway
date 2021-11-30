@@ -1,5 +1,5 @@
 data/io.github.lainsce.Colorway.desktop.in
-data/io.github.lainsce.Colorway.appdata.xml.in
+data/io.github.lainsce.Colorway.metainfo.xml.in
 data/io.github.lainsce.Colorway.gschema.xml
 
 data/ui/keys.ui
