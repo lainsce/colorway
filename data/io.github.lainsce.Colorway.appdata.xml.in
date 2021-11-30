@@ -3,7 +3,7 @@
     <id>io.github.lainsce.Colorway</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0+</project_license>
-    <name>Colorway</name>
+    <name translatable="no">Colorway</name>
     <summary>Generate color pairings</summary>
     <description>
         <p>Generate color pairings from selected color that follow certain color rules.</p>
@@ -15,7 +15,7 @@
       <kudo>ModernToolkit</kudo>
       <kudo>HiDpiIcon</kudo>
     </kudos>
-    <developer_name>Lains</developer_name>
+    <developer_name translatable="no">Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/colorway/</url>
     <url type="bugtracker">https://github.com/lainsce/colorway/issues</url>
     <url type="donation">https://www.ko-fi.com/lainsce/</url>
