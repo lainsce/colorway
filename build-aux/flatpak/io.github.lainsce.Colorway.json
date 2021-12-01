@@ -4,7 +4,6 @@
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.Colorway",
-    "rename-icon" : "io.github.lainsce.ColorwayDevel",
     "finish-args" : [
         "--filesystem=xdg-run/gvfsd",
         "--socket=wayland",
