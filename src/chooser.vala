@@ -122,18 +122,6 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     }
 
     private static void xy_to_sv (double x, double y, out double s, out double v) {
-        if (x < 0) {
-            x = 0;
-        } else if (x > WIDTH) {
-            x = WIDTH;
-        }
-
-        if (y < 0) {
-            y = 0;
-        } else if (y > HEIGHT) {
-            y = HEIGHT;
-        }
-
         s = x / WIDTH;
         v = 1 - (y / HEIGHT);
     }
@@ -211,8 +199,24 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         double _xpos, _ypos;
         drag.get_start_point (out _xpos, out _ypos);
 
-        xpos = _xpos + offset_x;
-        ypos = _ypos + offset_y;
+        double dx = _xpos + offset_x;
+        double dy = _ypos + offset_y;
+
+        if (dx > WIDTH) {
+            xpos = WIDTH;
+        } else if (dx < 0) {
+            xpos = 0;
+        } else {
+            xpos = dx;
+        }
+
+        if (dy > HEIGHT) {
+            ypos = HEIGHT;
+        } else if (dy < 0) {
+            ypos = 0;
+        } else {
+            ypos = _ypos + offset_y;
+        }
 
         double new_s, new_v;
         xy_to_sv (xpos, ypos, out new_s, out new_v);
