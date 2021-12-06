@@ -122,18 +122,6 @@ public class Colorway.Chooser : Gtk.DrawingArea {
     }
 
     private static void xy_to_sv (double x, double y, out double s, out double v) {
-        if (x < 0) {
-            x = 0;
-        } else if (x > WIDTH) {
-            x = WIDTH;
-        }
-
-        if (y < 0) {
-            y = 0;
-        } else if (y > HEIGHT) {
-            y = HEIGHT;
-        }
-
         s = x / WIDTH;
         v = 1 - (y / HEIGHT);
     }
@@ -186,8 +174,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         double _xpos, _ypos;
         gesture.get_point (null, out _xpos, out _ypos);
 
-        xpos = _xpos;
-        ypos = _ypos;
+        move_inbound(_xpos, _ypos, out xpos, out ypos);
 
         double new_s, new_v;
         xy_to_sv (xpos, ypos, out new_s, out new_v);
@@ -211,8 +198,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         double _xpos, _ypos;
         drag.get_start_point (out _xpos, out _ypos);
 
-        xpos = _xpos + offset_x;
-        ypos = _ypos + offset_y;
+        move_inbound(_xpos + offset_x, _ypos + offset_y, out xpos, out ypos);
 
         double new_s, new_v;
         xy_to_sv (xpos, ypos, out new_s, out new_v);
@@ -222,5 +208,23 @@ public class Colorway.Chooser : Gtk.DrawingArea {
 
     private static void gesture_drag_end (double offset_x, double offset_y) {
         drag.set_state (Gtk.EventSequenceState.DENIED);
+    }
+
+    private static void move_inbound(double xpos, double ypos, out double new_x, out double new_y) {
+        if (xpos > WIDTH) {
+            new_x = WIDTH;
+        } else if (xpos < 0) {
+            new_x = 0;
+        } else {
+            new_x = xpos;
+        }
+
+        if (ypos > HEIGHT) {
+            new_y = HEIGHT;
+        } else if (ypos < 0) {
+            new_y = 0;
+        } else {
+            new_y = ypos;
+        }
     }
 }
