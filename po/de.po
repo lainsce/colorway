@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-05 19:44-0300\n"
-"PO-Revision-Date: 2021-09-15 15:50+0100\n"
+"PO-Revision-Date: 2021-12-22 15:11+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -29,12 +29,14 @@ msgstr "Farbe;Palette;Farbton;Muster;"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:7
 msgid "Generate color pairings"
-msgstr ""
+msgstr "Farbpaarungen generieren"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:9
 msgid ""
 "Generate color pairings from selected color that follow certain color rules."
 msgstr ""
+"Generiere Farbpaarungen aus der ausgewählten Farbe, die bestimmten "
+"Farbregeln folgen."
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:18
 msgid "Lains"
@@ -42,45 +44,53 @@ msgstr "Lains"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:44
 msgid "Release: Recoloring With Accent"
-msgstr ""
+msgstr "Veröffentlichung: Umfärbung mit aktzentuierten Farben"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:45
 msgid "Changed: The UI now uses libadwaita recoloring."
 msgstr ""
+"Geändert: Die Benutzeroberfläche verwendet jetzt die Libadwaita-Umfärbung."
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:46
 msgid "Changed: New UI layout."
-msgstr ""
+msgstr "Geändert: Neues Benutzeroberflächen-Layout."
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:51
 msgid "Release: Color Choosing with a Drag"
-msgstr ""
+msgstr "Veröffentlichung: Farbauswahl per Drag&Drop"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:52
 msgid ""
 "Added: The color chooser box's pointer can now be dragged to choose the "
 "color as well, no more clicking random spots."
 msgstr ""
+"Hinzugefügt: Der Zeiger der Farbauswahlbox kann jetzt auch gezogen werden, "
+"um die Farbe auszuwählen, kein Klicken mehr auf zufällige Punkte."
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:53
 msgid ""
 "Changed: Most icons now above color content are aware of contrast and will "
 "update accordingly as white or black colored to ensure contrast."
 msgstr ""
+"Geändert: Die meisten Symbole, die sich jetzt über farbigen Inhalten "
+"befinden, erkennen den Kontrast und werden entsprechend in weißer oder "
+"schwarzer Farbe aktualisiert, um den Kontrast zu gewährleisten."
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:58
 msgid "Release: Copiable Colors"
-msgstr ""
+msgstr "Veröffentlichung: Kopierbare Farben"
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:59
 msgid ""
 "Added: Now the color boxes are now buttons which you can copy the individual "
 "color."
 msgstr ""
+"Hinzugefügt: Die Farbkästchen sind jetzt Schaltflächen, mit denen einzelne "
+"Farben kopiert werden können."
 
 #: data/io.github.lainsce.Colorway.appdata.xml.in:64
 msgid "Release: First Release"
-msgstr ""
+msgstr "Veröffentlichung: Erste Veröffentlichung"
 
 #: data/ui/keys.ui:12
 msgctxt "shortcut window"
@@ -94,7 +104,7 @@ msgstr "Beenden"
 
 #: data/ui/menu.ui:7
 msgid "Export Colors as Image…"
-msgstr ""
+msgstr "Farben als Bild exportieren …"
 
 #: data/ui/menu.ui:13
 msgid "Keyboard Shortcuts"
@@ -110,134 +120,32 @@ msgstr "Farbe wählen"
 
 #: src/window.vala:101
 msgid "Analogous"
-msgstr ""
+msgstr "Analog"
 
 #: src/window.vala:102
 msgid "Complementary"
-msgstr ""
+msgstr "Komplementär"
 
 #: src/window.vala:103
 msgid "Triadic"
-msgstr ""
+msgstr "Triadisch"
 
 #: src/window.vala:104
 msgid "Tetradic"
-msgstr ""
+msgstr "Tetradisch"
 
 #: src/window.vala:105
 msgid "Monochromatic"
-msgstr ""
+msgstr "Monochromatisch"
 
 #: src/window.vala:541
-#, fuzzy
 msgid "Colors exported to clipboard."
-msgstr "Hex-Code in Zwischenablage kopieren"
+msgstr "Farben in Zwischenablage kopiert."
 
 #: src/window.vala:575
 msgid "Generate color pairings."
-msgstr ""
+msgstr "Generiere Farbpaarungen."
 
 #: src/window.vala:581
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>"
-
-#~ msgid "Stock up on colors"
-#~ msgstr "Deck’ dich mit Farben ein"
-
-#~ msgid "Store your palettes in an easy way, and edit them if needed."
-#~ msgstr "Paletten auf einfache Weise speichern und bei Bedarf bearbeiten."
-
-#~ msgid "First Boot"
-#~ msgstr "Erste Benutzung"
-
-#~ msgid "Whether to add the default palettes on first boot or not."
-#~ msgstr ""
-#~ "Ob die Standardpaletten bei erster Benutzung hinzugefügt werden sollen "
-#~ "oder nicht."
-
-#~ msgid "Name∶"
-#~ msgstr "Name∶"
-
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgid "Red∶"
-#~ msgstr "Rot∶"
-
-#~ msgid "Green∶"
-#~ msgstr "Grün∶"
-
-#~ msgid "Blue∶"
-#~ msgstr "Blau∶"
-
-#~ msgid "Hex"
-#~ msgstr "Hex"
-
-#~ msgid "Color Hexcode∶"
-#~ msgstr "Hex-Code der Farbe∶"
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid "Cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "Import Palette"
-#~ msgstr "Palette importieren"
-
-#~ msgid "Choose Image"
-#~ msgstr "Bild wählen"
-
-#~ msgid "Select an image to retrieve colors"
-#~ msgstr "Bild wählen um Farben herauszufiltern"
-
-#~ msgid "Add Palette"
-#~ msgstr "Palette hinzufügen"
-
-#~ msgid "Import Palette…"
-#~ msgstr "Palette importieren …"
-
-#~ msgid "Go Back to Palettes View"
-#~ msgstr "Zurück zur Palettenansicht"
-
-#~ msgid "Add Color to This Palette"
-#~ msgstr "Farbe dieser Palette hinzufügen"
-
-#~ msgid "Palettes"
-#~ msgstr "Paletten"
-
-#~ msgid "Search for palettes"
-#~ msgstr "Paletten suchen"
-
-#~ msgid "No Palettes"
-#~ msgstr "Keine Paletten"
-
-#~ msgid "Add a palette with the + button."
-#~ msgstr "Palette mit Taste + hinzufügen."
-
-#~ msgid "Copy Palette to Clipboard"
-#~ msgstr "Palette in Zwischenablage kopieren"
-
-#~ msgid "Copy Palette Image to Clipboard"
-#~ msgstr "Palettenbild in Zwischenablage kopieren"
-
-#~ msgid "Remove Palette"
-#~ msgstr "Palette entfernen"
-
-#~ msgid "Copy RGB to Clipboard"
-#~ msgstr "RGB in Zwischenablage kopieren"
-
-#~ msgid "Remove Color from Palette"
-#~ msgstr "Farbe aus Palette entfernen"
-
-#~ msgid "Import"
-#~ msgstr "Importieren"
-
-#~ msgid "Picture"
-#~ msgstr "Bild"
-
-#~ msgid "Set New Palette Name"
-#~ msgstr "Name der neuen Palette setzen"
-
-#~ msgid "Stock up on colors."
-#~ msgstr "Deck’ dich mit Farben ein."
