@@ -634,7 +634,7 @@ namespace Colorway {
                 null
             };
 
-            var program_name = Config.NAME_PREFIX + _("Colorway");
+            var program_name = Config.NAME_PREFIX + "Colorway";
             Gtk.show_about_dialog (this,
                                    "program-name", program_name,
                                    "logo-icon-name", Config.APP_ID,
