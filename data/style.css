@@ -11,6 +11,11 @@
 @define-color view_fg_color #1d1b1e;
 @define-color headerbar_fg_color #1d1b1e;
 
+.solid-csd {
+  box-shadow: none;
+  outline: 1px solid @borders;
+}
+
 .clr-title {
   font-size: 1.66rem;
   font-weight: 500;
