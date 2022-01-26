@@ -35,7 +35,7 @@ namespace Colorway {
 
         construct {
             Intl.setlocale (LocaleCategory.ALL, "");
-            Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+            Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
             Intl.textdomain (Config.GETTEXT_PACKAGE);
         }
         private void on_quit() {
