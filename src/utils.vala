@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Lains
+ * Copyright (c) 2021-2022 Lains
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -18,7 +18,7 @@
  */
 namespace Colorway.Utils {
     public string make_hex (float red, float green, float blue) {
-        return "#" + "%02x%02x%02x".printf ((uint)red, (uint)green, (uint)blue);
+        return "#" + "%02x%02x%02x".printf ((uint)Math.roundf(red), (uint)Math.roundf(green), (uint)Math.roundf(blue));
     }
     public double make_srgb(double c) {
         if (c <= 0.03928) {

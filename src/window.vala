@@ -1,5 +1,5 @@
 /* 
- * Copyright 2021 Lains
+ * Copyright 2022 Lains
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,7 +97,7 @@ namespace Colorway {
             var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Colorway/menu.ui");
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
-            color = "#ff0000";
+            color = "#72dec2";
             contrast = "#000000";
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
@@ -301,8 +301,6 @@ namespace Colorway {
             });
 
             this.set_size_request (360, 100);
-            var adwsm = Adw.StyleManager.get_default ();
-            adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
 			this.show ();
 		}
 

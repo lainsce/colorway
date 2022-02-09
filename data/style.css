@@ -1,29 +1,19 @@
 /* app */
-@define-color accent_color #6e4da1;
-@define-color accent_bg_color #6e4da1;
-@define-color accent_fg_color white;
-@define-color window_bg_color #fffafc;
-@define-color view_bg_color #f8f0f4;
-@define-color headerbar_bg_color #fffafc;
-@define-color popover_bg_color #f8f0f4;
-@define-color popover_fg_color #1d1b1e;
-@define-color window_fg_color #1d1b1e;
-@define-color view_fg_color #1d1b1e;
-@define-color headerbar_fg_color #1d1b1e;
+@define-color accent_color #9771d6;
+@define-color accent_bg_color #d0baff;
+@define-color accent_fg_color #f9f6ff;
+@define-color window_bg_color #f1f0f4;
+@define-color view_bg_color #fcfbff;
+@define-color headerbar_bg_color #f1f0f4;
+@define-color popover_bg_color #fcfbff;
+@define-color popover_fg_color #303032;
+@define-color window_fg_color #303032;
+@define-color view_fg_color #303032;
+@define-color headerbar_fg_color #303032;
 
 .solid-csd {
   box-shadow: none;
   outline: 1px solid @borders;
-}
-
-.clr-title {
-  font-size: 1.66rem;
-  font-weight: 500;
-  font-family: monospace;
-  background: none;
-  border: 2px solid @borders;
-  padding: 8px 10px;
-  border-radius: 8px;
 }
 
 .clr-hue trough {
@@ -38,11 +28,10 @@
     );
     min-height: 20px;
     padding: 0 6px;
-    box-shadow: inset 0 0 0 1px @borders;
 }
 
 .clr-hue slider {
-	box-shadow: inset 0 0 0 3px #fff, 0 1px 3px -0.4px @borders;
+	box-shadow: inset 0 0 0 5px #fff, 0 2px 4px -0.8px @borders;
 	border: none;
 	min-width: 20px;
 	min-height: 20px;
