@@ -98,7 +98,7 @@ namespace Colorway {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
             color = "#72dec2";
-            contrast = "#000000";
+            contrast = "#1c1b1e";
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
             color_rule_dropdown.append_text(_("Analogous"));
@@ -109,18 +109,18 @@ namespace Colorway {
             color_rule_dropdown.set_active(0);
             color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 18;
           
-            box = new PaletteButton ("#000", false);
+            box = new PaletteButton ("#1c1b1e", false);
             box.set_size_request(64, 32);
             box.get_style_context ().add_class ("clr-first");
-            sbox = new PaletteButton ("#000", false);
+            sbox = new PaletteButton ("#1c1b1e", false);
             sbox.set_size_request(64, 32);
             sbox.set_visible(false);
             sbox.get_style_context ().add_class ("clr-second");
-            tbox = new PaletteButton ("#000", false);
+            tbox = new PaletteButton ("#1c1b1e", false);
             tbox.set_size_request(64, 32);
             tbox.set_visible(false);
             tbox.get_style_context ().add_class ("clr-third");
-            ubox = new PaletteButton ("#000", false);
+            ubox = new PaletteButton ("#1c1b1e", false);
             ubox.set_size_request(64, 32);
             ubox.get_style_context ().add_class ("clr-fourth");
             
@@ -177,9 +177,9 @@ namespace Colorway {
                 color = pc.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#1c1b1e";
                 } else {
-                    contrast = "#FFFFFF";
+                    contrast = "#fcfbff";
                 }
 
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -205,9 +205,9 @@ namespace Colorway {
                 color = pc.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#1c1b1e";
                 } else {
-                    contrast = "#FFFFFF";
+                    contrast = "#fcfbff";
                 }
 
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -233,9 +233,9 @@ namespace Colorway {
                 color_label.set_text (pc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#1c1b1e";
                 } else {
-                    contrast = "#FFFFFF";
+                    contrast = "#fcfbff";
                 }
 
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
@@ -263,9 +263,9 @@ namespace Colorway {
                 color_label.set_text (pc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#1c1b1e";
                 } else {
-                    contrast = "#FFFFFF";
+                    contrast = "#fcfbff";
                 }
 
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
@@ -292,9 +292,9 @@ namespace Colorway {
                 color_label.set_text (pc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#1c1b1e";
                 } else {
-                    contrast = "#FFFFFF";
+                    contrast = "#fcfbff";
                 }
 
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);

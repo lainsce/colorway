@@ -1,15 +1,15 @@
 /* app */
 @define-color accent_color #9771d6;
-@define-color accent_bg_color #d0baff;
-@define-color accent_fg_color #f9f6ff;
+@define-color accent_bg_color #d0bbff;
+@define-color accent_fg_color #2c0053;
 @define-color window_bg_color #f1f0f4;
 @define-color view_bg_color #fcfbff;
 @define-color headerbar_bg_color #f1f0f4;
 @define-color popover_bg_color #fcfbff;
-@define-color popover_fg_color #303032;
-@define-color window_fg_color #303032;
-@define-color view_fg_color #303032;
-@define-color headerbar_fg_color #303032;
+@define-color popover_fg_color #1c1b1e;
+@define-color window_fg_color #1c1b1e;
+@define-color view_fg_color #1c1b1e;
+@define-color headerbar_fg_color #1c1b1e;
 
 .solid-csd {
   box-shadow: none;
