@@ -1,0 +1,15 @@
+.clr-props {
+  border: 1px solid @borders;
+}
+
+.clr-first,
+.clr-second,
+.clr-third,
+.clr-fourth {
+  border: 1px solid @borders;
+  box-shadow: none;
+}
+
+.list-action-button {
+  border: 1px solid @borders;
+}

@@ -39,6 +39,11 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
+        <release version="1.1.0" date="2022-02-11">
+            <description>
+                <p>Changed: New UI colors.</p>
+            </description>
+        </release>
         <release version="1.1.0" date="2021-11-28">
             <description>
                 <p>Release: Recoloring With Accent</p>
