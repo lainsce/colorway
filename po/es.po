@@ -1,14 +1,14 @@
 # Spanish translation.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-22 16:50+0100\n"
-"PO-Revision-Date: 2021-12-22 17:00+0100\n"
+"POT-Creation-Date: 2022-02-09 21:06+0100\n"
+"PO-Revision-Date: 2022-02-09 21:07+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -38,23 +38,27 @@ msgstr ""
 "ciertas reglas de color."
 
 #: data/io.github.lainsce.Colorway.metainfo.xml.in:44
+msgid "Changed: New UI colors."
+msgstr "Cambiado: Nuevos colores de la interfaz de usuario."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:49
 msgid "Release: Recoloring With Accent"
 msgstr "Versión: Recoloración con acento"
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:45
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:50
 msgid "Changed: The UI now uses libadwaita recoloring."
 msgstr ""
 "Cambiado: La interfaz de usuario ahora usa la recoloración de libadwaita."
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:46
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:51
 msgid "Changed: New UI layout."
 msgstr "Cambiado: Nuevo diseño de la interfaz de usuario."
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:51
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:56
 msgid "Release: Color Choosing with a Drag"
 msgstr "Versión: Elección del color con un arrastre"
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:52
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:57
 msgid ""
 "Added: The color chooser box's pointer can now be dragged to choose the "
 "color as well, no more clicking random spots."
@@ -62,7 +66,7 @@ msgstr ""
 "Añadido: El puntero de la caja de selección de color ahora puede ser "
 "arrastrado para elegir el color también, no más clics en puntos al azar."
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:53
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:58
 msgid ""
 "Changed: Most icons now above color content are aware of contrast and will "
 "update accordingly as white or black colored to ensure contrast."
@@ -71,11 +75,11 @@ msgstr ""
 "son conscientes de contraste y se actualizará en consecuencia como de color "
 "blanco o negro para asegurar el contraste."
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:58
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:63
 msgid "Release: Copiable Colors"
 msgstr "Versión: Colores copiables"
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:59
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:64
 msgid ""
 "Added: Now the color boxes are now buttons which you can copy the individual "
 "color."
@@ -83,7 +87,7 @@ msgstr ""
 "Añadido: Ahora las cajas de color son botones con los que se puede copiar el "
 "color individual."
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:64
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:69
 msgid "Release: First Release"
 msgstr "Versión: Primera versión"
 
@@ -156,18 +160,19 @@ msgstr "Monocromático"
 msgid "Set Color"
 msgstr "Establecer color"
 
-#: src/window.vala:582
+#: src/window.vala:580
 msgid "Colors copied to clipboard"
 msgstr "Colores copiados al portapapeles"
 
-#: src/window.vala:608
+#: src/window.vala:606
 msgid "Image copied to clipboard"
 msgstr "Imagen copiada al portapapeles"
 
-#: src/window.vala:642
+#: src/window.vala:640
 msgid "Generate color pairings."
 msgstr "Generar combinaciones de colores."
 
-#: src/window.vala:648
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/window.vala:647
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
