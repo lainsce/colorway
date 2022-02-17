@@ -10,6 +10,7 @@
 @define-color window_fg_color #e7e1e6;
 @define-color view_fg_color #e7e1e6;
 @define-color headerbar_fg_color #e7e1e6;
+@define-color borders alpha(#9a8d96, 0.5);
 
 .clr-props {
   background: @view_bg_color;

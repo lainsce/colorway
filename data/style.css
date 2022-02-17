@@ -10,6 +10,7 @@
 @define-color window_fg_color #1c1b1e;
 @define-color view_fg_color #1c1b1e;
 @define-color headerbar_fg_color #1c1b1e;
+@define-color borders alpha(#7f747c, 0.5);
 
 .solid-csd {
   box-shadow: none;
@@ -24,7 +25,7 @@
         rgba(0,255,255,1) 50%,
         rgba(0,0,255,1) 66.66%,
         rgba(255,0,255,1) 83.33%,
-        rgba(240,0,0,1) 100%
+        rgba(255,0,0,1) 100%
     );
     min-height: 20px;
     padding: 0 6px;
