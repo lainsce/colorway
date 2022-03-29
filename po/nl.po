@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Colorway package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Colorway\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-05 19:44-0300\n"
+"PO-Revision-Date: 2022-03-29 17:28+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.Colorway.desktop.in:3
+#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
+msgid "Colorway"
+msgstr "Colorway"
+
+#: data/io.github.lainsce.Colorway.desktop.in:6
+msgid "color;palette;library;hue;swatch;"
+msgstr "kleur;palet;verzameling;tint;staal;"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:7
+msgid "Generate color pairings"
+msgstr "Genereer kleurstellingen"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:9
+msgid ""
+"Generate color pairings from selected color that follow certain color rules."
+msgstr "Genereer kleurstellingen op basis van één zelfgekozen kleur."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:18
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:44
+msgid "Release: Recoloring With Accent"
+msgstr "Uitgave: ‘Accentkleuring’"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+msgid "Changed: The UI now uses libadwaita recoloring."
+msgstr "-De toepassing maakt voortaan gebruik van libadwaita-kleuren;"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+msgid "Changed: New UI layout."
+msgstr "-Nieuwe indeling."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+msgid "Release: Color Choosing with a Drag"
+msgstr "Uitgave: ‘Neem kleuren op sleeptouw’"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+msgid ""
+"Added: The color chooser box's pointer can now be dragged to choose the "
+"color as well, no more clicking random spots."
+msgstr ""
+"-Het pipet van de kleurkiezer kan voortaan worden versleept naar een kleur, "
+"zodat je niet meer in de rondte hoeft te klikken;"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+msgid ""
+"Changed: Most icons now above color content are aware of contrast and will "
+"update accordingly as white or black colored to ensure contrast."
+msgstr ""
+"-De meeste pictogrammen van kleurinhoud werken voortaan met contrasten, "
+"waardoor het contrast voortdurend kan worden bijgewerkt."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+msgid "Release: Copiable Colors"
+msgstr "Uitgave: ‘Kleurkopieën’"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+msgid ""
+"Added: Now the color boxes are now buttons which you can copy the individual "
+"color."
+msgstr ""
+"-Kleurvakken zijn voortaan knoppen - klik er op om een kleur te kopiëren."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+msgid "Release: First Release"
+msgstr "Uitgave: ‘Eerste uitgave’"
+
+#: data/ui/keys.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: data/ui/keys.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: data/ui/menu.ui:7
+msgid "Export Colors as Image…"
+msgstr "Kleuren exporteren als afbeelding…"
+
+#: data/ui/menu.ui:13
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: data/ui/menu.ui:17
+msgid "About Colorway"
+msgstr "Over Colorway"
+
+#: data/ui/window.ui:99
+msgid "Pick Color"
+msgstr "Kleur kiezen"
+
+#: src/window.vala:101
+msgid "Analogous"
+msgstr "Analoog"
+
+#: src/window.vala:102
+msgid "Complementary"
+msgstr "Complementair"
+
+#: src/window.vala:103
+msgid "Triadic"
+msgstr "Derde kleur"
+
+#: src/window.vala:104
+msgid "Tetradic"
+msgstr "Vierde kleur"
+
+#: src/window.vala:105
+msgid "Monochromatic"
+msgstr "Monochroom"
+
+#: src/window.vala:541
+msgid "Colors exported to clipboard."
+msgstr "De kleuren zijn gekopieerd naar het klembord."
+
+#: src/window.vala:575
+msgid "Generate color pairings."
+msgstr "Genereer kleurstellingen."
+
+#: src/window.vala:581
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
