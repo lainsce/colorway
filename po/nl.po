@@ -21,7 +21,7 @@ msgstr ""
 #: data/io.github.lainsce.Colorway.desktop.in:3
 #: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
 msgid "Colorway"
-msgstr "Kleurstelling"
+msgstr "Colorway"
 
 #: data/io.github.lainsce.Colorway.desktop.in:6
 msgid "color;palette;library;hue;swatch;"
@@ -107,7 +107,7 @@ msgstr "Sneltoetsen"
 
 #: data/ui/menu.ui:17
 msgid "About Colorway"
-msgstr "Over Kleurstelling"
+msgstr "Over Colorway"
 
 #: data/ui/window.ui:99
 msgid "Pick Color"
