@@ -2,19 +2,16 @@
 @define-color accent_color #9771d6;
 @define-color accent_bg_color #d0bbff;
 @define-color accent_fg_color #2c0053;
-@define-color window_bg_color #f1f0f4;
-@define-color view_bg_color #fcfbff;
-@define-color headerbar_bg_color #f1f0f4;
-@define-color popover_bg_color #fcfbff;
-@define-color popover_fg_color #1c1b1e;
-@define-color window_fg_color #1c1b1e;
-@define-color view_fg_color #1c1b1e;
-@define-color headerbar_fg_color #1c1b1e;
-@define-color borders alpha(#7f747c, 0.5);
+@define-color window_bg_color #fff;
+@define-color headerbar_bg_color #fff;
 
 .solid-csd {
   box-shadow: none;
   outline: 1px solid @borders;
+}
+
+.main-box {
+  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
 }
 
 .clr-hue trough {
@@ -32,7 +29,7 @@
 }
 
 .clr-hue slider {
-	box-shadow: inset 0 0 0 5px #fff, 0 2px 4px -0.8px @borders;
+	box-shadow: inset 0 0 0 4px #fff;
 	border: none;
 	min-width: 20px;
 	min-height: 20px;
@@ -40,30 +37,14 @@
   border-radius: 999px;
 }
 
-.clr-props {
-  background: @view_bg_color;
-  margin: 6px;
-  margin-top: 0px;
-  border-radius: 8px;
-}
-
 .clr-props-message:disabled {
-    color: rgba(255,255,255,0);
-    transition: 500ms color;
+  color: rgba(255,255,255,0);
+  transition: 500ms color;
 }
 
-.clr-first {
-  border-radius: 8px 0 0 8px;
-  box-shadow: 0 0 0 1px @borders;
-}
-.clr-second,
-.clr-third {
-  border-radius: 0;
-  box-shadow: 0 0 0 1px @borders;
-}
-.clr-fourth {
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 0 0 1px @borders;
+.clr-color {
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px @borders;
 }
 .clr-palette button image {
 	color: #fff;
@@ -85,6 +66,17 @@
 .list-action-button:active {
   box-shadow: 0 1px 3px 0 alpha(black, 0.3),
               0 4px 8px 3px alpha(black, 0.15);
+}
+
+.view-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}
+.view-title-bold {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .no-sep {

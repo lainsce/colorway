@@ -107,38 +107,38 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Tetradic"));
             color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(0);
-            color_rule_dropdown.margin_start = color_rule_dropdown.margin_end = 18;
+            color_rule_dropdown.margin_end = 18;
           
             box = new PaletteButton ("#1c1b1e", false);
-            box.set_size_request(64, 32);
-            box.get_style_context ().add_class ("clr-first");
+            box.set_size_request(48, 48);
+            box.get_style_context ().add_class ("clr-color");
             sbox = new PaletteButton ("#1c1b1e", false);
-            sbox.set_size_request(64, 32);
+            sbox.set_size_request(48, 48);
             sbox.set_visible(false);
-            sbox.get_style_context ().add_class ("clr-second");
+            sbox.get_style_context ().add_class ("clr-color");
             tbox = new PaletteButton ("#1c1b1e", false);
-            tbox.set_size_request(64, 32);
+            tbox.set_size_request(48, 48);
             tbox.set_visible(false);
-            tbox.get_style_context ().add_class ("clr-third");
+            tbox.get_style_context ().add_class ("clr-color");
             ubox = new PaletteButton ("#1c1b1e", false);
-            ubox.set_size_request(64, 32);
-            ubox.get_style_context ().add_class ("clr-fourth");
+            ubox.set_size_request(48, 48);
+            ubox.get_style_context ().add_class ("clr-color");
             
             mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             mbox.set_halign (Gtk.Align.CENTER);
+            mbox.set_valign (Gtk.Align.START);
             mbox.overflow = HIDDEN;
-            mbox.set_homogeneous(true);
-            mbox.width_request = 260;
             mbox.set_margin_end (18);
-            mbox.set_margin_start (18);
+            mbox.set_spacing (30);
             mbox.get_style_context ().add_class ("clr-palette");
             mbox.append (box);
             mbox.append (sbox);
             mbox.append (tbox);
             mbox.append (ubox);
-            
-            props_box.append (mbox);
+
             props_box.append (color_rule_dropdown);
+            props_box.append (mbox);
+            props_box.width_request = 300;
 
             color_exported_label = new Gtk.Label ("");
             color_exported_label.get_style_context ().add_class ("dim-label");
@@ -147,9 +147,6 @@ namespace Colorway {
             props_box.append (color_exported_label);
 
             color_label.set_text (color.up());
-            color_label.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY,"document-edit-symbolic");
-            color_label.set_icon_activatable (Gtk.EntryIconPosition.SECONDARY, true);
-            color_label.set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, _("Set Color"));
             
             color_picker_button.clicked.connect (() => {
                 pick_color.begin ();

@@ -2,16 +2,5 @@
 @define-color accent_color #d8baff;
 @define-color accent_bg_color #d8baff;
 @define-color accent_fg_color #3e1b6f;
-@define-color window_bg_color #1d1b1e;
-@define-color view_bg_color #282628;
-@define-color headerbar_bg_color #1d1b1e;
-@define-color popover_bg_color #282628;
-@define-color popover_fg_color #e7e1e6;
-@define-color window_fg_color #e7e1e6;
-@define-color view_fg_color #e7e1e6;
-@define-color headerbar_fg_color #e7e1e6;
-@define-color borders alpha(#9a8d96, 0.5);
-
-.clr-props {
-  background: @view_bg_color;
-}
+@define-color window_bg_color #111;
+@define-color headerbar_bg_color #111;

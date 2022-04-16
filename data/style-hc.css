@@ -1,11 +1,4 @@
-.clr-props {
-  border: 1px solid @borders;
-}
-
-.clr-first,
-.clr-second,
-.clr-third,
-.clr-fourth {
+.clr-color {
   border: 1px solid @borders;
   box-shadow: none;
 }
