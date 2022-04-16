@@ -1,7 +1,6 @@
 /* app */
-@define-color accent_color #9771d6;
-@define-color accent_bg_color #d0bbff;
-@define-color accent_fg_color #2c0053;
+@define-color accent_color #3742fa;
+@define-color accent_bg_color #3742fa;
 @define-color window_bg_color #fff;
 @define-color headerbar_bg_color #fff;
 
@@ -11,7 +10,7 @@
 }
 
 .main-box {
-  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
+  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.1));
 }
 
 .clr-hue trough {
