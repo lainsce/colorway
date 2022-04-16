@@ -39,6 +39,11 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
+        <release version="1.1.1" date="2022-04-20">
+            <description>
+                <p>Changed: UI now follows my own style that complements that of Adwaita, called Solo.</p>
+            </description>
+        </release>
         <release version="1.1.0" date="2022-02-11">
             <description>
                 <p>Changed: New UI colors.</p>
