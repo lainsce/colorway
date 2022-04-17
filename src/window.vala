@@ -38,7 +38,6 @@ namespace Colorway {
 	    public PaletteButton sbox;
 	    public PaletteButton ubox;
 	    public Gtk.Box mbox;
-	    public Gtk.Label color_exported_label;
 
 	    public signal void clicked ();
 	    public signal void toggled ();
@@ -98,7 +97,7 @@ namespace Colorway {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
             color = "#72dec2";
-            contrast = "#1c1b1e";
+            contrast = "#111";
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
             color_rule_dropdown.append_text(_("Analogous"));
@@ -107,28 +106,26 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Tetradic"));
             color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(0);
-            color_rule_dropdown.margin_end = 18;
           
-            box = new PaletteButton ("#1c1b1e", false);
-            box.set_size_request(48, 48);
+            box = new PaletteButton ("#111", false);
+            box.set_size_request(44, 44);
             box.get_style_context ().add_class ("clr-color");
-            sbox = new PaletteButton ("#1c1b1e", false);
-            sbox.set_size_request(48, 48);
+            sbox = new PaletteButton ("#111", false);
+            sbox.set_size_request(44, 44);
             sbox.set_visible(false);
             sbox.get_style_context ().add_class ("clr-color");
-            tbox = new PaletteButton ("#1c1b1e", false);
-            tbox.set_size_request(48, 48);
+            tbox = new PaletteButton ("#111", false);
+            tbox.set_size_request(44, 44);
             tbox.set_visible(false);
             tbox.get_style_context ().add_class ("clr-color");
-            ubox = new PaletteButton ("#1c1b1e", false);
-            ubox.set_size_request(48, 48);
+            ubox = new PaletteButton ("#111", false);
+            ubox.set_size_request(44, 44);
             ubox.get_style_context ().add_class ("clr-color");
             
             mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             mbox.set_halign (Gtk.Align.CENTER);
             mbox.set_valign (Gtk.Align.START);
             mbox.overflow = HIDDEN;
-            mbox.set_margin_end (18);
             mbox.set_spacing (30);
             mbox.get_style_context ().add_class ("clr-palette");
             mbox.append (box);
@@ -138,13 +135,7 @@ namespace Colorway {
 
             props_box.append (color_rule_dropdown);
             props_box.append (mbox);
-            props_box.width_request = 300;
-
-            color_exported_label = new Gtk.Label ("");
-            color_exported_label.get_style_context ().add_class ("dim-label");
-            color_exported_label.get_style_context ().add_class ("clr-props-message");
-
-            props_box.append (color_exported_label);
+            mbox.margin_bottom = 70;
 
             color_label.set_text (color.up());
             
@@ -159,8 +150,8 @@ namespace Colorway {
             da = new Chooser(gdkrgba);
             hue_slider = new HueSlider (360);
             
-            color_box.prepend(hue_slider);
-            color_box.prepend(da);
+            color_box.append(da);
+            color_box.append(hue_slider);
             
             da.on_sv_move.connect ((s, v) => {
                 double hue = hue_slider.get_value () / 360;
@@ -174,9 +165,9 @@ namespace Colorway {
                 color = pc.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#1c1b1e";
+                    contrast = "#111";
                 } else {
-                    contrast = "#fcfbff";
+                    contrast = "#fff";
                 }
 
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -202,9 +193,9 @@ namespace Colorway {
                 color = pc.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#1c1b1e";
+                    contrast = "#111";
                 } else {
-                    contrast = "#fcfbff";
+                    contrast = "#fff";
                 }
 
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -230,9 +221,9 @@ namespace Colorway {
                 color_label.set_text (pc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#1c1b1e";
+                    contrast = "#111";
                 } else {
-                    contrast = "#fcfbff";
+                    contrast = "#fff";
                 }
 
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
@@ -260,9 +251,9 @@ namespace Colorway {
                 color_label.set_text (pc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#1c1b1e";
+                    contrast = "#111";
                 } else {
-                    contrast = "#fcfbff";
+                    contrast = "#fff";
                 }
 
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
@@ -289,15 +280,15 @@ namespace Colorway {
                 color_label.set_text (pc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#1c1b1e";
+                    contrast = "#111";
                 } else {
-                    contrast = "#fcfbff";
+                    contrast = "#fff";
                 }
 
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
             });
 
-            this.set_size_request (360, 100);
+            this.set_size_request (295, -1);
 			this.show ();
 		}
 
@@ -467,9 +458,9 @@ namespace Colorway {
                         hue_slider.set_value(h*360);
 
                         if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                            contrast = "#000000";
+                            contrast = "#111";
                         } else {
-                            contrast = "#FFFFFF";
+                            contrast = "#fff";
                         }
 
                         setup_color_rules.begin (color, contrast, h, s, v, this.color_rule_dropdown, this.sbox, this.tbox);
@@ -538,9 +529,15 @@ namespace Colorway {
             .clr-preview {
                 background: %s;
                 color: %s;
+                box-shadow: inset 0 0 0 1px @borders, 0 4px 8px 3px alpha(%s, 0.30);
+            }
+            .clr-preview:hover {
+                box-shadow: inset 0 0 0 1px @borders, 0 6px 10px 4px alpha(%s, 0.30);
             }
             """.printf(color,
-                       contrast);
+                       contrast,
+                       color,
+                       color);
 
             css_provider.load_from_data(style.data);
 
@@ -572,15 +569,6 @@ namespace Colorway {
             var display = Gdk.Display.get_default ();
             unowned var clipboard = display.get_clipboard ();
             clipboard.set_text (export_txt);
-
-            color_exported_label.set_sensitive(true);
-            color_exported_label.set_text(_("Colors copied to clipboard"));
-
-            Timeout.add(1000, () => {
-                color_exported_label.set_text("");
-                color_exported_label.set_sensitive(false);
-                return false;
-            });
         }
 
         public void action_export_png () {
@@ -598,15 +586,6 @@ namespace Colorway {
             var display = Gdk.Display.get_default ();
             unowned var clipboard = display.get_clipboard ();
             clipboard.set_texture (mt);
-
-            color_exported_label.set_sensitive(true);
-            color_exported_label.set_text(_("Image copied to clipboard"));
-
-            Timeout.add(1000, () => {
-                color_exported_label.set_text("");
-                color_exported_label.set_sensitive(false);
-                return false;
-            });
         }
 
         public void action_keys () {

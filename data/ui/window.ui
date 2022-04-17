@@ -3,8 +3,6 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="ColorwayMainWindow" parent="AdwApplicationWindow">
-    <property name="default-width">360</property>
-    <property name="default-height">100</property>
     <property name="resizable">0</property>
     <property name="title">Colorway</property>
     <child>
@@ -14,77 +12,69 @@
           <class name="main-box"/>
         </style>
         <child>
-          <object class="AdwHeaderBar" id="headerbar">
-            <property name="valign">start</property>
-            <child type="title">
-              <object class="GtkBox" />
-            </child>
-            <child type="start">
-              <object class="GtkMenuButton" id="menu_button">
-                <property name="icon-name">open-menu-symbolic</property>
-                <style>
-                  <class name="circular"/>
-                </style>
-              </object>
-            </child>
-            <style>
-              <class name="flat"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkWindowHandle">
-            <property name="vexpand">1</property>
-            <property name="hexpand">1</property>
-            <child>
-              <object class="GtkBox">
-                <property name="orientation">horizontal</property>
+          <object class="GtkOverlay">
+            <child type="overlay">
+              <object class="AdwHeaderBar" id="headerbar">
                 <property name="valign">start</property>
-                <child>
-                  <object class="GtkBox" id="color_box">
-                    <property name="valign">center</property>
-                    <property name="orientation">vertical</property>
-                  </object>
+                <child type="title">
+                  <object class="GtkBox" />
                 </child>
-                <child>
-                  <object class="GtkSeparator">
-                    <property name="orientation">vertical</property>
+                <child type="start">
+                  <object class="GtkMenuButton" id="menu_button">
+                    <property name="icon-name">open-menu-symbolic</property>
                     <style>
-                      <class name="no-sep"/>
+                      <class name="circular"/>
                     </style>
                   </object>
                 </child>
+                <style>
+                  <class name="flat"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkWindowHandle">
+                <property name="vexpand">1</property>
+                <property name="hexpand">1</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="vexpand">1</property>
+                    <property name="orientation">horizontal</property>
+                    <property name="valign">start</property>
                     <child>
-                      <object class="GtkOverlay">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="vexpand">1</property>
                         <child>
-                          <object class="GtkBox">
-                            <property name="orientation">vertical</property>
+                          <object class="GtkOverlay">
                             <child>
-                              <object class="GtkBox" id="props_box">
+                              <object class="GtkBox">
                                 <property name="orientation">vertical</property>
-                                <property name="vexpand">1</property>
-                                <property name="spacing">12</property>
                                 <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Color</property>
-                                    <property name="halign">start</property>
-                                    <style>
-                                      <class name="view-title"/>
-                                    </style>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="orientation">horizontal</property>
+                                  <object class="GtkBox" id="props_box">
+                                    <property name="orientation">vertical</property>
+                                    <property name="vexpand">1</property>
+                                    <property name="spacing">12</property>
+                                    <property name="margin-start">18</property>
+                                    <property name="margin-end">18</property>
+                                    <property name="margin-top">47</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="label" translatable="yes">Color</property>
+                                        <property name="halign">start</property>
+                                        <style>
+                                          <class name="view-title"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox" id="color_box">
+                                        <child>
+                                          <placeholder/>
+                                        </child>
+                                      </object>
+                                    </child>
                                     <child>
                                       <object class="GtkEntry" id="color_label">
-                                        <property name="valign">center</property>
-                                        <property name="margin-end">18</property>
-                                        <property name="hexpand">1</property>
                                         <style>
                                           <class name="view-title-bold"/>
                                           <class name="numeric"/>
@@ -93,25 +83,30 @@
                                     </child>
                                   </object>
                                 </child>
+                                <style>
+                                  <class name="clr-props"/>
+                                </style>
                               </object>
                             </child>
-                            <style>
-                              <class name="clr-props"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child type="overlay">
-                          <object class="GtkButton" id="color_picker_button">
-                            <property name="icon-name">color-picker-symbolic</property>
-                            <property name="valign">end</property>
-                            <property name="halign">end</property>
-                            <property name="margin-bottom">18</property>
-                            <property name="margin-end">18</property>
-                            <property name="tooltip-text" translatable="yes">Pick Color</property>
-                            <style>
-                              <class name="list-action-button"/>
-                              <class name="clr-preview"/>
-                            </style>
+                            <child type="overlay">
+                              <object class="GtkBox">
+                                <property name="valign">end</property>
+                                <property name="halign">end</property>
+                                <property name="margin-bottom">18</property>
+                                <property name="margin-end">18</property>
+                                <child>
+                                  <object class="GtkButton" id="color_picker_button">
+                                    <property name="icon-name">color-picker-symbolic</property>
+                                    <property name="valign">end</property>
+                                    <property name="tooltip-text" translatable="yes">Pick Color</property>
+                                    <style>
+                                      <class name="list-action-button"/>
+                                      <class name="clr-preview"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>

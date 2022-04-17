@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Lains
+ * Copyright (c) 2021-2022 Lains
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -22,7 +22,7 @@
 public class Colorway.Chooser : Gtk.DrawingArea {
     //  Properties
     private const uint16 WIDTH = 222;
-    private const uint16 HEIGHT = 222;
+    private const uint16 HEIGHT = 122;
     private static double r;
     private static double g;
     private static double b;
@@ -47,8 +47,6 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         b = active_color.blue;
         this.active_color = active_color;
         this.get_style_context ().add_class ("clr-da");
-        
-        this.set_halign (Gtk.Align.CENTER);
 
         Gtk.rgb_to_hsv ((float)r, (float)g, (float)b, out h, out s, out v);
         this.h = h;
@@ -137,7 +135,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
                width         = WIDTH,
                height        = HEIGHT,
                aspect        = 1.0,
-               corner_radius = 8.0;
+               corner_radius = 12.0;
         double radius        = corner_radius / aspect;
         double degrees       = Math.PI / 180.0;
 

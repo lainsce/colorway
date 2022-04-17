@@ -10,11 +10,11 @@
 }
 
 .main-box {
-  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.1));
+  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
 }
 
 .clr-hue trough {
-    background: linear-gradient(90deg,
+    background: linear-gradient(0deg,
         rgba(255,0,0,1) 0%,
         rgba(255,255,0,1) 16.66%,
         rgba(0,255,0,1) 33.33%,
@@ -23,8 +23,8 @@
         rgba(255,0,255,1) 83.33%,
         rgba(255,0,0,1) 100%
     );
-    min-height: 20px;
-    padding: 0 6px;
+    min-width: 20px;
+    padding: 6px 0;
 }
 
 .clr-hue slider {
@@ -54,17 +54,7 @@
 
 .list-action-button {
   padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px 0 alpha(black, 0.3),
-              0 4px 8px 3px alpha(black, 0.15);
-}
-.list-action-button:hover {
-  box-shadow: 0 2px 3px 0 alpha(black, 0.3),
-              0 6px 10px 4px alpha(black, 0.15);
-}
-.list-action-button:active {
-  box-shadow: 0 1px 3px 0 alpha(black, 0.3),
-              0 4px 8px 3px alpha(black, 0.15);
+  border-radius: 999px;
 }
 
 .view-title {
@@ -76,11 +66,4 @@
 .view-title-bold {
   font-size: 1.5rem;
   font-weight: 600;
-}
-
-.no-sep {
-  background: none;
-  box-shadow: none;
-  border: none;
-  margin: 0px;
 }

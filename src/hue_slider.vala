@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Lains
+ * Copyright (c) 2021-2022 Lains
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public
@@ -30,9 +30,7 @@ public class Colorway.HueSlider : Gtk.Scale {
 
     construct {
         //  Initialize parent's properties
-        this.orientation = Gtk.Orientation.HORIZONTAL;
-        this.set_halign (Gtk.Align.CENTER);
-        this.width_request = 250;
+        this.orientation = Gtk.Orientation.VERTICAL;
         this.draw_value = false;
         this.digits = 0;
         this.has_origin = false;
