@@ -52,17 +52,18 @@
                                 <child>
                                   <object class="GtkBox" id="props_box">
                                     <property name="orientation">vertical</property>
-                                    <property name="vexpand">1</property>
                                     <property name="spacing">12</property>
                                     <property name="margin-start">18</property>
                                     <property name="margin-end">18</property>
                                     <property name="margin-top">47</property>
                                     <child>
-                                      <object class="GtkLabel">
-                                        <property name="label" translatable="yes">Color</property>
+                                      <object class="GtkEntry" id="color_label">
+                                        <property name="max-width-chars">7</property>
                                         <property name="halign">start</property>
+                                        <property name="tooltip-text" translatable="yes">Change color (hexcode)</property>
                                         <style>
-                                          <class name="view-title"/>
+                                          <class name="view-title-bold"/>
+                                          <class name="numeric"/>
                                         </style>
                                       </object>
                                     </child>
@@ -71,14 +72,6 @@
                                         <child>
                                           <placeholder/>
                                         </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkEntry" id="color_label">
-                                        <style>
-                                          <class name="view-title-bold"/>
-                                          <class name="numeric"/>
-                                        </style>
                                       </object>
                                     </child>
                                   </object>

@@ -105,7 +105,9 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Triadic"));
             color_rule_dropdown.append_text(_("Tetradic"));
             color_rule_dropdown.append_text(_("Monochromatic"));
-            color_rule_dropdown.set_active(0);
+            color_rule_dropdown.set_active(3);
+            color_rule_dropdown.set_halign (Gtk.Align.START);
+            color_rule_dropdown.margin_bottom = 22;
           
             box = new PaletteButton ("#111", false);
             box.set_size_request(44, 44);
@@ -133,12 +135,12 @@ namespace Colorway {
             mbox.append (tbox);
             mbox.append (ubox);
 
-            props_box.append (color_rule_dropdown);
             props_box.append (mbox);
-            mbox.margin_bottom = 70;
+            props_box.append (color_rule_dropdown);
 
             color_label.set_text (color.up());
-            
+
+            color_picker_button.grab_focus ();
             color_picker_button.clicked.connect (() => {
                 pick_color.begin ();
             });
@@ -288,7 +290,7 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
             });
 
-            this.set_size_request (295, -1);
+            this.set_size_request (275, -1);
 			this.show ();
 		}
 

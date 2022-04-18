@@ -26,7 +26,10 @@
     min-width: 20px;
     padding: 6px 0;
 }
-
+.clr-hue {
+    margin: 0 0 0 6px;
+    padding: 0;
+}
 .clr-hue slider {
 	box-shadow: inset 0 0 0 4px #fff;
 	border: none;
@@ -35,12 +38,6 @@
 	background: none;
   border-radius: 999px;
 }
-
-.clr-props-message:disabled {
-  color: rgba(255,255,255,0);
-  transition: 500ms color;
-}
-
 .clr-color {
   border-radius: 999px;
   box-shadow: inset 0 0 0 1px @borders;
@@ -57,13 +54,10 @@
   border-radius: 999px;
 }
 
-.view-title {
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: 0;
-  margin: 0;
-}
 .view-title-bold {
   font-size: 1.5rem;
   font-weight: 600;
+  margin: 0;
+  padding: 0;
+  background: none;
 }
