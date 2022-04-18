@@ -107,7 +107,7 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(3);
             color_rule_dropdown.set_halign (Gtk.Align.START);
-            color_rule_dropdown.margin_bottom = 22;
+            color_rule_dropdown.margin_bottom = 40;
           
             box = new PaletteButton ("#111", false);
             box.set_size_request(44, 44);
