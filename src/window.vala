@@ -107,7 +107,7 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(3);
             color_rule_dropdown.set_halign (Gtk.Align.START);
-            color_rule_dropdown.margin_bottom = 40;
+            color_rule_dropdown.margin_bottom = 12;
           
             box = new PaletteButton ("#111", false);
             box.set_size_request(44, 44);
@@ -115,20 +115,18 @@ namespace Colorway {
             sbox = new PaletteButton ("#111", false);
             sbox.set_size_request(44, 44);
             sbox.set_visible(false);
-            sbox.get_style_context ().add_class ("clr-color");
+            sbox.get_style_context ().add_class ("clr-color-mid");
             tbox = new PaletteButton ("#111", false);
             tbox.set_size_request(44, 44);
             tbox.set_visible(false);
-            tbox.get_style_context ().add_class ("clr-color");
+            tbox.get_style_context ().add_class ("clr-color-mid");
             ubox = new PaletteButton ("#111", false);
             ubox.set_size_request(44, 44);
-            ubox.get_style_context ().add_class ("clr-color");
+            ubox.get_style_context ().add_class ("clr-color-end");
             
             mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            mbox.set_halign (Gtk.Align.CENTER);
-            mbox.set_valign (Gtk.Align.START);
+            mbox.set_halign (Gtk.Align.START);
             mbox.overflow = HIDDEN;
-            mbox.set_spacing (30);
             mbox.get_style_context ().add_class ("clr-palette");
             mbox.append (box);
             mbox.append (sbox);
@@ -577,12 +575,12 @@ namespace Colorway {
             var snap = new Gtk.Snapshot ();
             mbox.snapshot (snap);
 
-            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 260, 32); // 260×32 is the color result box size;
+            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 176, 44); // 260×32 is the color result box size;
             var cr = new Cairo.Context (sf);
             var node = snap.to_node ();
             node.draw(cr);
 
-            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 260, 32);
+            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 176, 44);
             var mt = Gdk.Texture.for_pixbuf (pb);
 
             var display = Gdk.Display.get_default ();

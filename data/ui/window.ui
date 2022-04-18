@@ -19,7 +19,7 @@
                 <child type="title">
                   <object class="GtkBox" />
                 </child>
-                <child type="start">
+                <child type="end">
                   <object class="GtkMenuButton" id="menu_button">
                     <property name="icon-name">open-menu-symbolic</property>
                     <style>
@@ -52,10 +52,10 @@
                                 <child>
                                   <object class="GtkBox" id="props_box">
                                     <property name="orientation">vertical</property>
-                                    <property name="spacing">12</property>
-                                    <property name="margin-start">18</property>
-                                    <property name="margin-end">18</property>
-                                    <property name="margin-top">47</property>
+                                    <property name="spacing">6</property>
+                                    <property name="margin-start">12</property>
+                                    <property name="margin-end">12</property>
+                                    <property name="margin-top">5</property>
                                     <child>
                                       <object class="GtkEntry" id="color_label">
                                         <property name="max-width-chars">7</property>
@@ -85,8 +85,8 @@
                               <object class="GtkBox">
                                 <property name="valign">end</property>
                                 <property name="halign">end</property>
-                                <property name="margin-bottom">18</property>
-                                <property name="margin-end">18</property>
+                                <property name="margin-bottom">12</property>
+                                <property name="margin-end">12</property>
                                 <child>
                                   <object class="GtkButton" id="color_picker_button">
                                     <property name="icon-name">color-picker-symbolic</property>

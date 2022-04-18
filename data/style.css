@@ -39,9 +39,18 @@
   border-radius: 999px;
 }
 .clr-color {
-  border-radius: 999px;
+  border-radius: 999px 0 0 999px;
   box-shadow: inset 0 0 0 1px @borders;
 }
+.clr-color-mid {
+  border-radius: 0px;
+  box-shadow: inset 0 0 0 1px @borders;
+}
+.clr-color-end {
+  border-radius: 0 999px 999px 0;
+  box-shadow: inset 0 0 0 1px @borders;
+}
+
 .clr-palette button image {
 	color: #fff;
 }
@@ -58,6 +67,6 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
-  padding: 0;
+  padding: 2px;
   background: none;
 }
