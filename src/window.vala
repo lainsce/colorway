@@ -150,6 +150,18 @@ namespace Colorway {
             
             da = new Chooser(gdkrgba);
             hue_slider = new HueSlider (360);
+
+            Gdk.RGBA clr = {};
+            clr.parse(color_label.get_text());
+
+            float ch,cs,cv,h,r,g,b;
+            Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
+            Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
+            var pc = Utils.make_hex((float)Utils.make_srgb(r),
+                                    (float)Utils.make_srgb(g),
+                                    (float)Utils.make_srgb(b));
+
+            hue_slider.set_value(ch*360);
             
             color_box.append(da);
             color_box.append(hue_slider);
@@ -158,12 +170,12 @@ namespace Colorway {
                 double hue = hue_slider.get_value () / 360;
                 Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
                 
-                var pc = Utils.make_hex((float)Utils.make_srgb(active_color.red),
+                var pcda = Utils.make_hex((float)Utils.make_srgb(active_color.red),
                                         (float)Utils.make_srgb(active_color.green), 
                                         (float)Utils.make_srgb(active_color.blue));
                 
-                color_label.set_text (pc.up());
-                color = pc.up();
+                color_label.set_text (pcda.up());
+                color = pcda.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#111";
@@ -177,21 +189,21 @@ namespace Colorway {
             hue_slider.on_value_changed.connect ((hue) => {
                 double x, y, s, v;
                 double sr, sg, sb;
-                double r, g, b;
+                double rh, gh, bh;
                 da.pos_to_sv (out s, out v);
                 Gtk.hsv_to_rgb ((float)hue, 1, 1, out sr, out sg, out sb);
-                Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out r, out g, out b);
+                Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out rh, out gh, out bh);
 
-                active_color = {(float)r, (float)g, (float)b};
-                da.active_color = {(float)r, (float)g, (float)b};
+                active_color = {(float)rh, (float)gh, (float)bh};
+                da.active_color = {(float)rh, (float)gh, (float)bh};
                 da.update_surface_color (sr, sg, sb);
                 
-                var pc = Utils.make_hex((float)Utils.make_srgb(r),
-                                        (float)Utils.make_srgb(g), 
-                                        (float)Utils.make_srgb(b));
+                var pchs = Utils.make_hex((float)Utils.make_srgb(rh),
+                                        (float)Utils.make_srgb(gh),
+                                        (float)Utils.make_srgb(bh));
                 
-                color_label.set_text (pc.up());
-                color = pc.up();
+                color_label.set_text (pchs.up());
+                color = pchs.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#111";
@@ -208,18 +220,18 @@ namespace Colorway {
             setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
 
             color_rule_dropdown.changed.connect(() => {
-                Gdk.RGBA clr = {};
-                clr.parse(color_label.get_text());
+                Gdk.RGBA clrd = {};
+                clrd.parse(color_label.get_text());
 
-                float ch,cs,cv,h,r,g,b;
-                Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
-                Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
-                var pc = Utils.make_hex((float)Utils.make_srgb(r),
-                                        (float)Utils.make_srgb(g),
-                                        (float)Utils.make_srgb(b));
+                float chd,csd,cvd,hd,rd,gd,bd;
+                Gtk.rgb_to_hsv(clrd.red, clrd.green, clrd.blue, out chd, out csd, out cvd);
+                Gtk.hsv_to_rgb(chd, csd, cvd, out rd, out gd, out bd);
+                var pcd = Utils.make_hex((float)Utils.make_srgb(rd),
+                                        (float)Utils.make_srgb(gd),
+                                        (float)Utils.make_srgb(bd));
 
-                color = pc.up();
-                color_label.set_text (pc.up());
+                color = pcd.up();
+                color_label.set_text (pcd.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#111";
@@ -227,29 +239,29 @@ namespace Colorway {
                     contrast = "#fff";
                 }
 
-                setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+                setup_color_rules.begin (color, contrast, chd, csd, cvd, color_rule_dropdown, sbox, tbox);
             });
 
             color_label.activate.connect(() => {
-                Gdk.RGBA clr = {};
+                Gdk.RGBA clrl = {};
                 clr.parse(color_label.get_text());
 
-                float ch,cs,cv,h,r,g,b;
-                Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
-                Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
-                var pc = Utils.make_hex((float)Utils.make_srgb(r),
-                                        (float)Utils.make_srgb(g),
-                                        (float)Utils.make_srgb(b));
+                float chl,csl,cvl,hl,rl,gl,bl;
+                Gtk.rgb_to_hsv(clrl.red, clrl.green, clrl.blue, out chl, out csl, out cvl);
+                Gtk.hsv_to_rgb(chl, csl, cvl, out rl, out gl, out bl);
+                var pcl = Utils.make_hex((float)Utils.make_srgb(rl),
+                                        (float)Utils.make_srgb(gl),
+                                        (float)Utils.make_srgb(bl));
 
-                active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
-                da.update_surface_color (clr.red, clr.green, clr.blue);
-                da.sv_to_pos (cs, cv);
+                active_color = {(float)clrl.red, (float)clrl.green, (float)clrl.blue};
+                da.update_surface_color (clrl.red, clrl.green, clrl.blue);
+                da.sv_to_pos (csl, cvl);
                 da.queue_draw();
 
-                hue_slider.set_value(ch*360);
+                hue_slider.set_value(chl*360);
 
-                color = pc.up();
-                color_label.set_text (pc.up());
+                color = pcl.up();
+                color_label.set_text (pcl.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#111";
@@ -257,28 +269,28 @@ namespace Colorway {
                     contrast = "#fff";
                 }
 
-                setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+                setup_color_rules.begin (color, contrast, chl, csl, cvl, color_rule_dropdown, sbox, tbox);
             });
             color_label.icon_press.connect(() => {
-                Gdk.RGBA clr = {};
+                Gdk.RGBA clrc = {};
                 clr.parse(color_label.get_text());
 
-                float ch,cs,cv,h,r,g,b;
-                Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
-                Gtk.hsv_to_rgb(ch, cs, cv, out r, out g, out b);
-                var pc = Utils.make_hex((float)Utils.make_srgb(r),
-                                        (float)Utils.make_srgb(g),
-                                        (float)Utils.make_srgb(b));
+                float chc,csc,cvc,hc,rc,gc,bc;
+                Gtk.rgb_to_hsv(clrc.red, clrc.green, clrc.blue, out chc, out csc, out cvc);
+                Gtk.hsv_to_rgb(chc, csc, cvc, out rc, out gc, out bc);
+                var pcc = Utils.make_hex((float)Utils.make_srgb(rc),
+                                        (float)Utils.make_srgb(gc),
+                                        (float)Utils.make_srgb(bc));
 
-                active_color = {(float)clr.red, (float)clr.green, (float)clr.blue};
-                da.update_surface_color (clr.red, clr.green, clr.blue);
-                da.sv_to_pos (cs, cv);
+                active_color = {(float)clrc.red, (float)clrc.green, (float)clrc.blue};
+                da.update_surface_color (clrc.red, clrc.green, clrc.blue);
+                da.sv_to_pos (csc, cvc);
                 da.queue_draw();
 
-                hue_slider.set_value(ch*360);
+                hue_slider.set_value(chc*360);
 
-                color = pc.up();
-                color_label.set_text (pc.up());
+                color = pcc.up();
+                color_label.set_text (pcc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#111";
@@ -286,7 +298,7 @@ namespace Colorway {
                     contrast = "#fff";
                 }
 
-                setup_color_rules.begin (color, contrast, ch, cs, cv, color_rule_dropdown, sbox, tbox);
+                setup_color_rules.begin (color, contrast, chc, csc, cvc, color_rule_dropdown, sbox, tbox);
             });
 
             this.set_size_request (275, -1);

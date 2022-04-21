@@ -14,7 +14,7 @@
 }
 
 .clr-hue trough {
-    background: linear-gradient(0deg,
+    background: linear-gradient(180deg,
         rgba(255,0,0,1) 0%,
         rgba(255,255,0,1) 16.66%,
         rgba(0,255,0,1) 33.33%,

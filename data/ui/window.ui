@@ -58,8 +58,9 @@
                                     <property name="margin-top">47</property>
                                     <child>
                                       <object class="GtkEntry" id="color_label">
-                                        <property name="max-width-chars">7</property>
+                                        <property name="max-width-chars">8</property>
                                         <property name="halign">start</property>
+                                        <property name="width-chars">8</property>
                                         <property name="tooltip-text" translatable="yes">Change color (hexcode)</property>
                                         <style>
                                           <class name="view-title-bold"/>
