@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Colorway
 Exec=io.github.lainsce.Colorway
-Icon=@icon@
+Icon=@app_id@
 Keywords=color;palette;library;hue;swatch;
 Terminal=false
 Type=Application

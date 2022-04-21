@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-    <id>io.github.lainsce.Colorway</id>
+    <id>@app_id@</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name translatable="no">Colorway</name>
@@ -11,7 +11,7 @@
     <provides>
         <binary>io.github.lainsce.Colorway</binary>
     </provides>
-    <launchable type="desktop-id">@app-id@.desktop</launchable>
+    <launchable type="desktop-id">@app_id@.desktop</launchable>
     <kudos>
       <kudo>ModernToolkit</kudo>
       <kudo>HiDpiIcon</kudo>
@@ -45,13 +45,13 @@
                 <p>Fixed: Hue slider rainbow and starting position.</p>
             </description>
         </release>
-        <release version="1.1.1" date="2022-04-20">
+        <release version="1.1.2" date="2022-04-20">
             <description>
                 <p>Changed: UI now follows my own style that complements that of Adwaita, called Solo.</p>
                 <p>Changed: Window size reduced dramatically.</p>
             </description>
         </release>
-        <release version="1.1.0" date="2022-02-11">
+        <release version="1.1.1" date="2022-02-11">
             <description>
                 <p>Changed: New UI colors.</p>
             </description>
