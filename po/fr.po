@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Colorway package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Colorway\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-05 19:44-0300\n"
+"PO-Revision-Date: 2022-05-24 18:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.Colorway.desktop.in:3
+#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
+msgid "Colorway"
+msgstr "Colorway"
+
+#: data/io.github.lainsce.Colorway.desktop.in:6
+msgid "color;palette;library;hue;swatch;"
+msgstr "color;palette;library;hue;swatch;couleur;paire;"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:7
+msgid "Generate color pairings"
+msgstr "Générer des paires de couleurs"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:9
+msgid ""
+"Generate color pairings from selected color that follow certain color rules."
+msgstr ""
+"Générer des paires de couleurs à partir d'une couleur sélectionnée qui "
+"respecte certaines règles de couleur."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:18
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:44
+msgid "Release: Recoloring With Accent"
+msgstr "Version : Recoloration avec accent"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+msgid "Changed: The UI now uses libadwaita recoloring."
+msgstr "Changement : L'interface utilise désormais la recoloration libadwaita."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+msgid "Changed: New UI layout."
+msgstr "Changement : Nouvelle disposition de l'interface."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+msgid "Release: Color Choosing with a Drag"
+msgstr "Version : Choix de couleur par glisser-déposer"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+msgid ""
+"Added: The color chooser box's pointer can now be dragged to choose the "
+"color as well, no more clicking random spots."
+msgstr ""
+"Ajout : Le pointeur de la boîte de sélection des couleurs peut désormais "
+"être déplacé pour choisir la couleur. Plus besoin de cliquer sur des points "
+"aléatoires."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+msgid ""
+"Changed: Most icons now above color content are aware of contrast and will "
+"update accordingly as white or black colored to ensure contrast."
+msgstr ""
+"Changement : La plupart des icônes dont le contenu est maintenant en couleur "
+"sont averties du contraste et se mettront à jour en conséquence, en blanc ou "
+"en noir, pour assurer le contraste."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+msgid "Release: Copiable Colors"
+msgstr "Version : Couleurs copiables"
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+msgid ""
+"Added: Now the color boxes are now buttons which you can copy the individual "
+"color."
+msgstr ""
+"Ajout : Les cases de couleur sont maintenant des boutons qui vous permettent "
+"de copier la couleur individuelle."
+
+#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+msgid "Release: First Release"
+msgstr "Version : Première version"
+
+#: data/ui/keys.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Général"
+
+#: data/ui/keys.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitter"
+
+#: data/ui/menu.ui:7
+msgid "Export Colors as Image…"
+msgstr "Exporter les couleurs comme image…"
+
+#: data/ui/menu.ui:13
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+#: data/ui/menu.ui:17
+msgid "About Colorway"
+msgstr "À propos de Colorway"
+
+#: data/ui/window.ui:99
+msgid "Pick Color"
+msgstr "Choisir une couleur"
+
+#: src/window.vala:101
+msgid "Analogous"
+msgstr "Analogue"
+
+#: src/window.vala:102
+msgid "Complementary"
+msgstr "Complémentaire"
+
+#: src/window.vala:103
+msgid "Triadic"
+msgstr "Triadique"
+
+#: src/window.vala:104
+msgid "Tetradic"
+msgstr "Tétradique"
+
+#: src/window.vala:105
+msgid "Monochromatic"
+msgstr "Monochromatique"
+
+#: src/window.vala:541
+msgid "Colors exported to clipboard."
+msgstr "Couleurs exportées dans le presse-papiers."
+
+#: src/window.vala:575
+msgid "Generate color pairings."
+msgstr "Générer des paires de couleurs."
+
+#: src/window.vala:581
+msgid "translator-credits"
+msgstr "Irénée Thirion"
