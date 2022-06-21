@@ -7,85 +7,109 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-05 19:44-0300\n"
-"PO-Revision-Date: 2022-03-29 17:28+0200\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"POT-Creation-Date: 2022-06-21 18:19+0200\n"
+"PO-Revision-Date: 2022-06-21 18:35+0200\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
-#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:6
 msgid "Colorway"
 msgstr "Colorway"
 
 #: data/io.github.lainsce.Colorway.desktop.in:6
 msgid "color;palette;library;hue;swatch;"
-msgstr "kleur;palet;verzameling;tint;staal;"
+msgstr ""
+"color;kleur;palette;palet;library;bibliotheek;verzameling;hue;tint;swatch;"
+"staal;"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:7
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:7
 msgid "Generate color pairings"
-msgstr "Genereer kleurstellingen"
+msgstr "Genereer kleurencombinaties"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:9
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:9
 msgid ""
 "Generate color pairings from selected color that follow certain color rules."
-msgstr "Genereer kleurstellingen op basis van één zelfgekozen kleur."
+msgstr "Genereer kleurencombinaties op basis van één zelfgekozen kleur."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:18
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:19
 msgid "Lains"
 msgstr "Lains"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:44
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:45
+msgid "Fixed: Hue slider rainbow and starting position."
+msgstr "Opgelost: Regenboog en startpositie van tintregelaar."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:50
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+"Veranderd: Interface volgt nu mijn eigen stijl die aanvult op Adwaita, "
+"genaamd Solo."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:51
+msgid "Changed: Window size reduced dramatically."
+msgstr "Veranderd: Venstergrootte drastisch verkleind."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:56
+msgid "Changed: New UI colors."
+msgstr "Veranderd: Nieuwe interfacekleuren."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:61
 msgid "Release: Recoloring With Accent"
-msgstr "Uitgave: ‘Accentkleuring’"
+msgstr "Uitgave: Accentkleuring"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:62
 msgid "Changed: The UI now uses libadwaita recoloring."
-msgstr "-De toepassing maakt voortaan gebruik van libadwaita-kleuren;"
+msgstr ""
+"Veranderd: De interface maakt voortaan gebruik van libadwaita-kleuring."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:63
 msgid "Changed: New UI layout."
-msgstr "-Nieuwe indeling."
+msgstr "Veranderd: Nieuwe indeling."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:68
 msgid "Release: Color Choosing with a Drag"
-msgstr "Uitgave: ‘Neem kleuren op sleeptouw’"
+msgstr "Uitgave: Neem kleuren op sleeptouw"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:69
 msgid ""
 "Added: The color chooser box's pointer can now be dragged to choose the "
 "color as well, no more clicking random spots."
 msgstr ""
-"-Het pipet van de kleurkiezer kan voortaan worden versleept naar een kleur, "
-"zodat je niet meer in de rondte hoeft te klikken;"
+"Toegevoegd: Het pipet van de kleurkiezer kan voortaan worden versleept naar "
+"een kleur, zodat je niet meer in de rondte hoeft te klikken."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:70
 msgid ""
 "Changed: Most icons now above color content are aware of contrast and will "
 "update accordingly as white or black colored to ensure contrast."
 msgstr ""
-"-De meeste pictogrammen van kleurinhoud werken voortaan met contrasten, "
-"waardoor het contrast voortdurend kan worden bijgewerkt."
+"Veranderd: De meeste pictogrammen van kleurinhoud werken voortaan met "
+"contrasten, waardoor het contrast voortdurend kan worden bijgewerkt."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:75
 msgid "Release: Copiable Colors"
-msgstr "Uitgave: ‘Kleurkopieën’"
+msgstr "Uitgave: Kopieerbare kleuren"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:76
 msgid ""
 "Added: Now the color boxes are now buttons which you can copy the individual "
 "color."
 msgstr ""
-"-Kleurvakken zijn voortaan knoppen - klik er op om een kleur te kopiëren."
+"Toegevoegd: Kleurvakken zijn voortaan knoppen - klik er op om een kleur te "
+"kopiëren."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:81
 msgid "Release: First Release"
-msgstr "Uitgave: ‘Eerste uitgave’"
+msgstr "Uitgave: Eerste uitgave"
 
 #: data/ui/keys.ui:12
 msgctxt "shortcut window"
@@ -95,52 +119,77 @@ msgstr "Algemeen"
 #: data/ui/keys.ui:16
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Afsluiten"
+msgstr "Sluiten"
+
+#: data/ui/keys.ui:23
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: data/ui/keys.ui:27
+msgctxt "shortcut window"
+msgid "Copy colors to clipboard"
+msgstr "Kleuren naar klembord kopiëren"
+
+#: data/ui/keys.ui:33
+msgctxt "shortcut window"
+msgid "Copy colors image to clipboard"
+msgstr "Afbeelding van kleuren naar klembord kopiëren"
 
 #: data/ui/menu.ui:7
-msgid "Export Colors as Image…"
-msgstr "Kleuren exporteren als afbeelding…"
+msgid "Copy Colors to Clipboard"
+msgstr "Kleuren naar klembord kopiëren"
 
-#: data/ui/menu.ui:13
+#: data/ui/menu.ui:11
+msgid "Copy Colors Image to Clipboard"
+msgstr "Afbeelding van kleuren naar klembord kopiëren"
+
+#: data/ui/menu.ui:17
 msgid "Keyboard Shortcuts"
 msgstr "Sneltoetsen"
 
-#: data/ui/menu.ui:17
+#: data/ui/menu.ui:21
 msgid "About Colorway"
 msgstr "Over Colorway"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:64
+msgid "Change color (hexcode)"
+msgstr "Kleur aanpassen (hex-code)"
+
+#: data/ui/window.ui:95
 msgid "Pick Color"
 msgstr "Kleur kiezen"
 
-#: src/window.vala:101
+#: src/window.vala:103
 msgid "Analogous"
 msgstr "Analoog"
 
-#: src/window.vala:102
+#: src/window.vala:104
 msgid "Complementary"
 msgstr "Complementair"
 
-#: src/window.vala:103
+#: src/window.vala:105
 msgid "Triadic"
 msgstr "Derde kleur"
 
-#: src/window.vala:104
+#: src/window.vala:106
 msgid "Tetradic"
 msgstr "Vierde kleur"
 
-#: src/window.vala:105
+#: src/window.vala:107
 msgid "Monochromatic"
 msgstr "Monochroom"
 
-#: src/window.vala:541
-msgid "Colors exported to clipboard."
-msgstr "De kleuren zijn gekopieerd naar het klembord."
-
-#: src/window.vala:575
+#: src/window.vala:629
 msgid "Generate color pairings."
 msgstr "Genereer kleurstellingen."
 
-#: src/window.vala:581
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/window.vala:636
 msgid "translator-credits"
-msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+msgstr ""
+"Heimen Stoffels <vistausss@fastmail.com>\n"
+"Philip Goto <philip.goto@gmail.com>"
+
+#~ msgid "Export Colors as Image…"
+#~ msgstr "Kleuren exporteren als afbeelding…"
