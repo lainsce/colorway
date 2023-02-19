@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-05 19:44-0300\n"
-"PO-Revision-Date: 2021-12-22 15:11+0100\n"
+"POT-Creation-Date: 2022-06-21 18:19+0200\n"
+"PO-Revision-Date: 2022-08-03 17:23+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: hr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
-#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:6
 msgid "Colorway"
 msgstr "Colorway"
 
@@ -28,39 +28,59 @@ msgstr "Colorway"
 msgid "color;palette;library;hue;swatch;"
 msgstr "boja;paleta;biblioteka;nijansa;uzorak;"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:7
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:7
 msgid "Generate color pairings"
 msgstr "Generiraj parove boja"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:9
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:9
 msgid ""
 "Generate color pairings from selected color that follow certain color rules."
 msgstr ""
 "Generiraj parove boja iz odabranih boja koji slijede određena pravila boja."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:18
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:19
 msgid "Lains"
 msgstr "Lains"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:44
-msgid "Release: Recoloring With Accent"
-msgstr "Izdanje: ponovno bojenje s istaknutim bojama"
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:45
+msgid "Fixed: Hue slider rainbow and starting position."
+msgstr "Ispravljeno: Duga klizača nijansi i početni položaj."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:50
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+"Promijenjeno: Korisničko sučelje sada slijedi moj vlastiti stil koji "
+"nadopunjuje stil Adwaite, pod nazivom Solo."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:51
+msgid "Changed: Window size reduced dramatically."
+msgstr "Promijenjeno: Veličina prozora dramatično smanjena."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:56
+msgid "Changed: New UI colors."
+msgstr "Promnijenjeno: Nove boje korisničkog sučelja."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:61
+msgid "Release: Recoloring With Accent"
+msgstr "Izdanje: Ponovno bojenje s istaknutim bojama"
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:62
 msgid "Changed: The UI now uses libadwaita recoloring."
 msgstr ""
-"Promijenjeno: korisničko sučelje sada koristi biblioteku libadwaita za "
+"Promijenjeno: Korisničko sučelje sada koristi biblioteku libadwaita za "
 "ponovno bojenje."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:63
 msgid "Changed: New UI layout."
 msgstr "Promnijenjeno: Novi raspored korisničkog sučelja."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:68
 msgid "Release: Color Choosing with a Drag"
 msgstr "Izdanje: Biranje boja povlačenjem"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:69
 msgid ""
 "Added: The color chooser box's pointer can now be dragged to choose the "
 "color as well, no more clicking random spots."
@@ -68,7 +88,7 @@ msgstr ""
 "Dodano: Pokazivač okvira za biranje boje sada se može povući i za biranje "
 "boje, bez pritiskanja nasumičnih mjesta."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:70
 msgid ""
 "Changed: Most icons now above color content are aware of contrast and will "
 "update accordingly as white or black colored to ensure contrast."
@@ -77,11 +97,11 @@ msgstr ""
 "aktualizirat će se sukladno kao bijelo ili crno obojone kako bi se osigurao "
 "kontrast."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:75
 msgid "Release: Copiable Colors"
 msgstr "Izdnje: Mogućnost kopiranja boja"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:76
 msgid ""
 "Added: Now the color boxes are now buttons which you can copy the individual "
 "color."
@@ -89,7 +109,7 @@ msgstr ""
 "Dodano: Okviri boja sada su gumbi pomoću kojih se pojedinačna boja može "
 "kopirati."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:81
 msgid "Release: First Release"
 msgstr "Izdanje: Prvo izdanje"
 
@@ -103,50 +123,70 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Zatvori program"
 
-#: data/ui/menu.ui:7
-msgid "Export Colors as Image…"
-msgstr "Izvezi boje kao sliku …"
+#: data/ui/keys.ui:23
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Kopiraj"
 
-#: data/ui/menu.ui:13
+#: data/ui/keys.ui:27
+msgctxt "shortcut window"
+msgid "Copy colors to clipboard"
+msgstr "Kopiraj boje u međuspremnik"
+
+#: data/ui/keys.ui:33
+msgctxt "shortcut window"
+msgid "Copy colors image to clipboard"
+msgstr "Kopiraj sliku boja u međuspremnik"
+
+#: data/ui/menu.ui:7
+msgid "Copy Colors to Clipboard"
+msgstr "Kopiraj boje u međuspremnik"
+
+#: data/ui/menu.ui:11
+msgid "Copy Colors Image to Clipboard"
+msgstr "Kopiraj sliku boja u međuspremnik"
+
+#: data/ui/menu.ui:17
 msgid "Keyboard Shortcuts"
 msgstr "Tipkovni prečaci"
 
-#: data/ui/menu.ui:17
+#: data/ui/menu.ui:21
 msgid "About Colorway"
 msgstr "O programu Colorway"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:64
+msgid "Change color (hexcode)"
+msgstr "Promijeni boju (heksadecimalni kod)"
+
+#: data/ui/window.ui:95
 msgid "Pick Color"
 msgstr "Odaberi boju"
 
-#: src/window.vala:101
+#: src/window.vala:103
 msgid "Analogous"
 msgstr "Analognu"
 
-#: src/window.vala:102
+#: src/window.vala:104
 msgid "Complementary"
 msgstr "Komplementarnu"
 
-#: src/window.vala:103
+#: src/window.vala:105
 msgid "Triadic"
 msgstr "Trijadnu"
 
-#: src/window.vala:104
+#: src/window.vala:106
 msgid "Tetradic"
 msgstr "Tetraedričnu"
 
-#: src/window.vala:105
+#: src/window.vala:107
 msgid "Monochromatic"
 msgstr "Jednobojnu"
 
-#: src/window.vala:541
-msgid "Colors exported to clipboard."
-msgstr "Boje izvezene u međuspremnik."
-
-#: src/window.vala:575
+#: src/window.vala:629
 msgid "Generate color pairings."
 msgstr "Generiraj parove boja."
 
-#: src/window.vala:581
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/window.vala:636
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>"

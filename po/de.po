@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-05 19:44-0300\n"
-"PO-Revision-Date: 2021-12-22 15:11+0100\n"
+"POT-Creation-Date: 2022-06-21 18:19+0200\n"
+"PO-Revision-Date: 2022-08-03 17:23+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
-#: data/io.github.lainsce.Colorway.appdata.xml.in:6 src/window.vala:570
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:6
 msgid "Colorway"
 msgstr "Colorway"
 
@@ -27,39 +27,59 @@ msgstr "Colorway"
 msgid "color;palette;library;hue;swatch;"
 msgstr "Farbe;Palette;Farbton;Muster;"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:7
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:7
 msgid "Generate color pairings"
 msgstr "Farbpaarungen generieren"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:9
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:9
 msgid ""
 "Generate color pairings from selected color that follow certain color rules."
 msgstr ""
 "Generiere Farbpaarungen aus der ausgewählten Farbe, die bestimmten "
 "Farbregeln folgen."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:18
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:19
 msgid "Lains"
 msgstr "Lains"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:44
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:45
+msgid "Fixed: Hue slider rainbow and starting position."
+msgstr "Behoben: Regenbogen-Farbtonregler und Startposition."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:50
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+"Geändert: Die Benutzeroberfläche folgt jetzt meinem eigenen Stil, der den "
+"von Adwaita ergänzt, genannt Solo."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:51
+msgid "Changed: Window size reduced dramatically."
+msgstr "Geändert: Fenstergröße drastisch reduziert."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:56
+msgid "Changed: New UI colors."
+msgstr "Geändert: Neue Benutzeroberflächen-Farben."
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:61
 msgid "Release: Recoloring With Accent"
 msgstr "Veröffentlichung: Umfärbung mit aktzentuierten Farben"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:45
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:62
 msgid "Changed: The UI now uses libadwaita recoloring."
 msgstr ""
 "Geändert: Die Benutzeroberfläche verwendet jetzt die Libadwaita-Umfärbung."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:46
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:63
 msgid "Changed: New UI layout."
 msgstr "Geändert: Neues Benutzeroberflächen-Layout."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:51
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:68
 msgid "Release: Color Choosing with a Drag"
 msgstr "Veröffentlichung: Farbauswahl per Drag&Drop"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:52
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:69
 msgid ""
 "Added: The color chooser box's pointer can now be dragged to choose the "
 "color as well, no more clicking random spots."
@@ -67,7 +87,7 @@ msgstr ""
 "Hinzugefügt: Der Zeiger der Farbauswahlbox kann jetzt auch gezogen werden, "
 "um die Farbe auszuwählen, kein Klicken mehr auf zufällige Punkte."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:53
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:70
 msgid ""
 "Changed: Most icons now above color content are aware of contrast and will "
 "update accordingly as white or black colored to ensure contrast."
@@ -76,11 +96,11 @@ msgstr ""
 "befinden, erkennen den Kontrast und werden entsprechend in weißer oder "
 "schwarzer Farbe aktualisiert, um den Kontrast zu gewährleisten."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:58
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:75
 msgid "Release: Copiable Colors"
 msgstr "Veröffentlichung: Kopierbare Farben"
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:59
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:76
 msgid ""
 "Added: Now the color boxes are now buttons which you can copy the individual "
 "color."
@@ -88,7 +108,7 @@ msgstr ""
 "Hinzugefügt: Die Farbkästchen sind jetzt Schaltflächen, mit denen einzelne "
 "Farben kopiert werden können."
 
-#: data/io.github.lainsce.Colorway.appdata.xml.in:64
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:81
 msgid "Release: First Release"
 msgstr "Veröffentlichung: Erste Veröffentlichung"
 
@@ -102,50 +122,70 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Beenden"
 
-#: data/ui/menu.ui:7
-msgid "Export Colors as Image…"
-msgstr "Farben als Bild exportieren …"
+#: data/ui/keys.ui:23
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Kopieren"
 
-#: data/ui/menu.ui:13
+#: data/ui/keys.ui:27
+msgctxt "shortcut window"
+msgid "Copy colors to clipboard"
+msgstr "Farben in Zwischenablage kopieren"
+
+#: data/ui/keys.ui:33
+msgctxt "shortcut window"
+msgid "Copy colors image to clipboard"
+msgstr "Farbbild in die Zwischenablage kopieren"
+
+#: data/ui/menu.ui:7
+msgid "Copy Colors to Clipboard"
+msgstr "Farben in Zwischenablage kopieren"
+
+#: data/ui/menu.ui:11
+msgid "Copy Colors Image to Clipboard"
+msgstr "Farbbild in die Zwischenablage kopieren"
+
+#: data/ui/menu.ui:17
 msgid "Keyboard Shortcuts"
 msgstr "Tastaturkürzel"
 
-#: data/ui/menu.ui:17
+#: data/ui/menu.ui:21
 msgid "About Colorway"
 msgstr "Über Colorway"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:64
+msgid "Change color (hexcode)"
+msgstr "Farbe ändern (Hexidezimal-Code)"
+
+#: data/ui/window.ui:95
 msgid "Pick Color"
 msgstr "Farbe wählen"
 
-#: src/window.vala:101
+#: src/window.vala:103
 msgid "Analogous"
 msgstr "Analog"
 
-#: src/window.vala:102
+#: src/window.vala:104
 msgid "Complementary"
 msgstr "Komplementär"
 
-#: src/window.vala:103
+#: src/window.vala:105
 msgid "Triadic"
 msgstr "Triadisch"
 
-#: src/window.vala:104
+#: src/window.vala:106
 msgid "Tetradic"
 msgstr "Tetradisch"
 
-#: src/window.vala:105
+#: src/window.vala:107
 msgid "Monochromatic"
 msgstr "Monochromatisch"
 
-#: src/window.vala:541
-msgid "Colors exported to clipboard."
-msgstr "Farben in Zwischenablage kopiert."
-
-#: src/window.vala:575
+#: src/window.vala:629
 msgid "Generate color pairings."
 msgstr "Generiere Farbpaarungen."
 
-#: src/window.vala:581
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/window.vala:636
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>"
