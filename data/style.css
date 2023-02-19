@@ -1,18 +1,4 @@
 /* app */
-@define-color accent_color #3742fa;
-@define-color accent_bg_color #3742fa;
-@define-color window_bg_color #fff;
-@define-color headerbar_bg_color #fff;
-
-.solid-csd {
-  box-shadow: none;
-  outline: 1px solid @borders;
-}
-
-.main-box {
-  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
-}
-
 .clr-hue trough {
     background: linear-gradient(180deg,
         rgba(255,0,0,1) 0%,
@@ -38,35 +24,14 @@
 	background: none;
   border-radius: 999px;
 }
-.clr-color {
-  border-radius: 999px 0 0 999px;
-  box-shadow: inset 0 0 0 1px @borders;
-}
-.clr-color-mid {
-  border-radius: 0px;
-  box-shadow: inset 0 0 0 1px @borders;
-}
-.clr-color-end {
-  border-radius: 0 999px 999px 0;
-  box-shadow: inset 0 0 0 1px @borders;
-}
 
 .clr-palette button image {
 	color: #fff;
 }
 .clr-palette button.light image {
-	color: #333;
+	color: #000;
 }
 
-.list-action-button {
-  padding: 10px;
-  border-radius: 999px;
-}
-
-.view-title-bold {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
-  padding: 2px;
-  background: none;
+.text-field {
+  min-height: 42px;
 }

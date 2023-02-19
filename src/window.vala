@@ -17,7 +17,7 @@
 
 namespace Colorway {
 	[GtkTemplate (ui = "/io/github/lainsce/Colorway/window.ui")]
-	public class MainWindow : Adw.ApplicationWindow {
+	public class MainWindow : He.ApplicationWindow {
 	    [GtkChild]
 	    unowned Gtk.MenuButton menu_button;
 	    [GtkChild]
@@ -25,9 +25,9 @@ namespace Colorway {
 	    [GtkChild]
 	    unowned Gtk.Box props_box;
 	    [GtkChild]
-	    unowned Gtk.Button color_picker_button;
+	    unowned He.OverlayButton color_picker_button;
 	    [GtkChild]
-	    unowned Gtk.Entry color_label;
+	    unowned He.TextField color_label;
 	    
 	    public Chooser da;
 	    public HueSlider hue_slider;
@@ -52,19 +52,17 @@ namespace Colorway {
 	    public SimpleActionGroup actions { get; construct; }
         public const string ACTION_PREFIX = "win.";
         public const string ACTION_ABOUT = "action_about";
-        public const string ACTION_KEYS = "action_keys";
         public const string ACTION_EXPORT_TXT = "action_export_txt";
         public const string ACTION_EXPORT_PNG = "action_export_png";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
               {ACTION_ABOUT, action_about},
-              {ACTION_KEYS, action_keys},
               {ACTION_EXPORT_TXT, action_export_txt},
               {ACTION_EXPORT_PNG, action_export_png},
         };
 
-        public Adw.Application app { get; construct; }
-		public MainWindow (Adw.Application app) {
+        public He.Application app { get; construct; }
+		public MainWindow (He.Application app) {
 			Object (
 			    application: app,
 			    app: app
@@ -86,7 +84,6 @@ namespace Colorway {
                 app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
-            app.set_accels_for_action("win.action_keys", {"<Ctrl>question"});
             app.set_accels_for_action("win.action_export_txt", {"<Ctrl>e"});
             app.set_accels_for_action("win.action_export_png", {"<Shift><Ctrl>e"});
 
@@ -97,7 +94,7 @@ namespace Colorway {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
             color = "#72dec2";
-            contrast = "#111";
+            contrast = "#000";
             
             color_rule_dropdown = new Gtk.ComboBoxText ();
             color_rule_dropdown.append_text(_("Analogous"));
@@ -107,27 +104,22 @@ namespace Colorway {
             color_rule_dropdown.append_text(_("Monochromatic"));
             color_rule_dropdown.set_active(3);
             color_rule_dropdown.set_halign (Gtk.Align.START);
-            color_rule_dropdown.margin_bottom = 12;
-            color_rule_dropdown.width_request = 175;
+            color_rule_dropdown.margin_bottom = 18;
+            color_rule_dropdown.width_request = 160;
           
-            box = new PaletteButton ("#111", false);
+            box = new PaletteButton ("#000", false);
             box.set_size_request(44, 44);
-            box.get_style_context ().add_class ("clr-color");
-            sbox = new PaletteButton ("#111", false);
+            sbox = new PaletteButton ("#000", false);
             sbox.set_size_request(44, 44);
             sbox.set_visible(false);
-            sbox.get_style_context ().add_class ("clr-color-mid");
-            tbox = new PaletteButton ("#111", false);
+            tbox = new PaletteButton ("#000", false);
             tbox.set_size_request(44, 44);
             tbox.set_visible(false);
-            tbox.get_style_context ().add_class ("clr-color-mid");
-            ubox = new PaletteButton ("#111", false);
+            ubox = new PaletteButton ("#000", false);
             ubox.set_size_request(44, 44);
-            ubox.get_style_context ().add_class ("clr-color-end");
             
-            mbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            mbox.set_halign (Gtk.Align.START);
-            mbox.overflow = HIDDEN;
+            mbox = new He.SegmentedButton ();
+            mbox.set_valign (Gtk.Align.START);
             mbox.get_style_context ().add_class ("clr-palette");
             mbox.append (box);
             mbox.append (sbox);
@@ -137,9 +129,8 @@ namespace Colorway {
             props_box.append (mbox);
             props_box.append (color_rule_dropdown);
 
-            color_label.set_text (color.up());
+            color_label.get_entry ().set_text (color.up());
 
-            color_picker_button.grab_focus ();
             color_picker_button.clicked.connect (() => {
                 pick_color.begin ();
             });
@@ -152,7 +143,7 @@ namespace Colorway {
             hue_slider = new HueSlider (360);
 
             Gdk.RGBA clr = {};
-            clr.parse(color_label.get_text());
+            clr.parse(color_label.get_entry ().get_text());
 
             float ch,cs,cv,h,r,g,b;
             Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
@@ -174,11 +165,11 @@ namespace Colorway {
                                         (float)Utils.make_srgb(active_color.green), 
                                         (float)Utils.make_srgb(active_color.blue));
                 
-                color_label.set_text (pcda.up());
+                color_label.get_entry ().set_text (pcda.up());
                 color = pcda.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#111";
+                    contrast = "#000";
                 } else {
                     contrast = "#fff";
                 }
@@ -202,11 +193,11 @@ namespace Colorway {
                                         (float)Utils.make_srgb(gh),
                                         (float)Utils.make_srgb(bh));
                 
-                color_label.set_text (pchs.up());
+                color_label.get_entry ().set_text (pchs.up());
                 color = pchs.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#111";
+                    contrast = "#000";
                 } else {
                     contrast = "#fff";
                 }
@@ -221,7 +212,7 @@ namespace Colorway {
 
             color_rule_dropdown.changed.connect(() => {
                 Gdk.RGBA clrd = {};
-                clrd.parse(color_label.get_text());
+                clrd.parse(color_label.get_entry ().get_text());
 
                 float chd,csd,cvd,hd,rd,gd,bd;
                 Gtk.rgb_to_hsv(clrd.red, clrd.green, clrd.blue, out chd, out csd, out cvd);
@@ -231,10 +222,10 @@ namespace Colorway {
                                         (float)Utils.make_srgb(bd));
 
                 color = pcd.up();
-                color_label.set_text (pcd.up());
+                color_label.get_entry ().set_text (pcd.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#111";
+                    contrast = "#000";
                 } else {
                     contrast = "#fff";
                 }
@@ -242,9 +233,9 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, chd, csd, cvd, color_rule_dropdown, sbox, tbox);
             });
 
-            color_label.activate.connect(() => {
+            color_label.get_entry ().activate.connect(() => {
                 Gdk.RGBA clrl = {};
-                clr.parse(color_label.get_text());
+                clr.parse(color_label.get_entry ().get_text());
 
                 float chl,csl,cvl,hl,rl,gl,bl;
                 Gtk.rgb_to_hsv(clrl.red, clrl.green, clrl.blue, out chl, out csl, out cvl);
@@ -261,19 +252,19 @@ namespace Colorway {
                 hue_slider.set_value(chl*360);
 
                 color = pcl.up();
-                color_label.set_text (pcl.up());
+                color_label.get_entry ().set_text (pcl.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#111";
+                    contrast = "#000";
                 } else {
                     contrast = "#fff";
                 }
 
                 setup_color_rules.begin (color, contrast, chl, csl, cvl, color_rule_dropdown, sbox, tbox);
             });
-            color_label.icon_press.connect(() => {
+            color_label.get_entry ().icon_press.connect(() => {
                 Gdk.RGBA clrc = {};
-                clr.parse(color_label.get_text());
+                clr.parse(color_label.get_entry ().get_text());
 
                 float chc,csc,cvc,hc,rc,gc,bc;
                 Gtk.rgb_to_hsv(clrc.red, clrc.green, clrc.blue, out chc, out csc, out cvc);
@@ -290,10 +281,10 @@ namespace Colorway {
                 hue_slider.set_value(chc*360);
 
                 color = pcc.up();
-                color_label.set_text (pcc.up());
+                color_label.get_entry ().set_text (pcc.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#111";
+                    contrast = "#000";
                 } else {
                     contrast = "#fff";
                 }
@@ -301,7 +292,7 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, chc, csc, cvc, color_rule_dropdown, sbox, tbox);
             });
 
-            this.set_size_request (275, -1);
+            this.set_size_request (295, 400);
 			this.show ();
 		}
 
@@ -463,7 +454,7 @@ namespace Colorway {
                                                 (float)Utils.make_srgb(g), 
                                                 (float)Utils.make_srgb(b));
 
-                        color_label.set_text (pc.up());
+                        color_label.get_entry ().set_text (pc.up());
                         color = pc.up();
                         active_color = color_portal;
                         da.active_color = color_portal;
@@ -471,7 +462,7 @@ namespace Colorway {
                         hue_slider.set_value(h*360);
 
                         if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                            contrast = "#111";
+                            contrast = "#000";
                         } else {
                             contrast = "#fff";
                         }
@@ -539,25 +530,19 @@ namespace Colorway {
             var css_provider = new Gtk.CssProvider();
             string style = null;
             style = """
-            .clr-preview {
+            .clr-preview .overlay-button {
                 background: %s;
                 color: %s;
-                box-shadow: inset 0 0 0 1px @borders, 0 4px 8px 3px alpha(%s, 0.30);
-            }
-            .clr-preview:hover {
-                box-shadow: inset 0 0 0 1px @borders, 0 6px 10px 4px alpha(%s, 0.30);
             }
             """.printf(color,
-                       contrast,
-                       color,
-                       color);
+                       contrast);
 
             css_provider.load_from_data(style.data);
 
             Gtk.StyleContext.add_provider_for_display (
                 Gdk.Display.get_default (),
                 css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION + 999
             );
         }
 
@@ -601,40 +586,26 @@ namespace Colorway {
             clipboard.set_texture (mt);
         }
 
-        public void action_keys () {
-            try {
-                var build = new Gtk.Builder ();
-                build.add_from_resource ("/io/github/lainsce/Colorway/keys.ui");
-                var window =  (Gtk.ShortcutsWindow) build.get_object ("shortcuts-colorway");
-                window.set_transient_for (this);
-                window.show ();
-            } catch (Error e) {
-                warning ("Failed to open shortcuts window: %s\n", e.message);
-            }
-        }
-
         public void action_about () {
-            const string COPYRIGHT = "Copyright \xc2\xa9 2021 Paulo \"Lains\" Galardi\n";
+            // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+            string translators = (_(""));
 
-            const string? AUTHORS[] = {
-                "Paulo \"Lains\" Galardi",
-                null
-            };
-
-            var program_name = "Colorway" + Config.NAME_SUFFIX;
-            Gtk.show_about_dialog (this,
-                                   "program-name", program_name,
-                                   "logo-icon-name", Config.APP_ID,
-                                   "version", Config.VERSION,
-                                   "comments", _("Generate color pairings."),
-                                   "copyright", COPYRIGHT,
-                                   "authors", AUTHORS,
-                                   "artists", null,
-                                   "license-type", Gtk.License.GPL_3_0,
-                                   "wrap-license", false,
-                                   // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
-                                   "translator-credits", _("translator-credits"),
-                                   null);
+            var about = new He.AboutWindow (
+                this,
+                "Colorway",
+                Config.APP_ID,
+                Config.VERSION,
+                Config.APP_ID,
+                "https://github.com/lainsce/colorway/tree/main/po",
+                "https://github.com/lainsce/colorway/issues/new",
+                "https://github.com/lainsce/colorway",
+                {translators},
+                {"Paulo \"Lains\" Galardi"},
+                2018, // Year of first publication.
+                He.AboutWindow.Licenses.GPLv3,
+                He.Colors.GREEN
+            );
+            about.present ();
         }
 	}
 }

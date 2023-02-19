@@ -40,6 +40,11 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
+        <release version="2.0.0" date="2023-02-19">
+            <description>
+                <p>Changed: UI now follows Helium HIG, not Adwaita nor Solo.</p>
+            </description>
+        </release>
         <release version="1.2.0" date="2022-04-21">
             <description>
                 <p>Fixed: Hue slider rainbow and starting position.</p>

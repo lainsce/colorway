@@ -1,8 +1,8 @@
 {
-    "app-id" : "io.github.lainsce.Colorway.Devel",
-    "runtime" : "org.gnome.Platform",
+    "id" : "io.github.lainsce.Colorway.Devel",
+    "runtime" : "com.fyralabs.Platform",
     "runtime-version" : "master",
-    "sdk" : "org.gnome.Sdk",
+    "sdk" : "com.fyralabs.Sdk",
     "command" : "io.github.lainsce.Colorway",
     "finish-args" : [
         "--filesystem=xdg-run/gvfsd",

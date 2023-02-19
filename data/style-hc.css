@@ -2,7 +2,3 @@
   border: 1px solid @borders;
   box-shadow: none;
 }
-
-.list-action-button {
-  border: 1px solid @borders;
-}

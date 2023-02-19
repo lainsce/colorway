@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 namespace Colorway {
-    public class Application : Adw.Application {
+    public class Application : He.Application {
         public static MainWindow win = null;
         public static GLib.Settings gsettings;
         private const GLib.ActionEntry app_entries[] = {
