@@ -13,7 +13,7 @@ add_project_arguments([
 )
 
 if get_option('development')
-  app_id = 'io.github.lainsce.Colorway.Devel'
+  app_id = 'io.github.lainsce.Colorway'
   name_suffix = ' (Development)'
 else
   app_id = 'io.github.lainsce.Colorway'
