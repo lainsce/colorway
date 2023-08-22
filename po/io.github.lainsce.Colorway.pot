@@ -3,12 +3,14 @@
 # This file is distributed under the same license as the io.github.lainsce.Colorway package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/window.vala:591
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-21 18:19+0200\n"
+"POT-Creation-Date: 2023-08-22 15:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:6
 msgid "Colorway"
 msgstr ""
 
@@ -35,93 +36,68 @@ msgid ""
 "Generate color pairings from selected color that follow certain color rules."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:19
-msgid "Lains"
-msgstr ""
-
 #: data/io.github.lainsce.Colorway.metainfo.xml.in:45
-msgid "Fixed: Hue slider rainbow and starting position."
+msgid "Changed: UI now follows Helium HIG, not Adwaita nor Solo."
 msgstr ""
 
 #: data/io.github.lainsce.Colorway.metainfo.xml.in:50
+msgid "Fixed: Hue slider rainbow and starting position."
+msgstr ""
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:55
 msgid ""
 "Changed: UI now follows my own style that complements that of Adwaita, "
 "called Solo."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:51
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:56
 msgid "Changed: Window size reduced dramatically."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:56
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:61
 msgid "Changed: New UI colors."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:61
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:66
 msgid "Release: Recoloring With Accent"
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:62
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:67
 msgid "Changed: The UI now uses libadwaita recoloring."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:63
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:68
 msgid "Changed: New UI layout."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:68
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:73
 msgid "Release: Color Choosing with a Drag"
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:69
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:74
 msgid ""
 "Added: The color chooser box's pointer can now be dragged to choose the "
 "color as well, no more clicking random spots."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:70
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:75
 msgid ""
 "Changed: Most icons now above color content are aware of contrast and will "
 "update accordingly as white or black colored to ensure contrast."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:75
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:80
 msgid "Release: Copiable Colors"
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:76
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:81
 msgid ""
 "Added: Now the color boxes are now buttons which you can copy the individual "
 "color."
 msgstr ""
 
-#: data/io.github.lainsce.Colorway.metainfo.xml.in:81
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:86
 msgid "Release: First Release"
-msgstr ""
-
-#: data/ui/keys.ui:12
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/ui/keys.ui:16
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/ui/keys.ui:23
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr ""
-
-#: data/ui/keys.ui:27
-msgctxt "shortcut window"
-msgid "Copy colors to clipboard"
-msgstr ""
-
-#: data/ui/keys.ui:33
-msgctxt "shortcut window"
-msgid "Copy colors image to clipboard"
 msgstr ""
 
 #: data/ui/menu.ui:7
@@ -140,39 +116,30 @@ msgstr ""
 msgid "About Colorway"
 msgstr ""
 
-#: data/ui/window.ui:64
+#: data/ui/window.ui:22
 msgid "Change color (hexcode)"
 msgstr ""
 
-#: data/ui/window.ui:95
+#: data/ui/window.ui:50
 msgid "Pick Color"
 msgstr ""
 
-#: src/window.vala:103
+#: src/window.vala:100
 msgid "Analogous"
 msgstr ""
 
-#: src/window.vala:104
+#: src/window.vala:101
 msgid "Complementary"
 msgstr ""
 
-#: src/window.vala:105
+#: src/window.vala:102
 msgid "Triadic"
 msgstr ""
 
-#: src/window.vala:106
+#: src/window.vala:103
 msgid "Tetradic"
 msgstr ""
 
-#: src/window.vala:107
+#: src/window.vala:104
 msgid "Monochromatic"
-msgstr ""
-
-#: src/window.vala:629
-msgid "Generate color pairings."
-msgstr ""
-
-#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
-#: src/window.vala:636
-msgid "translator-credits"
 msgstr ""
