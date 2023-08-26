@@ -23,11 +23,11 @@ msgstr ""
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
 msgid "Colorway"
-msgstr "Colourway"
+msgstr "Colorway"
 
 #: data/io.github.lainsce.Colorway.desktop.in:6
 msgid "color;palette;library;hue;swatch;"
-msgstr "colorway;colour;palette;library;hue;swatch;"
+msgstr "colour;palette;library;hue;swatch;"
 
 #: data/io.github.lainsce.Colorway.metainfo.xml.in:7
 msgid "Generate color pairings"
@@ -125,7 +125,7 @@ msgstr "Keyboard Shortcuts"
 
 #: data/ui/menu.ui:21
 msgid "About Colorway"
-msgstr "About Colourway"
+msgstr "About Colorway"
 
 #: data/ui/window.ui:22
 msgid "Change color (hexcode)"
