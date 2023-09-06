@@ -2,7 +2,6 @@ data/io.github.lainsce.Colorway.desktop.in
 data/io.github.lainsce.Colorway.metainfo.xml.in
 data/io.github.lainsce.Colorway.gschema.xml
 
-data/ui/keys.ui
 data/ui/menu.ui
 data/ui/window.ui
 
