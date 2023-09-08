@@ -1,0 +1,27 @@
+using Gtk 4.0;
+
+menu menu {
+  section {
+    item {
+      label: _("Copy Colors to Clipboard");
+      action: "win.action_export_txt";
+    }
+
+    item {
+      label: _("Copy Colors Image to Clipboard");
+      action: "win.action_export_png";
+    }
+  }
+
+  section {
+    item {
+      label: _("Keyboard Shortcuts");
+      action: "win.action_keys";
+    }
+
+    item {
+      label: _("About Colorway");
+      action: "win.action_about";
+    }
+  }
+}

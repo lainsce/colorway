@@ -46,7 +46,7 @@ public class Colorway.Chooser : Gtk.DrawingArea {
         g = active_color.green;
         b = active_color.blue;
         this.active_color = active_color;
-        this.get_style_context ().add_class ("clr-da");
+        this.add_css_class ("clr-da");
 
         Gtk.rgb_to_hsv ((float)r, (float)g, (float)b, out h, out s, out v);
         this.h = h;

@@ -35,7 +35,7 @@ public class Colorway.HueSlider : Gtk.Scale {
         this.digits = 0;
         this.has_origin = false;
 
-        this.get_style_context ().add_class ("clr-hue");
+        this.add_css_class ("clr-hue");
 
         this.value_changed.connect (() => {
             double hue = this.adjustment.get_value () / 360;

@@ -32,7 +32,7 @@ namespace Colorway {
 	    public Chooser da;
 	    public HueSlider hue_slider;
 
-	    public Gtk.ComboBoxText color_rule_dropdown;
+	    public Gtk.DropDown color_rule_dropdown;
 	    public PaletteButton box;
 	    public PaletteButton tbox;
 	    public PaletteButton sbox;
@@ -95,14 +95,13 @@ namespace Colorway {
             
             color = "#72dec2";
             contrast = "#000";
+
+            var model = new Gtk.StringList ({_("Analogous"), _("Complementary"), _("Triadic"), _("Tetradic"), _("Monochromatic")});
+            var expression = new Gtk.PropertyExpression(typeof(string), null, "value");
             
-            color_rule_dropdown = new Gtk.ComboBoxText ();
-            color_rule_dropdown.append_text(_("Analogous"));
-            color_rule_dropdown.append_text(_("Complementary"));
-            color_rule_dropdown.append_text(_("Triadic"));
-            color_rule_dropdown.append_text(_("Tetradic"));
-            color_rule_dropdown.append_text(_("Monochromatic"));
-            color_rule_dropdown.set_active(3);
+            color_rule_dropdown = new Gtk.DropDown (model, expression);
+            color_rule_dropdown.model = model;
+            color_rule_dropdown.set_selected (3);
             color_rule_dropdown.set_halign (Gtk.Align.START);
             color_rule_dropdown.margin_bottom = 18;
             color_rule_dropdown.width_request = 160;
@@ -210,7 +209,7 @@ namespace Colorway {
             da.pos_to_sv (out s, out v);
             setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
 
-            color_rule_dropdown.changed.connect(() => {
+            color_rule_dropdown.notify["selected"].connect(() => {
                 Gdk.RGBA clrd = {};
                 clrd.parse(color_label.get_entry ().get_text());
 
@@ -262,42 +261,13 @@ namespace Colorway {
 
                 setup_color_rules.begin (color, contrast, chl, csl, cvl, color_rule_dropdown, sbox, tbox);
             });
-            color_label.get_entry ().icon_press.connect(() => {
-                Gdk.RGBA clrc = {};
-                clr.parse(color_label.get_entry ().get_text());
-
-                float chc,csc,cvc,hc,rc,gc,bc;
-                Gtk.rgb_to_hsv(clrc.red, clrc.green, clrc.blue, out chc, out csc, out cvc);
-                Gtk.hsv_to_rgb(chc, csc, cvc, out rc, out gc, out bc);
-                var pcc = Utils.make_hex((float)Utils.make_srgb(rc),
-                                        (float)Utils.make_srgb(gc),
-                                        (float)Utils.make_srgb(bc));
-
-                active_color = {(float)clrc.red, (float)clrc.green, (float)clrc.blue};
-                da.update_surface_color (clrc.red, clrc.green, clrc.blue);
-                da.sv_to_pos (csc, cvc);
-                da.queue_draw();
-
-                hue_slider.set_value(chc*360);
-
-                color = pcc.up();
-                color_label.get_entry ().set_text (pcc.up());
-
-                if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000";
-                } else {
-                    contrast = "#fff";
-                }
-
-                setup_color_rules.begin (color, contrast, chc, csc, cvc, color_rule_dropdown, sbox, tbox);
-            });
 
             this.set_size_request (295, 400);
 			this.show ();
 		}
 
-		public async void setup_color_rules (string color, string contrast, double hue, double s, double v, Gtk.ComboBoxText? crd, PaletteButton? sbox, PaletteButton? tbox) {
-		    switch (crd.get_active ()) {
+		public async void setup_color_rules (string color, string contrast, double hue, double s, double v, Gtk.DropDown? crd, PaletteButton? sbox, PaletteButton? tbox) {
+		    switch (crd.get_selected ()) {
                 case 0:
                     da.pos_to_sv (out s, out v);
                     if (hue <= 0.5) {
@@ -551,12 +521,11 @@ namespace Colorway {
 
             export_txt += box.hex + "\n";
 
-            switch (color_rule_dropdown.get_active ()) {
+            switch (color_rule_dropdown.get_selected ()) {
                 case 2:
                     export_txt += sbox.hex + "\n";
                     break;
-                case 3:
-                case 4:
+                default:
                     export_txt += tbox.hex + "\n";
                     break;
             }

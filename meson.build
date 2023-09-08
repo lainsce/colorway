@@ -35,11 +35,12 @@ add_project_arguments(
   '-DGETTEXT_PACKAGE="@0@"'.format(app_id),
   language: 'c'
 )
-
-asresources = gnome.compile_resources(
-  'as-resources', 'data/io.github.lainsce.Colorway.gresource.xml',
-  source_dir: 'data',
-  c_name: 'as'
+add_project_arguments(
+  [
+		'--target-glib=2.68',
+    '--gresourcesdir', meson.current_build_dir() / 'data',
+	],
+	language: 'vala',
 )
 
 sources = [
@@ -64,17 +65,17 @@ dependencies = [
   meson.get_compiler('c').find_library('m', required: true)
 ]
 
+subdir('data')
+subdir('po')
+
 executable(
   meson.project_name(),
-  sources,
   asresources,
+  sources,
   dependencies: dependencies,
   vala_args: [meson.project_source_root() + '/src/config.vapi'],
   install : true
 )
-
-subdir('data')
-subdir('po')
 
 gnome.post_install(
   glib_compile_schemas: true,
