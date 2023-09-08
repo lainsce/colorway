@@ -52,11 +52,7 @@ public class Colorway.PaletteButton : Gtk.Button {
 	construct {
 		visible = true;
 
-		width_request = 32;
-		height_request = 32;
-
-		hexpand = true;
-		vexpand = true;
+		width_request = 56;
 
 		// We really want to set the background
 		get_style_context().add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
@@ -79,20 +75,6 @@ public class Colorway.PaletteButton : Gtk.Button {
 			leave ();
 		});
 		add_controller (motion);
-
-		var drag = new Gtk.DragSource ();
-		drag.prepare.connect (() => {
-		    Gdk.RGBA colour;
-		    colour.parse (_hex);
-
-		    drag.set_state (CLAIMED);
-
-            return new Gdk.ContentProvider.for_value (colour);
-		});
-		drag.drag_begin.connect (() => {
-	        drag.set_icon (new Gtk.WidgetPaintable (this), 0, 0);
-		});
-		add_controller (drag);
 	}
 
 	public PaletteButton (string hex, bool light) {

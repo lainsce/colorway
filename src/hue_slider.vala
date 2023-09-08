@@ -30,7 +30,7 @@ public class Colorway.HueSlider : Gtk.Scale {
 
     construct {
         //  Initialize parent's properties
-        this.orientation = Gtk.Orientation.VERTICAL;
+        this.orientation = Gtk.Orientation.HORIZONTAL;
         this.draw_value = false;
         this.digits = 0;
         this.has_origin = false;

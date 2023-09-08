@@ -100,26 +100,22 @@ namespace Colorway {
             var expression = new Gtk.PropertyExpression(typeof(string), null, "value");
             
             color_rule_dropdown = new Gtk.DropDown (model, expression);
+            color_rule_dropdown.set_size_request (150, -1);
             color_rule_dropdown.model = model;
             color_rule_dropdown.set_selected (3);
             color_rule_dropdown.set_halign (Gtk.Align.START);
             color_rule_dropdown.margin_bottom = 18;
-            color_rule_dropdown.width_request = 160;
           
             box = new PaletteButton ("#000", false);
-            box.set_size_request(44, 44);
             sbox = new PaletteButton ("#000", false);
-            sbox.set_size_request(44, 44);
             sbox.set_visible(false);
             tbox = new PaletteButton ("#000", false);
-            tbox.set_size_request(44, 44);
             tbox.set_visible(false);
             ubox = new PaletteButton ("#000", false);
-            ubox.set_size_request(44, 44);
             
             mbox = new He.SegmentedButton ();
-            mbox.set_valign (Gtk.Align.START);
-            mbox.get_style_context ().add_class ("clr-palette");
+            mbox.set_size_request (264, -1);
+            mbox.homogeneous = true;
             mbox.append (box);
             mbox.append (sbox);
             mbox.append (tbox);
@@ -262,7 +258,7 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, chl, csl, cvl, color_rule_dropdown, sbox, tbox);
             });
 
-            this.set_size_request (295, 400);
+            this.set_size_request (360, 233);
 			this.show ();
 		}
 

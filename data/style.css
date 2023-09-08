@@ -1,6 +1,6 @@
 /* app */
 .clr-hue trough {
-    background: linear-gradient(180deg,
+    background: linear-gradient(90deg,
         rgba(255,0,0,1) 0%,
         rgba(255,255,0,1) 16.66%,
         rgba(0,255,0,1) 33.33%,
@@ -9,11 +9,10 @@
         rgba(255,0,255,1) 83.33%,
         rgba(255,0,0,1) 100%
     );
-    min-width: 20px;
-    padding: 6px 0;
+    min-height: 20px;
+    padding: 0 6px;
 }
 .clr-hue {
-    margin: 0 0 0 6px;
     padding: 0;
 }
 .clr-hue slider {
@@ -22,7 +21,7 @@
 	min-width: 20px;
 	min-height: 20px;
 	background: none;
-  border-radius: 999px;
+    border-radius: 999px;
 }
 
 .clr-palette button image {
@@ -31,7 +30,6 @@
 .clr-palette button.light image {
 	color: #000;
 }
-
-.text-field {
-  min-height: 42px;
+.clr-props {
+    background: @surface_container_high_bg_color;
 }

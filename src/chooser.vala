@@ -21,12 +21,12 @@
 
 public class Colorway.Chooser : Gtk.DrawingArea {
     //  Properties
-    private const uint16 WIDTH = 232;
+    private const uint16 WIDTH = 140;
     private const uint16 HEIGHT = 140;
     private static double r;
     private static double g;
     private static double b;
-    public static double xpos = 232;
+    public static double xpos = 140;
     public static double ypos = 0;
     public static unowned Chooser instance;
     private static Cairo.Surface surface;

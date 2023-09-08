@@ -8,68 +8,58 @@ template $ColorwayMainWindow : He.ApplicationWindow {
   Box main_box {
     orientation: vertical;
 
-    styles [
-      "main-box",
-    ]
-
-    Overlay {
-      [overlay]
-      He.AppBar headerbar {
-        show-back: false;
-        valign: start;
-        viewtitle-widget: 
-        He.TextField color_label {
-          tooltip-text: _("Change color (hexcode)");
-          halign: start;
-
-          styles [
-            "numeric",
-          ]
-        };
-
-        MenuButton menu_button {
-          icon-name: "open-menu-symbolic";
-        }
-      }
-
-      WindowHandle {
-        vexpand: true;
-        hexpand: true;
-
+      Box {
         Box {
-          orientation: horizontal;
+          orientation: vertical;
+          spacing: 6;
+          styles [ "clr-props" ]
 
-          Box {
-            orientation: vertical;
-            vexpand: true;
+          He.AppBar headerbar1 {
+            show-back: false;
+            show-buttons: false;
+          }
 
+          WindowHandle {
+            Box color_box {
+              orientation: vertical;
+              spacing: 6;
+              margin-start: 18;
+              margin-end: 18;
+            }
+          }
+        }
+        Box {
+          orientation: vertical;
+          spacing: 6;
+
+          He.AppBar headerbar {
+            show-back: false;
+
+            MenuButton menu_button {
+              icon-name: "open-menu-symbolic";
+            }
+          }
+
+          WindowHandle {
             He.OverlayButton color_picker_button {
               icon: "color-select-symbolic";
               primary-tooltip: _("Pick Color");
               typeb: primary;
               size: small;
-
-              styles [
-                "clr-preview",
-              ]
+              styles [ "clr-preview" ]
 
               Box {
-                orientation: vertical;
-
                 Box props_box {
                   orientation: vertical;
                   spacing: 6;
                   margin-start: 18;
                   margin-end: 18;
-                  margin-top: 118;
 
-                  Box color_box {
+                  He.TextField color_label {
+                    tooltip-text: _("Change color (hexcode)");
+                    styles [ "numeric" ]
                   }
                 }
-
-                styles [
-                  "clr-props",
-                ]
               }
             }
           }
@@ -77,4 +67,3 @@ template $ColorwayMainWindow : He.ApplicationWindow {
       }
     }
   }
-}
