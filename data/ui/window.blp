@@ -11,12 +11,12 @@ template $ColorwayMainWindow : He.ApplicationWindow {
       Box {
         Box {
           orientation: vertical;
-          spacing: 6;
+          spacing: 12;
           styles [ "clr-props" ]
 
           He.AppBar headerbar1 {
             show-back: false;
-            show-buttons: false;
+            show-buttons: true;
           }
 
           WindowHandle {
@@ -30,22 +30,30 @@ template $ColorwayMainWindow : He.ApplicationWindow {
         }
         Box {
           orientation: vertical;
-          spacing: 6;
+          spacing: 12;
 
           He.AppBar headerbar {
             show-back: false;
+            show-buttons: false;
 
             MenuButton menu_button {
               icon-name: "open-menu-symbolic";
             }
+
+            [viewtitle-widget]
+            He.TextField color_label {
+              tooltip-text: _("Change color (hexcode)");
+              styles [ "numeric" ]
+            }
           }
 
           WindowHandle {
+            vexpand: true;
+
             He.OverlayButton color_picker_button {
               icon: "color-select-symbolic";
               primary-tooltip: _("Pick Color");
               typeb: primary;
-              size: small;
               styles [ "clr-preview" ]
 
               Box {
@@ -54,11 +62,6 @@ template $ColorwayMainWindow : He.ApplicationWindow {
                   spacing: 6;
                   margin-start: 18;
                   margin-end: 18;
-
-                  He.TextField color_label {
-                    tooltip-text: _("Change color (hexcode)");
-                    styles [ "numeric" ]
-                  }
                 }
               }
             }

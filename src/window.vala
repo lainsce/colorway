@@ -114,7 +114,8 @@ namespace Colorway {
             ubox = new PaletteButton ("#000", false);
             
             mbox = new He.SegmentedButton ();
-            mbox.set_size_request (264, -1);
+            mbox.remove_css_class ("segmented-button");
+            mbox.set_size_request (150, -1);
             mbox.homogeneous = true;
             mbox.append (box);
             mbox.append (sbox);
