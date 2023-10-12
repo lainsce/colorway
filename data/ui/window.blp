@@ -16,7 +16,6 @@ template $ColorwayMainWindow : He.ApplicationWindow {
 
           He.AppBar headerbar1 {
             show-back: false;
-            show-buttons: true;
           }
 
           WindowHandle {
@@ -34,7 +33,8 @@ template $ColorwayMainWindow : He.ApplicationWindow {
 
           He.AppBar headerbar {
             show-back: false;
-            show-buttons: false;
+            show-left-title-buttons: false;
+            show-right-title-buttons: true;
 
             MenuButton menu_button {
               icon-name: "open-menu-symbolic";
