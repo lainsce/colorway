@@ -59,7 +59,6 @@ subproject('blueprint-compiler')
 blueprints = custom_target(
   'blueprints',
   input: files(
-    'ui/menu.blp',
     'ui/window.blp',
   ),
   output: '.',

@@ -38,11 +38,13 @@ template $ColorwayMainWindow : He.ApplicationWindow {
 
             MenuButton menu_button {
               icon-name: "open-menu-symbolic";
+              menu-model: menu;
             }
 
             [viewtitle-widget]
             He.TextField color_label {
               tooltip-text: _("Change color (hexcode)");
+              visibility: true;
               styles [ "numeric" ]
             }
           }
@@ -53,7 +55,6 @@ template $ColorwayMainWindow : He.ApplicationWindow {
             He.OverlayButton color_picker_button {
               icon: "color-select-symbolic";
               primary-tooltip: _("Pick Color");
-              typeb: primary;
               styles [ "clr-preview" ]
 
               Box {
@@ -70,3 +71,29 @@ template $ColorwayMainWindow : He.ApplicationWindow {
       }
     }
   }
+
+menu menu {
+  section {
+    item {
+      label: _("Copy Colors to Clipboard");
+      action: "win.action_export_txt";
+    }
+
+    item {
+      label: _("Copy Colors Image to Clipboard");
+      action: "win.action_export_png";
+    }
+  }
+
+  section {
+    item {
+      label: _("Keyboard Shortcuts");
+      action: "win.action_keys";
+    }
+
+    item {
+      label: _("About Colorway");
+      action: "win.action_about";
+    }
+  }
+}

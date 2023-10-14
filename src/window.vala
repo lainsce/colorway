@@ -89,9 +89,6 @@ namespace Colorway {
 
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             default_theme.add_resource_path ("/io/github/lainsce/Colorway");
-
-            var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Colorway/menu.ui");
-            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
             
             color = "#72dec2";
             contrast = "#000";
@@ -114,6 +111,7 @@ namespace Colorway {
             ubox = new PaletteButton ("#000", false);
             
             mbox = new He.SegmentedButton ();
+            mbox.add_css_class ("clr-palette");
             mbox.remove_css_class ("segmented-button");
             mbox.set_size_request (150, -1);
             mbox.homogeneous = true;
