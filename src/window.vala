@@ -515,17 +515,15 @@ namespace Colorway {
             string export_txt = "";
 
             export_txt += box.hex + "\n";
+            export_txt += sbox.hex + "\n";
 
-            switch (color_rule_dropdown.get_selected ()) {
-                case 2:
-                    export_txt += sbox.hex + "\n";
-                    break;
-                default:
-                    export_txt += tbox.hex + "\n";
-                    break;
+            uint selected = color_rule_dropdown.get_selected ();
+            if (selected == 2) {
+                export_txt += tbox.hex + "\n";
+            } else if (selected >= 3) {
+                export_txt += tbox.hex + "\n";
+                export_txt += ubox.hex + "\n";
             }
-
-            export_txt += ubox.hex + "\n";
 
             // Put this ext_txt in clipboard
             var display = Gdk.Display.get_default ();
