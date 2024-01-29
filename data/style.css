@@ -9,19 +9,13 @@
         rgba(255,0,255,1) 83.33%,
         rgba(255,0,0,1) 100%
     );
-    min-height: 20px;
-    padding: 0 6px;
 }
 .clr-hue {
     padding: 0;
 }
 .clr-hue slider {
-	box-shadow: inset 0 0 0 4px #fff;
-	border: none;
-	min-width: 20px;
-	min-height: 20px;
+	box-shadow: inset 0 0 0 6px #fff;
 	background: none;
-    border-radius: 999px;
 }
 
 .clr-palette button image {
@@ -31,5 +25,5 @@
 	color: #000;
 }
 .clr-props {
-    background: @surface_container_high_bg_color;
+    background: @surface_container_bg_color;
 }
