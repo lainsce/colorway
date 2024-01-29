@@ -126,6 +126,7 @@ namespace Colorway {
             props_box.append (color_rule_dropdown);
 
             color_label.get_entry ().set_text (color.up());
+            color_label.remove_css_class ("disclosure-button");
 
             color_picker_button.clicked.connect (() => {
                 pick_color.begin ();
