@@ -19,26 +19,27 @@
  * Co-Authored by: Arvianto Dwi Wicaksono <arvianto.dwi@gmail.com>
  */
 
-public class Colorway.HueSlider : Gtk.Scale {
+public class Colorway.HueSlider : He.Slider {
 
     //  Signals
     public signal void on_value_changed (double hue);
 
     public HueSlider (double hue) {
-        this.adjustment = new Gtk.Adjustment (hue, 0, 360, 1, 360, 0);
+        scale.adjustment = new Gtk.Adjustment (hue, 0, 360, 1, 360, 0);
     }
 
     construct {
         //  Initialize parent's properties
-        this.orientation = Gtk.Orientation.HORIZONTAL;
-        this.draw_value = false;
-        this.digits = 0;
-        this.has_origin = false;
+        scale.orientation = Gtk.Orientation.HORIZONTAL;
+        scale.draw_value = false;
+        scale.digits = 0;
+        scale.has_origin = false;
 
         this.add_css_class ("clr-hue");
+        this.stop_indicator_visibility = true;
 
-        this.value_changed.connect (() => {
-            double hue = this.adjustment.get_value () / 360;
+        scale.value_changed.connect (() => {
+            double hue = scale.adjustment.get_value () / 360;
             on_value_changed (hue);
         });
     }

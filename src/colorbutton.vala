@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-public class Colorway.PaletteButton : Gtk.Button {
+public class Colorway.PaletteButton : He.FillButton {
 	private Gtk.CssProvider provider = new Gtk.CssProvider();
 	private string _hex = "";
 	private Gtk.Stack image_stack = new Gtk.Stack();

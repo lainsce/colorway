@@ -149,13 +149,13 @@ namespace Colorway {
                                     (float)Utils.make_srgb(g),
                                     (float)Utils.make_srgb(b));
 
-            hue_slider.set_value(ch*360);
+            hue_slider.scale.set_value(ch*360);
             
             color_box.append(da);
             color_box.append(hue_slider);
             
             da.on_sv_move.connect ((s, v) => {
-                double hue = hue_slider.get_value () / 360;
+                double hue = hue_slider.scale.get_value () / 360;
                 Gtk.hsv_to_rgb ((float)hue, (float)s, (float)v, out active_color.red, out active_color.green, out active_color.blue);
                 
                 var pcda = Utils.make_hex((float)Utils.make_srgb(active_color.red),
@@ -202,7 +202,7 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
             });
 
-            double hue = hue_slider.get_value () / 360;
+            double hue = hue_slider.scale.get_value () / 360;
             double s, v;
             da.pos_to_sv (out s, out v);
             setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -246,7 +246,7 @@ namespace Colorway {
                 da.sv_to_pos (csl, cvl);
                 da.queue_draw();
 
-                hue_slider.set_value(chl*360);
+                hue_slider.scale.set_value(chl*360);
 
                 color = pcl.up();
                 color_label.get_entry ().set_text (pcl.up());
@@ -298,7 +298,7 @@ namespace Colorway {
                     tbox.set_visible (false);
                     break;
                 case 1:
-                    var h = (hue_shift (hue_slider.get_value (), 180.0)) / 360;
+                    var h = (hue_shift (hue_slider.scale.get_value (), 180.0)) / 360;
                     double cs, cv;
                     da.pos_to_sv (out cs, out cv);
                     Gtk.hsv_to_rgb ((float)h, (float)cs, (float)cv, out active_color.red, out active_color.green, out active_color.blue);
@@ -312,7 +312,7 @@ namespace Colorway {
 
                     break;
                 case 2:
-                    var ch1 = (hue_shift (hue_slider.get_value (), 120.0)) / 360;
+                    var ch1 = (hue_shift (hue_slider.scale.get_value (), 120.0)) / 360;
                     double cs1, cv1;
                     da.pos_to_sv (out cs1, out cv1);
                     Gtk.hsv_to_rgb ((float)ch1, (float)cs1, (float)cv1, out active_color.red, out active_color.green, out active_color.blue);
@@ -320,7 +320,7 @@ namespace Colorway {
                                             (float)Utils.make_srgb(active_color.green),
                                             (float)Utils.make_srgb(active_color.blue));
 
-                    var ch2 = (hue_shift (hue_slider.get_value (), 240.0)) / 360;
+                    var ch2 = (hue_shift (hue_slider.scale.get_value (), 240.0)) / 360;
                     double cs2, cv2;
                     da.pos_to_sv (out cs2, out cv2);
                     Gtk.hsv_to_rgb ((float)ch2, (float)cs2, (float)cv2, out active_color.red, out active_color.green, out active_color.blue);
@@ -334,7 +334,7 @@ namespace Colorway {
 
                     break;
                 case 3:
-                    var ch1 = (hue_shift (hue_slider.get_value (), 90.0)) / 360;
+                    var ch1 = (hue_shift (hue_slider.scale.get_value (), 90.0)) / 360;
                     double cs1, cv1;
                     da.pos_to_sv (out cs1, out cv1);
                     Gtk.hsv_to_rgb ((float)ch1, (float)cs1, (float)cv1, out active_color.red, out active_color.green, out active_color.blue);
@@ -342,7 +342,7 @@ namespace Colorway {
                                             (float)Utils.make_srgb(active_color.green),
                                             (float)Utils.make_srgb(active_color.blue));
 
-                    var ch2 = (hue_shift (hue_slider.get_value (), 180.0)) / 360;
+                    var ch2 = (hue_shift (hue_slider.scale.get_value (), 180.0)) / 360;
                     double cs2, cv2;
                     da.pos_to_sv (out cs2, out cv2);
                     Gtk.hsv_to_rgb ((float)ch2, (float)cs2, (float)cv2, out active_color.red, out active_color.green, out active_color.blue);
@@ -350,7 +350,7 @@ namespace Colorway {
                                             (float)Utils.make_srgb(active_color.green),
                                             (float)Utils.make_srgb(active_color.blue));
 
-                    var ch3 = (hue_shift (hue_slider.get_value (), 270.0)) / 360;
+                    var ch3 = (hue_shift (hue_slider.scale.get_value (), 270.0)) / 360;
                     double cs3, cv3;
                     da.pos_to_sv (out cs3, out cv3);
                     Gtk.hsv_to_rgb ((float)ch3, (float)cs3, (float)cv3, out active_color.red, out active_color.green, out active_color.blue);
@@ -427,7 +427,7 @@ namespace Colorway {
                         active_color = color_portal;
                         da.active_color = color_portal;
 
-                        hue_slider.set_value(h*360);
+                        hue_slider.scale.set_value(h*360);
 
                         if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                             contrast = "#000000";
