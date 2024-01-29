@@ -10,19 +10,12 @@
         rgba(255,0,0,1) 100%
     );
 }
-.clr-hue {
-    padding: 0;
-}
-.clr-hue slider {
-	box-shadow: inset 0 0 0 6px #fff;
-	background: none;
-}
 
 .clr-palette button image {
-	color: #fff;
+	color: #ffffff;
 }
 .clr-palette button.light image {
-	color: #000;
+	color: #000000;
 }
 .clr-props {
     background: @surface_container_bg_color;
