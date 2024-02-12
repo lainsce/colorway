@@ -125,7 +125,7 @@ namespace Colorway {
             props_box.append (mbox);
             props_box.append (color_rule_dropdown);
 
-            color_label.get_entry ().set_text (color.up());
+            color_label.get_internal_entry ().set_text (color.up());
             color_label.remove_css_class ("disclosure-button");
 
             color_picker_button.clicked.connect (() => {
@@ -140,7 +140,7 @@ namespace Colorway {
             hue_slider = new HueSlider (360);
 
             Gdk.RGBA clr = {};
-            clr.parse(color_label.get_entry ().get_text());
+            clr.parse(color_label.get_internal_entry ().get_text());
 
             float ch,cs,cv,h,r,g,b;
             Gtk.rgb_to_hsv(clr.red, clr.green, clr.blue, out ch, out cs, out cv);
@@ -162,7 +162,7 @@ namespace Colorway {
                                         (float)Utils.make_srgb(active_color.green), 
                                         (float)Utils.make_srgb(active_color.blue));
                 
-                color_label.get_entry ().set_text (pcda.up());
+                color_label.get_internal_entry ().set_text (pcda.up());
                 color = pcda.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
@@ -190,7 +190,7 @@ namespace Colorway {
                                         (float)Utils.make_srgb(gh),
                                         (float)Utils.make_srgb(bh));
                 
-                color_label.get_entry ().set_text (pchs.up());
+                color_label.get_internal_entry ().set_text (pchs.up());
                 color = pchs.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
@@ -209,7 +209,7 @@ namespace Colorway {
 
             color_rule_dropdown.notify["selected"].connect(() => {
                 Gdk.RGBA clrd = {};
-                clrd.parse(color_label.get_entry ().get_text());
+                clrd.parse(color_label.get_internal_entry ().get_text());
 
                 float chd,csd,cvd,hd,rd,gd,bd;
                 Gtk.rgb_to_hsv(clrd.red, clrd.green, clrd.blue, out chd, out csd, out cvd);
@@ -219,7 +219,7 @@ namespace Colorway {
                                         (float)Utils.make_srgb(bd));
 
                 color = pcd.up();
-                color_label.get_entry ().set_text (pcd.up());
+                color_label.get_internal_entry ().set_text (pcd.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#000000";
@@ -230,9 +230,9 @@ namespace Colorway {
                 setup_color_rules.begin (color, contrast, chd, csd, cvd, color_rule_dropdown, sbox, tbox);
             });
 
-            color_label.get_entry ().activate.connect(() => {
+            color_label.get_internal_entry ().activate.connect(() => {
                 Gdk.RGBA clrl = {};
-                clr.parse(color_label.get_entry ().get_text());
+                clr.parse(color_label.get_internal_entry ().get_text());
 
                 float chl,csl,cvl,hl,rl,gl,bl;
                 Gtk.rgb_to_hsv(clrl.red, clrl.green, clrl.blue, out chl, out csl, out cvl);
@@ -249,7 +249,7 @@ namespace Colorway {
                 hue_slider.scale.set_value(chl*360);
 
                 color = pcl.up();
-                color_label.get_entry ().set_text (pcl.up());
+                color_label.get_internal_entry ().set_text (pcl.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
                     contrast = "#000000";
@@ -422,7 +422,7 @@ namespace Colorway {
                                                 (float)Utils.make_srgb(g), 
                                                 (float)Utils.make_srgb(b));
 
-                        color_label.get_entry ().set_text (pc.up());
+                        color_label.get_internal_entry ().set_text (pc.up());
                         color = pc.up();
                         active_color = color_portal;
                         da.active_color = color_portal;
