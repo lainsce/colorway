@@ -135,9 +135,9 @@ public class Colorway.Chooser : Gtk.DrawingArea {
                width         = WIDTH,
                height        = HEIGHT,
                aspect        = 1.0,
-               corner_radius = 12.0;
-        double radius        = corner_radius / aspect;
-        double degrees       = Math.PI / 180.0;
+               corner_radius = 0.0,
+               radius        = corner_radius / aspect,
+               degrees       = Math.PI / 180.0;
 
         Cairo.Context context = new Cairo.Context (surface);
         context.arc (x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
