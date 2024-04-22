@@ -1,0 +1,84 @@
+# Turkish translation of io.github.lainsce.Colorway.
+# Copyright (C) 2024 io.github.lainsce.Colorway COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Colorway package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Colorway\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-22 18:57+0300\n"
+"PO-Revision-Date: 2024-04-22 19:01+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/io.github.lainsce.Colorway.desktop.in:3
+msgid "Colorway"
+msgstr "Colorway"
+
+#: data/io.github.lainsce.Colorway.desktop.in:6
+msgid "color;palette;library;hue;swatch;"
+msgstr "renk;palet;kitaplık;renk tonu;renk örneği;"
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:7
+msgid "Generate color pairings"
+msgstr "Renk eşleştirmeleri oluştur"
+
+#: data/io.github.lainsce.Colorway.metainfo.xml.in:9
+msgid "Generate color pairings from selected color that follow certain color rules."
+msgstr "Seçilen renkten belirli renk kurallarına uyan renk eşleştirmeleri oluşturun."
+
+#: data/ui/window.blp:47
+msgid "Change color (hexcode)"
+msgstr "Renk değiştir (hexcode)"
+
+#: data/ui/window.blp:59
+msgid "Pick Color"
+msgstr "Renk Seç"
+
+#: data/ui/window.blp:80
+msgid "Copy Colors to Clipboard"
+msgstr "Renkleri Panoya Kopyala"
+
+#: data/ui/window.blp:85
+msgid "Copy Colors Image to Clipboard"
+msgstr "Renk Görüntüsünü Panoya Kopyala"
+
+#: data/ui/window.blp:92
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: data/ui/window.blp:97
+msgid "About Colorway"
+msgstr "Colorway Hakkında"
+
+#: src/window.vala:98
+msgid "Analogous"
+msgstr "Benzer"
+
+#: src/window.vala:98
+msgid "Complementary"
+msgstr "Tamamlayıcı"
+
+#: src/window.vala:98
+msgid "Triadic"
+msgstr "Üçlü"
+
+#: src/window.vala:98
+msgid "Tetradic"
+msgstr "Dörtlü"
+
+#: src/window.vala:98
+msgid "Monochromatic"
+msgstr "Tek renkli"
+
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/window.vala:556
+msgid "translator-credits"
+msgstr "Sabri Ünal <yakushabb@gmail.com>"
