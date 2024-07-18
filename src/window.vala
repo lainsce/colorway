@@ -538,12 +538,12 @@ namespace Colorway {
             var snap = new Gtk.Snapshot ();
             mbox.snapshot (snap);
 
-            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 176, 44); // 260×32 is the color result box size;
+            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 224, 34); // 224×34 is the color result box size;
             var cr = new Cairo.Context (sf);
             var node = snap.to_node ();
             node.draw(cr);
 
-            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 176, 44);
+            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 224, 34);
             var mt = Gdk.Texture.for_pixbuf (pb);
 
             var display = Gdk.Display.get_default ();
