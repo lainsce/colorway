@@ -93,7 +93,7 @@ namespace Colorway {
             menu_button.get_popover ().has_arrow = false;
             
             color = "#72dec2";
-            contrast = "#000000";
+            contrast = "#2d2d2d";
 
             var model = new Gtk.StringList ({_("Analogous"), _("Complementary"), _("Triadic"), _("Tetradic"), _("Monochromatic")});
             var expression = new Gtk.PropertyExpression(typeof(string), null, "value");
@@ -105,12 +105,12 @@ namespace Colorway {
             color_rule_dropdown.set_halign (Gtk.Align.START);
             color_rule_dropdown.margin_bottom = 18;
           
-            box = new PaletteButton ("#000000", false);
-            sbox = new PaletteButton ("#000000", false);
+            box = new PaletteButton ("#2d2d2d", false);
+            sbox = new PaletteButton ("#2d2d2d", false);
             sbox.set_visible(false);
-            tbox = new PaletteButton ("#000000", false);
+            tbox = new PaletteButton ("#2d2d2d", false);
             tbox.set_visible(false);
-            ubox = new PaletteButton ("#000000", false);
+            ubox = new PaletteButton ("#2d2d2d", false);
             
             mbox = new He.SegmentedButton ();
             mbox.add_css_class ("clr-palette");
@@ -166,9 +166,9 @@ namespace Colorway {
                 color = pcda.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#2d2d2d";
                 } else {
-                    contrast = "#ffffff";
+                    contrast = "#fafafa";
                 }
 
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -194,9 +194,9 @@ namespace Colorway {
                 color = pchs.up();
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#2d2d2d";
                 } else {
-                    contrast = "#ffffff";
+                    contrast = "#fafafa";
                 }
 
                 setup_color_rules.begin (color, contrast, hue, s, v, color_rule_dropdown, sbox, tbox);
@@ -222,9 +222,9 @@ namespace Colorway {
                 color_label.get_internal_entry ().set_text (pcd.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#2d2d2d";
                 } else {
-                    contrast = "#ffffff";
+                    contrast = "#fafafa";
                 }
 
                 setup_color_rules.begin (color, contrast, chd, csd, cvd, color_rule_dropdown, sbox, tbox);
@@ -252,9 +252,9 @@ namespace Colorway {
                 color_label.get_internal_entry ().set_text (pcl.up());
 
                 if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                    contrast = "#000000";
+                    contrast = "#2d2d2d";
                 } else {
-                    contrast = "#ffffff";
+                    contrast = "#fafafa";
                 }
 
                 setup_color_rules.begin (color, contrast, chl, csl, cvl, color_rule_dropdown, sbox, tbox);
@@ -430,9 +430,9 @@ namespace Colorway {
                         hue_slider.scale.set_value(h*360);
 
                         if (Utils.contrast_ratio(active_color, {0,0,0,1}) > Utils.contrast_ratio(active_color, {1,1,1,1}) + 3) {
-                            contrast = "#000000";
+                            contrast = "#2d2d2d";
                         } else {
-                            contrast = "#ffffff";
+                            contrast = "#fafafa";
                         }
 
                         setup_color_rules.begin (color, contrast, h, s, v, this.color_rule_dropdown, this.sbox, this.tbox);
@@ -538,12 +538,12 @@ namespace Colorway {
             var snap = new Gtk.Snapshot ();
             mbox.snapshot (snap);
 
-            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 176, 44); // 260×32 is the color result box size;
+            var sf = new Cairo.ImageSurface (Cairo.Format.ARGB32, 224, 34); // 224×34 is the color result box size;
             var cr = new Cairo.Context (sf);
             var node = snap.to_node ();
             node.draw(cr);
 
-            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 176, 44);
+            var pb = Gdk.pixbuf_get_from_surface (sf, 0, 0, 224, 34);
             var mt = Gdk.Texture.for_pixbuf (pb);
 
             var display = Gdk.Display.get_default ();

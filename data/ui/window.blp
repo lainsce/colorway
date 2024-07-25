@@ -11,8 +11,8 @@ template $ColorwayMainWindow : He.ApplicationWindow {
       Box {
         Box {
           orientation: vertical;
-          spacing: 12;
-          styles [ "clr-props" ]
+          spacing: 0;
+          styles [ "sidebar-view" ]
 
           He.AppBar headerbar1 {
             show-back: false;
@@ -22,7 +22,7 @@ template $ColorwayMainWindow : He.ApplicationWindow {
           WindowHandle {
             Box color_box {
               orientation: vertical;
-              spacing: 18;
+              spacing: 6;
               margin-start: 18;
               margin-end: 18;
               margin-bottom: 18;
@@ -31,7 +31,7 @@ template $ColorwayMainWindow : He.ApplicationWindow {
         }
         Box {
           orientation: vertical;
-          spacing: 12;
+          spacing: 0;
 
           He.AppBar headerbar {
             show-back: false;
@@ -63,6 +63,7 @@ template $ColorwayMainWindow : He.ApplicationWindow {
                 Box props_box {
                   orientation: vertical;
                   spacing: 6;
+                  margin-top: 18;
                   margin-start: 18;
                   margin-end: 18;
                 }
@@ -88,11 +89,6 @@ menu menu {
   }
 
   section {
-    item {
-      label: _("Keyboard Shortcuts");
-      action: "win.action_keys";
-    }
-
     item {
       label: _("About Colorway");
       action: "win.action_about";

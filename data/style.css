@@ -11,12 +11,22 @@
     );
 }
 
+.clr-palette button:nth-child(1) {
+	border-radius: 12px 0 0 12px;
+}
+
+.clr-palette button:nth-child(2),
+.clr-palette button:nth-child(3) {
+	border-radius: 0;
+}
+
+.clr-palette button:nth-child(4) {
+	border-radius: 0 12px 12px 0;
+}
+
 .clr-palette button image {
-	color: #ffffff;
+	color: @accent_color_fg;
 }
 .clr-palette button.light image {
-	color: #000000;
-}
-.clr-props {
-    background: @surface_container_bg_color;
+	color: @scrim;
 }
