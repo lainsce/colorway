@@ -43,8 +43,8 @@ namespace Colorway {
         public override void startup () {
             Gdk.RGBA accent_color = { 0 };
             accent_color.parse ("#75DEC2");
-            default_accent_color = He.Color.from_gdk_rgba (accent_color);
-            scheme_factory = new He.MonochromaticScheme ();
+            default_accent_color = He.from_gdk_rgba (accent_color);
+            default_scheme_variant = He.SchemeVariant.MONOCHROME;
     
             resource_base_path = "/io/github/lainsce/Colorway";
     
