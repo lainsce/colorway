@@ -5,9 +5,9 @@ template $ColorwayMainWindow : He.ApplicationWindow {
   resizable: false;
   title: "Colorway";
 
-  Box main_box {
-    orientation: vertical;
-
+  Overlay about_overlay {
+    child: Box main_box {
+      orientation: vertical;
       Box {
         Box {
           orientation: vertical;
@@ -22,7 +22,7 @@ template $ColorwayMainWindow : He.ApplicationWindow {
           WindowHandle {
             Box color_box {
               orientation: vertical;
-              spacing: 6;
+              spacing: 12;
               margin-start: 18;
               margin-end: 18;
               margin-bottom: 18;
@@ -73,8 +73,9 @@ template $ColorwayMainWindow : He.ApplicationWindow {
           }
         }
       }
-    }
+    };
   }
+}
 
 menu menu {
   section {
