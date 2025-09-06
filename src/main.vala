@@ -16,10 +16,9 @@
  */
 namespace Colorway {
     public class Application : He.Application {
-        public static MainWindow win = null;
         public static GLib.Settings gsettings;
         private const GLib.ActionEntry app_entries[] = {
-            { "quit", on_quit },
+            { "quit", quit },
         };
 
         public Application () {
@@ -38,18 +37,22 @@ namespace Colorway {
             Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
             Intl.textdomain (Config.GETTEXT_PACKAGE);
         }
-        private void on_quit() {
-            win.destroy();
-        }
-        public MainWindow get_window () {
-            return win;
-        }
         protected override void activate () {
-            if (win != null) {
-                win.present ();
-                return;
-            }
-            win = new MainWindow (this);
+            this.active_window ? .present ();
+        }
+        public override void startup () {
+            Gdk.RGBA accent_color = { 0 };
+            accent_color.parse ("#75DEC2");
+            default_accent_color = He.from_gdk_rgba (accent_color);
+            is_mono = true;
+    
+            resource_base_path = "/io/github/lainsce/Colorway";
+    
+            base.startup ();
+    
+            add_action_entries (app_entries, this);
+    
+            new MainWindow (this);
         }
         public static int main (string[] args) {
             var app = new Colorway.Application ();
