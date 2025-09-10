@@ -574,6 +574,7 @@ namespace Colorway {
                                             He.AboutWindow.Licenses.GPLV3,
                                             He.Colors.GREEN
             );
+            about.is_compact = true; // Use a compact layout that fits better in small windows.
             about_overlay.add_overlay (about);
             about.present ();
         }

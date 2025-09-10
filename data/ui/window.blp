@@ -41,6 +41,7 @@ template $ColorwayMainWindow : He.ApplicationWindow {
             MenuButton menu_button {
               icon-name: "open-menu-symbolic";
               menu-model: menu;
+              valign: center;
             }
 
             [viewtitle-widget]
@@ -48,6 +49,7 @@ template $ColorwayMainWindow : He.ApplicationWindow {
               tooltip-text: _("Change color (hexcode)");
               visibility: true;
               is-outline: true;
+              margin-start: 14;
               styles [ "numeric" ]
             }
           }
