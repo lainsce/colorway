@@ -3,7 +3,7 @@
     <id>@app_id@</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0+</project_license>
-    <name translatable="no">Colorway</name>
+    <name translate="no">Colorway</name>
     <summary>Generate color pairings</summary>
     <description>
         <p>Generate color pairings from selected color that follow certain color rules.</p>
@@ -16,10 +16,14 @@
       <kudo>ModernToolkit</kudo>
       <kudo>HiDpiIcon</kudo>
     </kudos>
-    <developer_name translatable="no">Lains</developer_name>
+    <developer_name translate="no">Lains</developer_name>
+    <developer id="io.github.lainsce">
+      <name translate="no">Lains</name>
+    </developer>
     <url type="homepage">https://github.com/lainsce/colorway/</url>
     <url type="bugtracker">https://github.com/lainsce/colorway/issues</url>
     <url type="donation">https://www.ko-fi.com/lainsce/</url>
+    <url type="vcs-browser">https://github.com/lainsce/colorway/</url>
     <url type="translate">https://github.com/lainsce/colorway/blob/master/po/README.md</url>
     <screenshots>
         <screenshot type="default">
@@ -41,48 +45,48 @@
     <translation type="gettext">io.github.lainsce.Colorway</translation>
     <releases>
         <release version="2.0.0" date="2023-02-19">
-            <description>
+            <description translate="no">
                 <p>Changed: UI now follows Helium HIG, not Adwaita nor Solo.</p>
             </description>
         </release>
         <release version="1.2.0" date="2022-04-21">
-            <description>
+            <description translate="no">
                 <p>Fixed: Hue slider rainbow and starting position.</p>
             </description>
         </release>
         <release version="1.1.2" date="2022-04-20">
-            <description>
+            <description translate="no">
                 <p>Changed: UI now follows my own style that complements that of Adwaita, called Solo.</p>
                 <p>Changed: Window size reduced dramatically.</p>
             </description>
         </release>
         <release version="1.1.1" date="2022-02-11">
-            <description>
+            <description translate="no">
                 <p>Changed: New UI colors.</p>
             </description>
         </release>
         <release version="1.1.0" date="2021-11-28">
-            <description>
+            <description translate="no">
                 <p>Release: Recoloring With Accent</p>
                 <p>Changed: The UI now uses libadwaita recoloring.</p>
                 <p>Changed: New UI layout.</p>
             </description>
         </release>
         <release version="1.0.2" date="2021-10-28">
-            <description>
+            <description translate="no">
                 <p>Release: Color Choosing with a Drag</p>
                 <p>Added: The color chooser box's pointer can now be dragged to choose the color as well, no more clicking random spots.</p>
                 <p>Changed: Most icons now above color content are aware of contrast and will update accordingly as white or black colored to ensure contrast.</p>
             </description>
         </release>
         <release version="1.0.1" date="2021-10-27">
-            <description>
+            <description translate="no">
                 <p>Release: Copiable Colors</p>
                 <p>Added: Now the color boxes are now buttons which you can copy the individual color.</p>
             </description>
         </release>
         <release version="1.0.0" date="2021-10-26">
-            <description>
+            <description translate="no">
                 <p>Release: First Release</p>
             </description>
         </release>

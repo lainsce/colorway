@@ -1,84 +1,84 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Turkish translation of io.github.lainsce.Colorway.
+# Copyright (C) 2024 io.github.lainsce.Colorway COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.github.lainsce.Colorway package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Sabri Ünal <libreajans@gmail.com>, 2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Colorway\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-22 18:57+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-04-22 19:01+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"Language-Team: \n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/io.github.lainsce.Colorway.desktop.in:3
 msgid "Colorway"
-msgstr ""
+msgstr "Colorway"
 
 #: data/io.github.lainsce.Colorway.desktop.in:6
 msgid "color;palette;library;hue;swatch;"
-msgstr ""
+msgstr "renk;palet;kitaplık;renk tonu;renk örneği;"
 
 #: data/io.github.lainsce.Colorway.metainfo.xml.in:7
 msgid "Generate color pairings"
-msgstr ""
+msgstr "Renk eşleştirmeleri oluştur"
 
 #: data/io.github.lainsce.Colorway.metainfo.xml.in:9
-msgid ""
-"Generate color pairings from selected color that follow certain color rules."
-msgstr ""
+msgid "Generate color pairings from selected color that follow certain color rules."
+msgstr "Seçilen renkten belirli renk kurallarına uyan renk eşleştirmeleri oluşturun."
 
 #: data/ui/window.blp:47
 msgid "Change color (hexcode)"
-msgstr ""
+msgstr "Renk değiştir (hexcode)"
 
 #: data/ui/window.blp:59
 msgid "Pick Color"
-msgstr ""
+msgstr "Renk Seç"
 
 #: data/ui/window.blp:80
 msgid "Copy Colors to Clipboard"
-msgstr ""
+msgstr "Renkleri Panoya Kopyala"
 
 #: data/ui/window.blp:85
 msgid "Copy Colors Image to Clipboard"
-msgstr ""
+msgstr "Renk Görüntüsünü Panoya Kopyala"
 
 #: data/ui/window.blp:92
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Klavye Kısayolları"
 
 #: data/ui/window.blp:97
 msgid "About Colorway"
-msgstr ""
+msgstr "Colorway Hakkında"
 
 #: src/window.vala:98
 msgid "Analogous"
-msgstr ""
+msgstr "Benzer"
 
 #: src/window.vala:98
 msgid "Complementary"
-msgstr ""
+msgstr "Tamamlayıcı"
 
 #: src/window.vala:98
 msgid "Triadic"
-msgstr ""
+msgstr "Üçlü"
 
 #: src/window.vala:98
 msgid "Tetradic"
-msgstr ""
+msgstr "Dörtlü"
 
 #: src/window.vala:98
 msgid "Monochromatic"
-msgstr ""
+msgstr "Tek renkli"
 
 #. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
 #: src/window.vala:556
 msgid "translator-credits"
-msgstr ""
+msgstr "Sabri Ünal <yakushabb@gmail.com>"
