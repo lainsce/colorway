@@ -234,7 +234,7 @@ namespace Colorway {
 
             color_label.get_internal_entry ().activate.connect (() => {
                 Gdk.RGBA clrl = {};
-                clr.parse (color_label.get_internal_entry ().get_text ());
+                clrl.parse (color_label.get_internal_entry ().get_text ());
 
                 float chl, csl, cvl, hl, rl, gl, bl;
                 Gtk.rgb_to_hsv (clrl.red, clrl.green, clrl.blue, out chl, out csl, out cvl);
