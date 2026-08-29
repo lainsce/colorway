@@ -69,8 +69,13 @@ enum Nuul {
     }
 
     enum Typography {
+        static let display = Font.custom("Geist-Regular", size: 32, relativeTo: .title)
+        static let viewTitle = Font.custom("Geist-Regular", size: 28, relativeTo: .title2)
+        static let viewSubtitle = Font.custom("Geist-Regular", size: 24, relativeTo: .title3)
+        static let contentBlockTitle = Font.custom("Geist-SemiBold", size: 18, relativeTo: .headline)
         static let body = Font.custom("Geist-Regular", size: 14, relativeTo: .body)
         static let bodyStrong = Font.custom("Geist-SemiBold", size: 14, relativeTo: .body)
+        static let caption = Font.custom("Geist-SemiBold", size: 12, relativeTo: .caption)
         static let technical = Font.custom("Geist Mono", size: 14, relativeTo: .body)
         static let symbol = Font.system(size: 22, weight: .regular)
     }

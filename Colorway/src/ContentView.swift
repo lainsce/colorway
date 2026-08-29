@@ -8,6 +8,9 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
+            Nuul.workspace
+                .ignoresSafeArea()
+
             VStack(spacing: 0) {
                 ColorEntryField(
                     text: $hexInput,
