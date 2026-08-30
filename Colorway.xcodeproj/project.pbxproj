@@ -65,8 +65,8 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				67BCCB923044832000A74237 /* data */,
 				67BCCBA03044832000A74237 /* src */,
+				67BCCB923044832000A74237 /* data */,
 				67BCCBA13044832000A74237 /* tests */,
 			);
 			sourceTree = "<group>";
