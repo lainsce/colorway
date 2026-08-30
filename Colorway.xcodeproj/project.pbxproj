@@ -7,13 +7,48 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		000000000000000000000120 /* Colorway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colorway.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000120 /* Colorway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Colorway.app; path = /Users/nayu/Developer/Colorway/build/Debug/Colorway.app; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		67BCCBBC3044832100A74237 /* Exceptions for "data" folder in "Colorway" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Colorway.icon,
+				"Fonts/Geist-Black.ttf",
+				"Fonts/Geist-Bold.ttf",
+				"Fonts/Geist-Medium.ttf",
+				"Fonts/Geist-Regular.ttf",
+				"Fonts/Geist-SemiBold.ttf",
+				"Fonts/GeistMono-Variable.ttf",
+				Fonts/OFL.txt,
+				"Fonts/OldStandardTT-Bold.ttf",
+				"Fonts/OldStandardTT-Italic.ttf",
+				"Fonts/OldStandardTT-OFL.txt",
+				"Fonts/OldStandardTT-Regular.ttf",
+			);
+			target = 000000000000000100000000 /* Colorway */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		000000000000000000000010 /* Colorway */ = {
+		67BCCB923044832000A74237 /* data */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Colorway;
+			exceptions = (
+				67BCCBBC3044832100A74237 /* Exceptions for "data" folder in "Colorway" target */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		67BCCBA03044832000A74237 /* src */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = src;
+			sourceTree = "<group>";
+		};
+		67BCCBA13044832000A74237 /* tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = tests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -30,17 +65,10 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000010 /* Colorway */,
-				000000000000000000000020 /* Products */,
+				67BCCB923044832000A74237 /* data */,
+				67BCCBA03044832000A74237 /* src */,
+				67BCCBA13044832000A74237 /* tests */,
 			);
-			sourceTree = "<group>";
-		};
-		000000000000000000000020 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				000000000000000000000120 /* Colorway.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -57,7 +85,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				000000000000000000000010 /* Colorway */,
+				67BCCBA03044832000A74237 /* src */,
 			);
 			name = Colorway;
 			productName = MyApp;
@@ -89,7 +117,7 @@
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 90;
-			productRefGroup = 000000000000000000000020 /* Products */;
+			productRefGroup = 000000000000000000000001;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
