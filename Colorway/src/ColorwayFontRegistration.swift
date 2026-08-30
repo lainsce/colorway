@@ -8,7 +8,10 @@ enum ColorwayFontRegistration {
         "Geist-SemiBold",
         "Geist-Bold",
         "Geist-Black",
-        "GeistMono-Variable"
+        "GeistMono-Variable",
+        "OldStandardTT-Regular",
+        "OldStandardTT-Italic",
+        "OldStandardTT-Bold"
     ]
 
     static func register() {

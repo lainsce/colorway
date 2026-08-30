@@ -281,15 +281,14 @@ private struct PickerActions: View {
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
-            Picker("Color harmony", selection: $harmony) {
-                ForEach(ColorHarmony.allCases) { item in
-                    Text(item.title).tag(item)
-                }
+            NULMenuPicker(
+                "Color harmony",
+                selection: $harmony,
+                options: ColorHarmony.allCases,
+                showsTitle: false
+            ) { item in
+                Text(item.title)
             }
-            .pickerStyle(.menu)
-            .labelsHidden()
-            .font(Nuul.Typography.body)
-            .foregroundStyle(Nuul.ink)
             .frame(width: Nuul.Layout.harmonyWidth, height: Nuul.Layout.controlHeight, alignment: .leading)
             .accessibilityLabel("Color harmony")
             .accessibilityValue(harmony.title)

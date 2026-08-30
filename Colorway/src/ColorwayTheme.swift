@@ -65,12 +65,12 @@ enum Nuul {
         static let pickerHeight: CGFloat = 150
         static let paletteWidth: CGFloat = 258
         static let paletteHeight: CGFloat = 38
-        static let harmonyWidth: CGFloat = 140
+        static let harmonyWidth: CGFloat = 150
     }
 
     enum Typography {
         static let display = Font.custom("Geist-Regular", size: 32, relativeTo: .title)
-        static let viewTitle = Font.custom("Geist-Regular", size: 28, relativeTo: .title2)
+        static let viewTitle = viewTitleFont()
         static let viewSubtitle = Font.custom("Geist-Regular", size: 24, relativeTo: .title3)
         static let contentBlockTitle = Font.custom("Geist-SemiBold", size: 18, relativeTo: .headline)
         static let body = Font.custom("Geist-Regular", size: 14, relativeTo: .body)
@@ -78,6 +78,20 @@ enum Nuul {
         static let caption = Font.custom("Geist-SemiBold", size: 12, relativeTo: .caption)
         static let technical = Font.custom("Geist Mono", size: 14, relativeTo: .body)
         static let symbol = Font.system(size: 22, weight: .regular)
+
+        /// Old Standard TT supplies the Latin view-title treatment. If the
+        /// bundled face cannot be loaded, keep the role Dynamic Type-aware and
+        /// fall back to an installed system Mincho family.
+        private static func viewTitleFont() -> Font {
+            guard NSFont(name: "OldStandardTT-Regular", size: 28) != nil else {
+                for family in ["Hiragino Mincho ProN", "Hiragino Mincho Pro", "YuMincho", "Songti SC"]
+                    where NSFont(name: family, size: 28) != nil {
+                    return .custom(family, size: 28, relativeTo: .title)
+                }
+                return .system(.title, design: .serif)
+            }
+            return .custom("OldStandardTT-Regular", size: 28, relativeTo: .title)
+        }
     }
 
     private static func dynamicColor(light: NSColor, dark: NSColor) -> Color {
