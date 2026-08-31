@@ -41,6 +41,7 @@ struct NuulButtonStyle: ButtonStyle {
             .opacity(isEnabled ? (configuration.isPressed ? 0.84 : 1) : 0.42)
             .scaleEffect(configuration.isPressed && !reduceMotion ? 0.98 : 1)
             .animation(reduceMotion ? nil : Nuul.controlMotion, value: configuration.isPressed)
+            .nulWindowActivityAppearance()
     }
 
     private var backgroundColor: Color {
