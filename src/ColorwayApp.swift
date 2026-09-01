@@ -15,7 +15,7 @@ struct MyApp: App {
         }
         .defaultSize(width: Nuul.Layout.windowWidth, height: Nuul.Layout.windowHeight)
         .windowResizability(.contentSize)
-        .windowToolbarStyle(.unifiedCompact)
+        .windowToolbarStyle(.unified)
         .windowStyle(.hiddenTitleBar)
         .windowBackgroundDragBehavior(.enabled)
         .commands {

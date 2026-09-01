@@ -8,7 +8,9 @@ enum ColorwayFontRegistration {
         "Geist-SemiBold",
         "Geist-Bold",
         "Geist-Black",
-        "GeistMono-Variable",
+        "Lekton-Regular",
+        "Lekton-Bold",
+        "Lekton-Italic",
         "OldStandardTT-Regular",
         "OldStandardTT-Italic",
         "OldStandardTT-Bold"

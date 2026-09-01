@@ -40,6 +40,18 @@ struct ContentView: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Colorway color picker")
+        .toolbar {
+            ToolbarSpacer(placement: .navigation)
+                .sharedBackgroundVisibility(.hidden)
+
+            ToolbarItem(placement: .primaryAction) {
+                NuulToolbarMenu("Color options", systemImage: "ellipsis") {
+                    Button("Copy hex", action: copyHex)
+                    Button("Reset color", action: resetColor)
+                }
+            }
+            .sharedBackgroundVisibility(.hidden)
+        }
     }
 
     private func applyHexInput() {
@@ -63,6 +75,16 @@ struct ContentView: View {
                 blue: rgb.blueComponent
             )
         }
+    }
+
+    private func copyHex() {
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(hexInput.uppercased(), forType: .string)
+    }
+
+    private func resetColor() {
+        hexInput = "#3C93FD"
+        applyHexInput()
     }
 }
 
@@ -98,34 +120,9 @@ private struct ColorEntryField: View {
                     isFocused = false
                 }
                 .accessibilityLabel("Hex color")
-
-            Spacer(minLength: 0)
-
-            Menu {
-                Button("Copy hex", action: copyHex)
-                Button("Reset color", action: resetColor)
-            } label: {
-                Image(systemName: "ellipsis")
-                    .font(Nuul.Typography.symbol)
-                    .foregroundStyle(Nuul.ink)
-                    .frame(width: Nuul.Layout.controlHeight, height: Nuul.Layout.controlHeight)
-                    .background(Nuul.controlSurface, in: RoundedRectangle(cornerRadius: Nuul.Radius.control))
-            }
-            .menuStyle(.borderlessButton)
-            .accessibilityLabel("Color options")
         }
         .padding(.horizontal, Nuul.Spacing.large)
         .frame(height: Nuul.Layout.controlHeight)
-    }
-
-    private func copyHex() {
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(text.uppercased(), forType: .string)
-    }
-
-    private func resetColor() {
-        text = "#3C93FD"
-        onCommit()
     }
 }
 
@@ -133,12 +130,15 @@ private struct ColorPickerSurface: View {
     @Binding var color: ColorwayColor
 
     var body: some View {
-        HStack(spacing: Nuul.Spacing.medium) {
+        HStack(spacing: Nuul.Spacing.large) {
             SaturationBrightnessSurface(color: $color)
+                .frame(height: Nuul.Layout.pickerHeight)
             HueRail(hue: $color.hue)
+                .frame(height: Nuul.Layout.hueRailHeight)
+                .offset(x: Nuul.Layout.hueRailOffsetX)
         }
         .padding(.horizontal, Nuul.Spacing.large)
-        .frame(height: Nuul.Layout.pickerHeight)
+        .frame(height: Nuul.Layout.hueRailHeight)
     }
 }
 
@@ -223,16 +223,27 @@ private struct HueRail: View {
                     startPoint: .top,
                     endPoint: .bottom
                 )
+                .clipShape(Capsule())
+                .frame(width: Nuul.Layout.hueRailWidth, height: Nuul.Layout.hueRailHeight)
 
-                Circle()
-                    .stroke(.white, lineWidth: 3)
-                    .background(Circle().fill(.clear))
-                    .frame(width: 21, height: 21)
-                    .position(x: geometry.size.width / 2, y: hue * geometry.size.height)
-                    .allowsHitTesting(false)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(.black)
+                        .frame(
+                            width: Nuul.Layout.hueIndicatorLineWidth,
+                            height: Nuul.Layout.hueIndicatorLineThickness
+                        )
+                        .offset(x: Nuul.Layout.hueIndicatorLineOffsetX)
+
+                    HueDialTriangle()
+                        .fill(.black)
+                        .frame(width: Nuul.Layout.hueDialWidth, height: Nuul.Layout.hueDialHeight)
+                        .offset(x: Nuul.Layout.hueDialOffsetX)
+                }
+                .offset(y: hue * geometry.size.height - geometry.size.height / 2)
             }
-            .clipShape(RoundedRectangle(cornerRadius: Nuul.Radius.control, style: .continuous))
-            .contentShape(RoundedRectangle(cornerRadius: Nuul.Radius.control, style: .continuous))
+            .frame(width: Nuul.Layout.hueRailWidth, height: Nuul.Layout.hueRailHeight)
+            .contentShape(Rectangle())
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { value in
@@ -253,7 +264,47 @@ private struct HueRail: View {
                 }
             }
         }
-        .frame(width: Nuul.Layout.hueRailWidth)
+        .frame(width: Nuul.Layout.hueRailWidth, height: Nuul.Layout.hueRailHeight)
+    }
+}
+
+private struct HueDialTriangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        let dialRect = rect.insetBy(dx: 1, dy: 2)
+        let tip = CGPoint(x: dialRect.minX, y: dialRect.midY)
+        let top = CGPoint(x: dialRect.maxX, y: dialRect.minY)
+        let bottom = CGPoint(x: dialRect.maxX, y: dialRect.maxY)
+
+        let tipToTop = point(from: tip, toward: top, distance: Nuul.Layout.hueDialCornerRadius)
+        let topToTip = point(from: top, toward: tip, distance: Nuul.Layout.hueDialCornerRadius)
+        let topToBottom = point(from: top, toward: bottom, distance: Nuul.Layout.hueDialCornerRadius)
+        let bottomToTop = point(from: bottom, toward: top, distance: Nuul.Layout.hueDialCornerRadius)
+        let bottomToTip = point(from: bottom, toward: tip, distance: Nuul.Layout.hueDialCornerRadius)
+        let tipToBottom = point(from: tip, toward: bottom, distance: Nuul.Layout.hueDialCornerRadius)
+
+        var path = Path()
+        path.move(to: tipToTop)
+        path.addLine(to: topToTip)
+        path.addQuadCurve(to: topToBottom, control: top)
+        path.addLine(to: bottomToTop)
+        path.addQuadCurve(to: bottomToTip, control: bottom)
+        path.addLine(to: tipToBottom)
+        path.addQuadCurve(to: tipToTop, control: tip)
+        path.closeSubpath()
+        return path
+    }
+
+    private func point(from start: CGPoint, toward end: CGPoint, distance: CGFloat) -> CGPoint {
+        let deltaX = end.x - start.x
+        let deltaY = end.y - start.y
+        let length = hypot(deltaX, deltaY)
+        guard length > 0 else { return start }
+
+        let fraction = min(distance / length, 0.5)
+        return CGPoint(
+            x: start.x + deltaX * fraction,
+            y: start.y + deltaY * fraction
+        )
     }
 }
 

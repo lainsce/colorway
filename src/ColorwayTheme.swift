@@ -40,7 +40,6 @@ enum Nuul {
         dark: NSColor.white.withAlphaComponent(0.72)
     )
     static let controlMotion = Animation.spring(response: 0.24, dampingFraction: 0.88)
-    static let navigationMotion = Animation.spring(response: 0.34, dampingFraction: 0.84)
 
     enum Spacing {
         static let small: CGFloat = 4
@@ -61,7 +60,16 @@ enum Nuul {
         static let controlHeight: CGFloat = 38
         static let fieldHeight: CGFloat = 36
         static let colorSurfaceWidth: CGFloat = 232
-        static let hueRailWidth: CGFloat = 20
+        static let hueRailWidth: CGFloat = 16
+        static let hueRailHeight: CGFloat = 150
+        static let hueDialWidth: CGFloat = 13
+        static let hueDialHeight: CGFloat = 18
+        static let hueIndicatorLineWidth: CGFloat = 28
+        static let hueIndicatorLineThickness: CGFloat = 2
+        static let hueIndicatorLineOffsetX: CGFloat = 0
+        static let hueDialOffsetX: CGFloat = 14
+        static let hueDialCornerRadius: CGFloat = 4
+        static let hueRailOffsetX: CGFloat = -8
         static let pickerHeight: CGFloat = 150
         static let paletteWidth: CGFloat = 258
         static let paletteHeight: CGFloat = 38
@@ -76,7 +84,12 @@ enum Nuul {
         static let body = Font.custom("Geist-Regular", size: 14, relativeTo: .body)
         static let bodyStrong = Font.custom("Geist-SemiBold", size: 14, relativeTo: .body)
         static let caption = Font.custom("Geist-SemiBold", size: 12, relativeTo: .caption)
-        static let technical = Font.custom("Geist Mono", size: 14, relativeTo: .body)
+        static func technicalFont(size: CGFloat, relativeTo: Font.TextStyle = .body) -> Font {
+            Font.custom("Lekton", size: size, relativeTo: relativeTo)
+        }
+
+        static let technical = technicalFont(size: 14)
+        static let technicalCaption = technicalFont(size: 12, relativeTo: .caption)
         static let symbol = Font.system(size: 22, weight: .regular)
 
         /// Old Standard TT supplies the Latin view-title treatment. If the

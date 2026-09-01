@@ -36,7 +36,7 @@ struct ColorwayAboutView: View {
 
                 VStack(spacing: Nuul.Spacing.small) {
                     Text("Version \(versionString)")
-                        .font(Nuul.Typography.caption)
+                        .font(Nuul.Typography.technicalCaption)
                         .foregroundStyle(.secondary)
 
                     Text("Made with SwiftUI for Mac.")

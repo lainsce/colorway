@@ -23,25 +23,42 @@ struct NuulButtonStyle: ButtonStyle {
         configuration.label
             .font(Nuul.Typography.body)
             .symbolRenderingMode(.monochrome)
-            .foregroundStyle(kind == .primary ? Color.black : Nuul.ink)
+            .foregroundStyle(foregroundColor)
             .frame(minWidth: Nuul.Layout.controlHeight, minHeight: Nuul.Layout.controlHeight)
             .background(backgroundColor, in: RoundedRectangle(cornerRadius: Nuul.Radius.control))
-            .overlay {
-                if kind == .neutral {
-                    RoundedRectangle(cornerRadius: Nuul.Radius.control)
-                        .strokeBorder(Nuul.controlRule, lineWidth: 1)
-                }
-
-                if configuration.isPressed && kind != .quiet {
-                    RoundedRectangle(cornerRadius: Nuul.Radius.control)
-                        .fill(Nuul.itemText.opacity(0.10))
-                }
-            }
+            .overlay { overlayContent(isPressed: configuration.isPressed) }
             .contentShape(Rectangle())
-            .opacity(isEnabled ? (configuration.isPressed ? 0.84 : 1) : 0.42)
-            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.98 : 1)
+            .opacity(controlOpacity(isPressed: configuration.isPressed))
+            .scaleEffect(controlScale(isPressed: configuration.isPressed))
             .animation(reduceMotion ? nil : Nuul.controlMotion, value: configuration.isPressed)
             .nulWindowActivityAppearance()
+    }
+
+    @ViewBuilder
+    private func overlayContent(isPressed: Bool) -> some View {
+        if kind == .neutral {
+            RoundedRectangle(cornerRadius: Nuul.Radius.control)
+                .strokeBorder(Nuul.controlRule, lineWidth: 1)
+        }
+
+        if isPressed && kind != .quiet {
+            RoundedRectangle(cornerRadius: Nuul.Radius.control)
+                .fill(Nuul.itemText.opacity(0.10))
+        }
+    }
+
+    private func controlOpacity(isPressed: Bool) -> Double {
+        guard isEnabled else { return 0.42 }
+        return isPressed ? 0.84 : 1
+    }
+
+    private func controlScale(isPressed: Bool) -> Double {
+        guard isPressed, !reduceMotion else { return 1 }
+        return 0.98
+    }
+
+    private var foregroundColor: Color {
+        kind == .primary ? .black : Nuul.ink
     }
 
     private var backgroundColor: Color {

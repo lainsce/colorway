@@ -22,20 +22,40 @@ struct ColorwayColor: Equatable {
 
         brightness = maximum
         saturation = maximum == 0 ? 0 : range / maximum
+        hue = Self.normalizedHue(red: red, green: green, blue: blue, maximum: maximum, range: range)
+    }
 
-        if range == 0 {
-            hue = 0
-        } else if maximum == red {
-            hue = ((green - blue) / range).truncatingRemainder(dividingBy: 6) / 6
-        } else if maximum == green {
-            hue = (((blue - red) / range) + 2) / 6
-        } else {
-            hue = (((red - green) / range) + 4) / 6
-        }
+    private static func normalizedHue(
+        red: Double,
+        green: Double,
+        blue: Double,
+        maximum: Double,
+        range: Double
+    ) -> Double {
+        guard range != 0 else { return 0 }
 
-        if hue < 0 {
-            hue += 1
-        }
+        let hue = hueComponent(
+            red: red,
+            green: green,
+            blue: blue,
+            maximum: maximum,
+            range: range
+        )
+        return hue < 0 ? hue + 1 : hue
+    }
+
+    private static func hueComponent(
+        red: Double,
+        green: Double,
+        blue: Double,
+        maximum: Double,
+        range: Double
+    ) -> Double {
+        maximum == red
+            ? ((green - blue) / range).truncatingRemainder(dividingBy: 6) / 6
+            : maximum == green
+                ? (((blue - red) / range) + 2) / 6
+                : (((red - green) / range) + 4) / 6
     }
 
     var swiftUIColor: Color {
@@ -110,35 +130,34 @@ enum ColorHarmony: String, CaseIterable, Identifiable {
     }
 
     func colors(for color: ColorwayColor) -> [ColorwayColor] {
-        let hues: [Double]
-        switch self {
-        case .monochrome:
-            // Keep the hue and saturation fixed while surfacing a four-step value ramp.
-            return [0.25, 0.5, 0.75, 1].map { factor in
-                ColorwayColor(
-                    hue: color.hue,
-                    saturation: color.saturation,
-                    brightness: color.brightness * factor
-                )
-            }
-        case .complementary:
-            hues = [0, 0.5]
-        case .analogous:
-            hues = [-0.08, 0, 0.08]
-        case .triadic:
-            hues = [0, 1 / 3, 2 / 3]
-        case .tetradic:
-            // Keep the selected swatch on the left and follow the reference's
-            // opposing, then quarter-turn, ordering.
-            hues = [0, 0.5, 0.75, 0.25]
-        }
+        if self == .monochrome { return monochromeColors(for: color) }
 
-        return hues.map { offset in
+        return hueOffsets.map { offset in
             ColorwayColor(
                 hue: (color.hue + offset).wrappedUnit,
                 saturation: color.saturation,
                 brightness: color.brightness
             )
+        }
+    }
+
+    private func monochromeColors(for color: ColorwayColor) -> [ColorwayColor] {
+        [0.25, 0.5, 0.75, 1].map { factor in
+            ColorwayColor(
+                hue: color.hue,
+                saturation: color.saturation,
+                brightness: color.brightness * factor
+            )
+        }
+    }
+
+    private var hueOffsets: [Double] {
+        switch self {
+        case .monochrome: []
+        case .complementary: [0, 0.5]
+        case .analogous: [-0.08, 0, 0.08]
+        case .triadic: [0, 1 / 3, 2 / 3]
+        case .tetradic: [0, 0.5, 0.75, 0.25]
         }
     }
 }

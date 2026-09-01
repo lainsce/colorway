@@ -6,8 +6,19 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		000000000000000300000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000100000000;
+			remoteInfo = Colorway;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		000000000000000000000120 /* Colorway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Colorway.app; path = /Users/nayu/Developer/Colorway/build/Debug/Colorway.app; sourceTree = "<absolute>"; };
+		000000000000000000000120 /* Colorway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colorway.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000121 /* ColorwayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorwayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -21,7 +32,10 @@
 				"Fonts/Geist-Medium.ttf",
 				"Fonts/Geist-Regular.ttf",
 				"Fonts/Geist-SemiBold.ttf",
-				"Fonts/GeistMono-Variable.ttf",
+				"Fonts/Lekton-Bold.ttf",
+				"Fonts/Lekton-Italic.ttf",
+				"Fonts/Lekton-OFL.txt",
+				"Fonts/Lekton-Regular.ttf",
 				Fonts/OFL.txt,
 				"Fonts/OldStandardTT-Bold.ttf",
 				"Fonts/OldStandardTT-Italic.ttf",
@@ -59,6 +73,11 @@
 			files = (
 			);
 		};
+		000000000000000230000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -68,7 +87,17 @@
 				67BCCBA03044832000A74237 /* src */,
 				67BCCB923044832000A74237 /* data */,
 				67BCCBA13044832000A74237 /* tests */,
+				000000000000000000000020 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000120 /* Colorway.app */,
+				000000000000000000000121 /* ColorwayTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,6 +121,27 @@
 			productReference = 000000000000000000000120 /* Colorway.app */;
 			productType = "com.apple.product-type.application";
 		};
+		000000000000000100000001 /* ColorwayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000210000000 /* Build configuration list for PBXNativeTarget "ColorwayTests" */;
+			buildPhases = (
+				000000000000000220000000 /* Sources */,
+				000000000000000230000000 /* Frameworks */,
+				000000000000000240000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				000000000000000300000000 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				67BCCBA13044832000A74237 /* tests */,
+			);
+			name = ColorwayTests;
+			productName = ColorwayTests;
+			productReference = 000000000000000000000121 /* ColorwayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -104,6 +154,10 @@
 				TargetAttributes = {
 					000000000000000100000000 = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					000000000000000100000001 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 000000000000000100000000;
 					};
 				};
 			};
@@ -122,12 +176,18 @@
 			projectRoot = "";
 			targets = (
 				000000000000000100000000 /* Colorway */,
+				000000000000000100000001 /* ColorwayTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		000000000000000140000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		000000000000000240000000 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -140,7 +200,20 @@
 			files = (
 			);
 		};
+		000000000000000220000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		000000000000000300000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000100000000 /* Colorway */;
+			targetProxy = 000000000000000300000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		000000000000000011000000 /* Debug configuration for PBXProject "Colorway" */ = {
@@ -355,6 +428,40 @@
 			};
 			name = Release;
 		};
+		000000000000000211000000 /* Debug configuration for PBXNativeTarget "ColorwayTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GXLP3297S8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nayu.ColorwayTests;
+				PRODUCT_NAME = ColorwayTests;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Colorway.app/Contents/MacOS/Colorway";
+			};
+			name = Debug;
+		};
+		000000000000000212000000 /* Release configuration for PBXNativeTarget "ColorwayTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GXLP3297S8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nayu.ColorwayTests;
+				PRODUCT_NAME = ColorwayTests;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Colorway.app/Contents/MacOS/Colorway";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -371,6 +478,14 @@
 			buildConfigurations = (
 				000000000000000111000000 /* Debug configuration for PBXNativeTarget "Colorway" */,
 				000000000000000112000000 /* Release configuration for PBXNativeTarget "Colorway" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		000000000000000210000000 /* Build configuration list for PBXNativeTarget "ColorwayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000211000000 /* Debug configuration for PBXNativeTarget "ColorwayTests" */,
+				000000000000000212000000 /* Release configuration for PBXNativeTarget "ColorwayTests" */,
 			);
 			defaultConfigurationName = Release;
 		};

@@ -41,14 +41,7 @@ struct HarmonyPaletteButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
             configuration.label
-
-            ZStack {
-                Image(systemName: "doc.on.doc")
-                    .opacity(configuration.isPressed ? 0 : 1)
-
-                Image(systemName: "checkmark.circle.fill")
-                    .opacity(configuration.isPressed ? 1 : 0)
-            }
+            iconOverlay(isPressed: configuration.isPressed)
             .font(Nuul.Typography.symbol)
             .foregroundStyle(iconColor)
             .opacity(isHovered ? 1 : 0)
@@ -56,13 +49,22 @@ struct HarmonyPaletteButtonStyle: ButtonStyle {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
-        .animation(
-            reduceMotion ? nil : Nuul.controlMotion,
-            value: configuration.isPressed
-        )
-        .animation(
-            reduceMotion ? nil : Nuul.controlMotion,
-            value: isHovered
-        )
+        .animation(controlMotion, value: configuration.isPressed)
+        .animation(controlMotion, value: isHovered)
+    }
+
+    @ViewBuilder
+    private func iconOverlay(isPressed: Bool) -> some View {
+        ZStack {
+            Image(systemName: "doc.on.doc")
+                .opacity(isPressed ? 0 : 1)
+
+            Image(systemName: "checkmark.circle.fill")
+                .opacity(isPressed ? 1 : 0)
+        }
+    }
+
+    private var controlMotion: Animation? {
+        reduceMotion ? nil : Nuul.controlMotion
     }
 }
