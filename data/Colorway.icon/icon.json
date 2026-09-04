@@ -1,66 +1,104 @@
 {
-  "fill" : "system-light",
+  "fill-specializations" : [
+    {
+      "value" : {
+        "solid" : "srgb:0.99216,0.99216,0.99216,1.00000"
+      }
+    },
+    {
+      "appearance" : "dark",
+      "value" : {
+        "solid" : "extended-gray:0.00000,1.00000"
+      }
+    }
+  ],
   "groups" : [
     {
       "layers" : [
         {
           "fill-specializations" : [
             {
-              "value" : {
-                "solid" : "srgb:0.00000,0.00000,0.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "dark",
-              "value" : {
-                "solid" : "display-p3:0.84222,0.88017,0.92283,1.00000"
-              }
-            },
-            {
               "appearance" : "tinted",
-              "value" : {
-                "solid" : "srgb:1.00000,1.00000,1.00000,1.00000"
-              }
+              "value" : "system-light"
             }
           ],
-          "image-name" : "Image.png",
-          "name" : "Image"
+          "image-name" : "Colorway (1).png",
+          "name" : "Colorway"
         }
       ],
-      "shadow" : {
-        "kind" : "layer-color",
-        "opacity" : 0.5
-      },
+      "shadow-specializations" : [
+        {
+          "value" : {
+            "kind" : "layer-color",
+            "opacity" : 0.5
+          }
+        },
+        {
+          "appearance" : "dark",
+          "value" : {
+            "kind" : "neutral",
+            "opacity" : 0.5
+          }
+        },
+        {
+          "appearance" : "tinted",
+          "value" : {
+            "kind" : "neutral",
+            "opacity" : 0.5
+          }
+        }
+      ],
       "translucency" : {
         "enabled" : true,
         "value" : 0.3
       }
     },
     {
-      "blur-material" : null,
       "layers" : [
         {
-          "fill" : {
-            "solid" : "srgb:1.00000,0.14913,0.00000,1.00000"
-          },
-          "image-name" : "Image 2.png",
-          "name" : "Image 2",
-          "position" : {
-            "scale" : 2,
-            "translation-in-points" : [
-              0,
-              0
-            ]
+          "fill-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : {
+                "solid" : "srgb:0.99216,0.99216,0.99216,1.00000"
+              }
+            },
+            {
+              "appearance" : "tinted",
+              "value" : {
+                "solid" : "srgb:0.20000,0.20000,0.20000,1.00000"
+              }
+            }
+          ],
+          "image-name" : "Colorway.png",
+          "name" : "Colorway2"
+        }
+      ],
+      "shadow-specializations" : [
+        {
+          "value" : {
+            "kind" : "layer-color",
+            "opacity" : 0.5
+          }
+        },
+        {
+          "appearance" : "dark",
+          "value" : {
+            "kind" : "neutral",
+            "opacity" : 0.5
+          }
+        },
+        {
+          "appearance" : "tinted",
+          "value" : {
+            "kind" : "neutral",
+            "opacity" : 0.5
           }
         }
       ],
-      "shadow" : {
-        "kind" : "layer-color",
-        "opacity" : 0.5
-      },
       "translucency" : {
         "enabled" : true,
-        "value" : 0.6
+        "value" : 0.3
       }
     }
   ],

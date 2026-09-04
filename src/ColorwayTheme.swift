@@ -18,6 +18,7 @@ enum Nuul {
         light: NSColor(srgbRed: 253 / 255, green: 253 / 255, blue: 253 / 255, alpha: 1),
         dark: NSColor(srgbRed: 17 / 255, green: 17 / 255, blue: 17 / 255, alpha: 1)
     )
+    static let accent = Color("AccentColor")
     static let itemText = dynamicColor(light: NSColor.black, dark: NSColor.white)
     static let itemSecondaryText = dynamicColor(
         light: NSColor.black.withAlphaComponent(0.56),
@@ -46,6 +47,8 @@ enum Nuul {
         static let medium: CGFloat = 8
         static let large: CGFloat = 16
         static let xLarge: CGFloat = 24
+        /// Clearance for content that can approach a rounded window corner.
+        static let windowInset: CGFloat = xLarge
     }
 
     enum Radius {
@@ -58,6 +61,7 @@ enum Nuul {
         static let windowWidth: CGFloat = 295
         static let windowHeight: CGFloat = 344
         static let controlHeight: CGFloat = 38
+        static let toolbarIconSize: CGFloat = 22
         static let fieldHeight: CGFloat = 36
         static let colorSurfaceWidth: CGFloat = 232
         static let hueRailWidth: CGFloat = 16
@@ -81,6 +85,7 @@ enum Nuul {
         static let viewTitle = viewTitleFont()
         static let viewSubtitle = Font.custom("Geist-Regular", size: 24, relativeTo: .title3)
         static let contentBlockTitle = Font.custom("Geist-SemiBold", size: 18, relativeTo: .headline)
+        static let contentBlockSubtitle = Font.custom("Geist-Regular", size: 16, relativeTo: .subheadline)
         static let body = Font.custom("Geist-Regular", size: 14, relativeTo: .body)
         static let bodyStrong = Font.custom("Geist-SemiBold", size: 14, relativeTo: .body)
         static let caption = Font.custom("Geist-SemiBold", size: 12, relativeTo: .caption)
@@ -90,7 +95,7 @@ enum Nuul {
 
         static let technical = technicalFont(size: 14)
         static let technicalCaption = technicalFont(size: 12, relativeTo: .caption)
-        static let symbol = Font.system(size: 22, weight: .regular)
+        static let symbol = Font.system(size: Layout.toolbarIconSize, weight: .regular)
 
         /// Old Standard TT supplies the Latin view-title treatment. If the
         /// bundled face cannot be loaded, keep the role Dynamic Type-aware and

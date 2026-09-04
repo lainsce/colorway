@@ -10,24 +10,37 @@ struct NuulButtonStyle: ButtonStyle {
 
     let kind: Kind
     let accentColor: Color
+    let horizontalPadding: CGFloat?
+    let labelColor: Color?
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.isEnabled) private var isEnabled
 
-    init(kind: Kind = .primary, accentColor: Color = .accent) {
+    init(
+        kind: Kind = .primary,
+        accentColor: Color = Nuul.accent,
+        horizontalPadding: CGFloat? = nil,
+        labelColor: Color? = nil
+    ) {
         self.kind = kind
         self.accentColor = accentColor
+        self.horizontalPadding = horizontalPadding
+        self.labelColor = labelColor
     }
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Nuul.Typography.body)
+            .font(Nuul.Typography.contentBlockSubtitle)
             .symbolRenderingMode(.monochrome)
-            .foregroundStyle(foregroundColor)
+            .foregroundStyle(labelColor ?? foregroundColor)
+            .padding(.horizontal, horizontalPadding ?? (kind == .quiet ? Nuul.Spacing.small : Nuul.Spacing.medium))
             .frame(minWidth: Nuul.Layout.controlHeight, minHeight: Nuul.Layout.controlHeight)
-            .background(backgroundColor, in: RoundedRectangle(cornerRadius: Nuul.Radius.control))
-            .overlay { overlayContent(isPressed: configuration.isPressed) }
-            .contentShape(Rectangle())
+            .background(
+                backgroundColor,
+                in: RoundedRectangle(cornerRadius: Nuul.Radius.control, style: .continuous)
+            )
+            .overlay { pressedOverlay(isPressed: configuration.isPressed) }
+            .contentShape(.rect(cornerRadius: Nuul.Radius.control))
             .opacity(controlOpacity(isPressed: configuration.isPressed))
             .scaleEffect(controlScale(isPressed: configuration.isPressed))
             .animation(reduceMotion ? nil : Nuul.controlMotion, value: configuration.isPressed)
@@ -35,14 +48,9 @@ struct NuulButtonStyle: ButtonStyle {
     }
 
     @ViewBuilder
-    private func overlayContent(isPressed: Bool) -> some View {
-        if kind == .neutral {
-            RoundedRectangle(cornerRadius: Nuul.Radius.control)
-                .strokeBorder(Nuul.controlRule, lineWidth: 1)
-        }
-
+    private func pressedOverlay(isPressed: Bool) -> some View {
         if isPressed && kind != .quiet {
-            RoundedRectangle(cornerRadius: Nuul.Radius.control)
+            RoundedRectangle(cornerRadius: Nuul.Radius.control, style: .continuous)
                 .fill(Nuul.itemText.opacity(0.10))
         }
     }

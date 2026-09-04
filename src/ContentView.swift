@@ -86,6 +86,7 @@ struct ContentView: View {
         hexInput = "#3C93FD"
         applyHexInput()
     }
+
 }
 
 private struct ColorEntryField: View {
@@ -114,6 +115,7 @@ private struct ColorEntryField: View {
                             lineWidth: isFocused ? 2 : 1
                         )
                 }
+                .contentShape(.rect(cornerRadius: Nuul.Radius.control))
                 .focused($isFocused)
                 .onSubmit {
                     onCommit()
@@ -207,8 +209,12 @@ private struct SaturationBrightnessSurface: View {
 private struct HueRail: View {
     @Binding var hue: Double
 
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         GeometryReader { geometry in
+            let indicatorInk = colorScheme == .dark ? Color.white : Color.black
+
             ZStack {
                 LinearGradient(
                     gradient: Gradient(stops: [
@@ -228,7 +234,7 @@ private struct HueRail: View {
 
                 ZStack {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(.black)
+                        .fill(indicatorInk)
                         .frame(
                             width: Nuul.Layout.hueIndicatorLineWidth,
                             height: Nuul.Layout.hueIndicatorLineThickness
@@ -236,7 +242,7 @@ private struct HueRail: View {
                         .offset(x: Nuul.Layout.hueIndicatorLineOffsetX)
 
                     HueDialTriangle()
-                        .fill(.black)
+                        .fill(indicatorInk)
                         .frame(width: Nuul.Layout.hueDialWidth, height: Nuul.Layout.hueDialHeight)
                         .offset(x: Nuul.Layout.hueDialOffsetX)
                 }

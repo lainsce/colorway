@@ -7,7 +7,7 @@ struct ColorwayAboutView: View {
 
     var body: some View {
         ZStack {
-            Nuul.workspace
+            Nuul.itemSurface
                 .ignoresSafeArea()
 
             VStack(spacing: Nuul.Spacing.large) {
@@ -19,7 +19,8 @@ struct ColorwayAboutView: View {
 
                 VStack(spacing: Nuul.Spacing.medium) {
                     Text("Colorway")
-                        .font(Nuul.Typography.display)
+                        .font(Nuul.Typography.viewTitle)
+                        .tracking(-0.4)
 
                     Text("Pick colors. Explore harmony.")
                         .font(Nuul.Typography.viewSubtitle)
@@ -49,9 +50,14 @@ struct ColorwayAboutView: View {
                 }
                 .buttonStyle(NuulButtonStyle(kind: .quiet))
             }
-            .padding(Nuul.Spacing.xLarge)
+            .padding(32)
         }
         .frame(width: 400)
+        .overlay(alignment: .top) {
+            Rectangle()
+                .fill(Nuul.accent)
+                .frame(height: 3)
+        }
         .ignoresSafeArea(.all)
     }
 

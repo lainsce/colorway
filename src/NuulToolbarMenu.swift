@@ -43,7 +43,7 @@ private struct NuulToolbarMenuLabel: View {
             .font(.system(size: 16, weight: .regular))
             .symbolRenderingMode(.monochrome)
             .foregroundStyle(Nuul.ink)
-            .frame(width: 22, height: 22)
+            .frame(width: Nuul.Layout.toolbarIconSize, height: Nuul.Layout.toolbarIconSize)
             .frame(width: Nuul.Layout.controlHeight, height: Nuul.Layout.controlHeight)
             .background {
                 RoundedRectangle(cornerRadius: Nuul.Radius.control, style: .continuous)

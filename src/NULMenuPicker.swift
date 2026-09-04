@@ -49,6 +49,7 @@ struct NULMenuPicker<Selection: Hashable, ItemLabel: View>: View {
             }
             .frame(minHeight: Nuul.Layout.controlHeight, alignment: .leading)
             .padding(.horizontal, Nuul.Spacing.medium)
+            .contentShape(.rect(cornerRadius: Nuul.Radius.control))
         }
         .menuStyle(.borderlessButton)
         .accessibilityLabel(Text(title))
