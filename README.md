@@ -50,20 +50,20 @@ xcodebuild \
 ## Project layout
 
 ```text
-Colorway/                    application source and resources
-  src/                       SwiftUI views, color model, theme, and styles
-  data/                      asset catalog, icon, and bundled fonts
+src/                         SwiftUI views, color model, theme, and styles
+data/                        asset catalog, icon, and bundled fonts
+tests/                       unit and view-construction tests
 Colorway.xcodeproj/          Xcode project and shared build settings
 ```
 
-The `Colorway/data/` folder is part of the repository so a fresh checkout contains every resource required by the project, including the bundled Geist fonts.
+The `data/` folder is part of the repository so a fresh checkout contains every resource required by the project, including the bundled Geist fonts.
 
 ## Development checks
 
 For a fast source-only parse:
 
 ```bash
-find Colorway/src -name '*.swift' -print0 | \
+find src -name '*.swift' -print0 | \
   xargs -0 xcrun swiftc -frontend -parse \
   -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 ```
@@ -71,7 +71,7 @@ find Colorway/src -name '*.swift' -print0 | \
 Asset and icon metadata can be checked with:
 
 ```bash
-find Colorway/data/Assets.xcassets Colorway/data/Colorway.icon -name '*.json' -print0 | \
+find data/Assets.xcassets data/Colorway.icon -name '*.json' -print0 | \
   xargs -0 -n1 jq empty
 ```
 
